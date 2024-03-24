@@ -10,6 +10,9 @@ import seedu.address.model.ReadOnlyClassBook;
 import seedu.address.model.person.AttendanceStatus;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.CourseCode;
+import seedu.address.model.person.Description;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Attendance;
 
@@ -17,6 +20,8 @@ import seedu.address.model.tag.Attendance;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
+
+    public static final Description EMPTY_DESCRIPTION = new Description("");
     public static Person[] getSamplePersons() {
         return new Person[] {
             //            new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),

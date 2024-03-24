@@ -38,7 +38,8 @@ public class TypicalPersons {
             .withStudentID("A3333333D")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
-                    new Attendance(new AttendanceStatus(VALID_DATE_2, "1"))).build();
+                    new Attendance(new AttendanceStatus(VALID_DATE_2, "1")))
+            .withDescription("Interested in BioInformatics").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withStudentID("A4444444D")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
@@ -54,7 +55,8 @@ public class TypicalPersons {
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withStudentID("A8888888D")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
-                    new Attendance(new AttendanceStatus(VALID_DATE_2, "1"))).build();
+                    new Attendance(new AttendanceStatus(VALID_DATE_2, "1")))
+            .withDescription("Cannot").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withStudentID("A9999999D")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),

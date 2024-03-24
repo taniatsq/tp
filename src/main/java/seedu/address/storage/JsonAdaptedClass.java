@@ -3,6 +3,7 @@ package seedu.address.storage;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.person.Classes;
@@ -39,7 +40,7 @@ public class JsonAdaptedClass {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted class.
      */
-    public Classes toModelType() throws IllegalValueException, IOException {
+    public Classes toModelType() throws IllegalValueException, IOException, DataLoadingException {
         if (!CourseCode.isValidClass(courseCode)) {
             throw new IllegalValueException(CourseCode.MESSAGE_CONSTRAINTS);
         }
@@ -51,6 +52,6 @@ public class JsonAdaptedClass {
 
         final CourseCode modelCourseCode = new CourseCode(courseCode);
 
-        return new Classes(modelCourseCode);
+        return new Classes(modelCourseCode, new AddressBook());
     }
 }

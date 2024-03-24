@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ClassBook;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -62,10 +63,10 @@ public class SampleDataUtil {
     }
 
 
-    public static Classes[] getSampleClasses() throws IOException {
+    public static Classes[] getSampleClasses() throws IOException, DataLoadingException {
         return new Classes[] {
-            new Classes(new CourseCode("CS2103T")),
-            new Classes(new CourseCode("CS2101"))
+            new Classes(new CourseCode("CS2103T"), new AddressBook()),
+            new Classes(new CourseCode("CS2101"), new AddressBook())
         };
     }
     public static ReadOnlyClassBook getSampleClassBook() {

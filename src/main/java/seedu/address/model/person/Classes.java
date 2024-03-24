@@ -1,11 +1,14 @@
 package seedu.address.model.person;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.AddressBook;
 import seedu.address.storage.AddressBookStorage;
@@ -23,11 +26,16 @@ public class Classes {
     /**
      * Constructor for Classes.
      */
-    public Classes(CourseCode courseCode) throws IOException {
+    public Classes(CourseCode courseCode, AddressBook addressBook) throws IOException, DataLoadingException {
         this.courseCode = courseCode;
-        this.addressBook = new AddressBook();
-        this.addressBookStorage = new JsonAddressBookStorage(getFilePath());
-        addressBookStorage.saveAddressBook(addressBook, getFilePath());
+        this.addressBook = addressBook;
+        if (Files.exists(getFilePath())) {
+            addressBookStorage = new JsonAddressBookStorage(getFilePath());
+            this.addressBook = new AddressBook(addressBookStorage.readAddressBook(getFilePath()).orElse(addressBook));
+        } else {
+            addressBookStorage = new JsonAddressBookStorage(getFilePath());
+        }
+        addressBookStorage.saveAddressBook(this.addressBook);
     }
 
     /**

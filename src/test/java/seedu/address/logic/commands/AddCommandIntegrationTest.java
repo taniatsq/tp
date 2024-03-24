@@ -15,6 +15,8 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
+import java.io.IOException;
+
 /**
  * Contains integration tests (interaction with the Model) for {@code AddCommand}.
  */
@@ -28,7 +30,7 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newPerson_success() {
+    public void execute_newPerson_success() throws IOException {
         Person validPerson = new PersonBuilder().build();
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getClassBook());

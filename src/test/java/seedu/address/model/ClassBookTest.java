@@ -7,10 +7,12 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.TYPICAL_CLASS_1;
 import static seedu.address.testutil.TypicalPersons.getTypicalClassBook;
 
+import java.io.IOException;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.CourseCode;
 
@@ -59,7 +61,7 @@ public class ClassBookTest {
     }
 
     @Test
-    public void createClass_newClass_success() {
+    public void createClass_newClass_success() throws DataLoadingException, IOException {
         Classes sampleClass = new Classes(new CourseCode("CS101"), new AddressBook());
         ClassBook classBook = new ClassBook();
         classBook.createClass(sampleClass);

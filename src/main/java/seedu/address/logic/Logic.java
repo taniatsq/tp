@@ -28,6 +28,7 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException, IOException,
             DataLoadingException;
 
+
     /**
      * Returns the AddressBook.
      *

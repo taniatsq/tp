@@ -36,7 +36,7 @@ public class CreateClassCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException, IOException {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
         if (model.hasClass(toCreate)) {
@@ -44,8 +44,6 @@ public class CreateClassCommand extends Command {
         }
 
         model.createClass(toCreate);
-        model.setAddressBook(toCreate.getAddressBook());
-        model.selectClass(toCreate);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.classFormat(toCreate)));
     }
 

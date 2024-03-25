@@ -30,6 +30,8 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyClassBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Classes;
+import seedu.address.model.person.CourseCode;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonClassBookStorage;
@@ -77,6 +79,7 @@ public class LogicManagerTest {
     //
     //    @Test
     //    public void execute_storageThrowsIoException_throwsCommandException() throws IOException {
+
     //        assertCommandFailureForExceptionFromStorage(DUMMY_IO_EXCEPTION, String.format(
     //                LogicManager.FILE_OPS_ERROR_FORMAT, DUMMY_IO_EXCEPTION.getMessage()));
     //    }

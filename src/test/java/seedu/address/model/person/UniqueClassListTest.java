@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.DataLoadingException;
 
+
 public class UniqueClassListTest {
 
     private final UniqueClassList uniqueClassList = new UniqueClassList();

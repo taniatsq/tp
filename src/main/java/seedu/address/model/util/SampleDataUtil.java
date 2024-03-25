@@ -35,17 +35,17 @@ public class SampleDataUtil {
     /**
      * Returns a tag set containing the list of strings given.
      */
-    public static Set<Attendance> getAttendanceSet(String... strings) {
+    public static Set<Attendance> getAttendanceSet(Attendance... strings) {
 
         Set<Attendance> set = new HashSet<>();
-        for (String i : strings) {
-            set.add(new Attendance(new AttendanceStatus(i, "1")));
+        for (Attendance i : strings) {
+            set.add(new Attendance(new AttendanceStatus(i.attendanceName.getDate(), "1")));
         }
         return set;
     }
 
 
-    public static Classes[] getSampleClasses() throws IOException, DataLoadingException {
+    public static Classes[] getSampleClasses() throws DataLoadingException, IOException {
         return new Classes[] {
             new Classes(new CourseCode("CS2103T")),
             new Classes(new CourseCode("CS2101"))

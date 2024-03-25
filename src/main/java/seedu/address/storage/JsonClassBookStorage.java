@@ -53,7 +53,6 @@ public class JsonClassBookStorage implements ClassBookStorage {
         }
 
         try {
-            //            createJsonFileForEachCC(jsonClassBook);
             return Optional.of(jsonClassBook.get().toModelType());
         } catch (IllegalValueException e) {
             logger.info("Illegal values found in " + filePath + ": " + e.getMessage());
@@ -62,6 +61,7 @@ public class JsonClassBookStorage implements ClassBookStorage {
             throw new RuntimeException(e);
         }
     }
+
 
     @Override
     public void saveClassBook(ReadOnlyClassBook classBook) throws IOException, IllegalValueException {
@@ -79,6 +79,7 @@ public class JsonClassBookStorage implements ClassBookStorage {
 
         FileUtil.createIfMissing(filePath);
         //        createJsonFileForEachCC(new JsonSerializableClassBook(classBook));
+
         JsonUtil.saveJsonFile(new JsonSerializableClassBook(classBook), filePath);
     }
 

@@ -18,6 +18,7 @@ public class CreateClassCommandParser implements Parser<CreateClassCommand> {
 
     @Override
     public CreateClassCommand parse(String userInput) throws ParseException, IOException, DataLoadingException {
+
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(userInput, PREFIX_CLASS);
 

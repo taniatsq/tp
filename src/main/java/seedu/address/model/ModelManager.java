@@ -45,7 +45,7 @@ public class ModelManager implements Model {
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyClassBook classBook) {
         requireAllNonNull(addressBook, userPrefs, classBook);
 
-        logger.fine("Initializing with user prefs " + userPrefs
+        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs
                 + "and class book: " + classBook);
 
         this.selectedClassAddressBook = new AddressBook(addressBook);
@@ -151,9 +151,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addPerson(Person person) throws IOException {
+    public void addPerson(Person person) {
         requireNonNull(person);
-        selectedClassAddressBook = selectedClass.getAddressBook();
         selectedClassAddressBook.addPerson(person);
         filteredPersons = new FilteredList<>(this.selectedClassAddressBook.getPersonList());
         try {
@@ -164,7 +163,6 @@ public class ModelManager implements Model {
 
         Predicate<Person> predicate = updatedPerson -> selectedClassAddressBook.getPersonList().contains(updatedPerson);
         updateFilteredPersonList(predicate);
-        selectClass(selectedClass);
     }
 
     @Override
@@ -181,7 +179,6 @@ public class ModelManager implements Model {
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
 
-        selectedClassAddressBook = selectedClass.getAddressBook();
         selectedClassAddressBook.setPerson(target, editedPerson);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
@@ -284,11 +281,12 @@ public class ModelManager implements Model {
         // Predicate<Person> predicate = person -> selectedClassAddressBook.getPersonList().contains(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnClassSelected(classes);;
+            listener.updateUiOnClassSelected(classes);
+            ;
         }
         notifyUiUpdateListenersOnClassSelected(classes);
-        notifyUiUpdateListenersOnClassSelected(classes);
     }
+
 
 
 

@@ -3,8 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.io.IOException;
-
 import javafx.collections.ObservableList;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
@@ -30,7 +28,7 @@ public class SelectClassCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws IOException {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
         ObservableList<Classes> lastShownList = model.getFilteredClassList();
 

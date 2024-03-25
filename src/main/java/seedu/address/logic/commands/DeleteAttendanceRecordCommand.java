@@ -143,17 +143,6 @@ public class DeleteAttendanceRecordCommand extends Command {
 
         public DeleteAttendanceDescriptor() {}
 
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public DeleteAttendanceDescriptor(DeleteAttendanceDescriptor toCopy) {
-            setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setStudentId(toCopy.studentId);
-            setAttendances(toCopy.attendances);
-        }
 
         /**
          * Returns true if at least one field is edited.

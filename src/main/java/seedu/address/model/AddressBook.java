@@ -67,10 +67,18 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds a person to the address book.
+     * Adds a person to the address book in alphabetical order.
      * The person must not already exist in the address book.
      */
     public void addPerson(Person p) {
+        persons.addAlphabetically(p);
+    }
+
+    /**
+     * Adds a person to the address book, in alphabetical order.
+     * Inserts person in position of address book that maintains alphabetical order of the list.
+     */
+    public void addPersonAlphabetically(Person p) {
         persons.add(p);
     }
 

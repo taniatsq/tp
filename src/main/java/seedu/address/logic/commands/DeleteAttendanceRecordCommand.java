@@ -23,6 +23,9 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.person.StudentId;
 import seedu.address.model.tag.Attendance;
 
+/**
+ * Deletes an attendance record of all students in that selected class.
+ */
 public class DeleteAttendanceRecordCommand extends Command {
 
     public static final String COMMAND_WORD = "delattendance";
@@ -36,6 +39,10 @@ public class DeleteAttendanceRecordCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Attendance deleted for: %1$s";
     private Attendance date;
 
+    /**
+     * Create a DeleteAttendanceRecordCommand Object with the selected date to delete.
+     * @param date of attendance to delete.
+     */
     public DeleteAttendanceRecordCommand(Attendance date) {
         requireAllNonNull(date);
         this.date = date;
@@ -88,6 +95,12 @@ public class DeleteAttendanceRecordCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, date));
     }
 
+    /**
+     * Update the student's info
+     * @param personToEdit targeted user to update.
+     * @param deleteAttendanceDescriptor the updated information of the person
+     * @return the updated student
+     */
     private static Person createEditedPerson(Person personToEdit, DeleteAttendanceDescriptor deleteAttendanceDescriptor) {
         assert personToEdit != null;
 

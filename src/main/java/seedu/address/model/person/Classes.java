@@ -98,12 +98,4 @@ public class Classes {
         String fileName = courseCode.getCourseCode() + ".json";
         return Paths.get("data/classbook", fileName);
     }
-
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-    }
-
-//    public Object getPersons() {
-//    }
-
 }

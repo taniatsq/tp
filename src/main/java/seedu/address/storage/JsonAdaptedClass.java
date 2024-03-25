@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.CourseCode;
-
-import java.io.IOException;
 
 /**
  * Jackson-friendly version of {@link Classes}.

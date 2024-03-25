@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.AddressBook;
 
+
 public class UniqueClassListTest {
 
     private final UniqueClassList uniqueClassList = new UniqueClassList();

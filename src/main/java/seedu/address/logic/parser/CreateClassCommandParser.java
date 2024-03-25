@@ -3,7 +3,6 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CLASS;
 
-import java.io.IOException;
 import java.util.stream.Stream;
 
 import seedu.address.commons.exceptions.DataLoadingException;
@@ -18,6 +17,7 @@ public class CreateClassCommandParser implements Parser<CreateClassCommand> {
 
     @Override
     public CreateClassCommand parse(String userInput) throws ParseException, IOException, DataLoadingException {
+
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(userInput, PREFIX_CLASS);
 

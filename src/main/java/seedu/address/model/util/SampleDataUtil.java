@@ -1,6 +1,5 @@
 package seedu.address.model.util;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,20 +43,20 @@ public class SampleDataUtil {
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
-//        for (Person samplePerson : getSamplePersons()) {
-//            sampleAb.addPerson(samplePerson);
-//        }
+        for (Person samplePerson : getSamplePersons()) {
+            sampleAb.addPerson(samplePerson);
+        }
         return sampleAb;
     }
 
     /**
      * Returns a tag set containing the list of strings given.
      */
-    public static Set<Attendance> getAttendanceSet(String... strings) {
+    public static Set<Attendance> getAttendanceSet(Attendance... strings) {
 
         Set<Attendance> set = new HashSet<>();
-        for (String i : strings) {
-            set.add(new Attendance(new AttendanceStatus(i, "1")));
+        for (Attendance i : strings) {
+            set.add(new Attendance(new AttendanceStatus(i.attendanceName.getDate(), "1")));
         }
         return set;
     }
@@ -71,9 +70,9 @@ public class SampleDataUtil {
     }
     public static ReadOnlyClassBook getSampleClassBook() {
         ClassBook sampleCb = new ClassBook();
-//        for (Classes sampleClasses : getSampleClasses()) {
-//            sampleCb.createClass(sampleClasses);
-//        }
+        for (Classes sampleClasses : getSampleClasses()) {
+            sampleCb.createClass(sampleClasses);
+        }
         return sampleCb;
     }
 

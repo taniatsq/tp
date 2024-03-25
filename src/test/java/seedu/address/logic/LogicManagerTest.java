@@ -30,8 +30,6 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyClassBook;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Classes;
-import seedu.address.model.person.CourseCode;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonClassBookStorage;

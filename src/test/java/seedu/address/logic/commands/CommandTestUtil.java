@@ -84,12 +84,12 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-                                            Model expectedModel) {
+                                            Model expectedModel) throws CommandException {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
             assertEquals(expectedModel, actualModel);
-        } catch (CommandException | IOException ce) {
+        } catch (CommandException ce) {
             throw new AssertionError("Execution of command should not fail.", ce);
         }
     }

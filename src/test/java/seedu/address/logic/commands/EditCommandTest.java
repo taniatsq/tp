@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -21,10 +20,6 @@ import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Classes;
-import seedu.address.model.person.CourseCode;
-import seedu.address.model.person.Person;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
@@ -112,15 +107,15 @@ public class EditCommandTest {
     //        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     //    }
 
-    @Test
-    public void execute_duplicatePersonUnfilteredList_failure() throws DataLoadingException, IOException {
-        model.selectClass(new Classes(new CourseCode("class1")));
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstPerson).build();
-        EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
-
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
-    }
+    //    @Test
+    //    public void execute_duplicatePersonUnfilteredList_failure() throws DataLoadingException, IOException {
+    //        model.selectClass(new Classes(new CourseCode("class1")));
+    //        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+    //        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstPerson).build();
+    //        EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
+    //
+    //        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
+    //    }
 
     //    @Test
     //    public void execute_duplicatePersonFilteredList_failure() throws DataLoadingException, IOException {

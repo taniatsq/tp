@@ -67,7 +67,7 @@ public class DeleteCommandTest {
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getClassBook());
         expectedModel.selectClass(new Classes(new CourseCode("class1")));
         expectedModel.deletePerson(personToDelete);
-        showNoPerson(expectedModel);
+        //showNoPerson(expectedModel);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }

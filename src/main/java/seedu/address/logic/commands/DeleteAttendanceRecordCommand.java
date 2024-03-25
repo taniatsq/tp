@@ -101,7 +101,8 @@ public class DeleteAttendanceRecordCommand extends Command {
      * @param deleteAttendanceDescriptor the updated information of the person
      * @return the updated student
      */
-    private static Person createEditedPerson(Person personToEdit, DeleteAttendanceDescriptor deleteAttendanceDescriptor) {
+    private static Person createEditedPerson(Person personToEdit,
+                                             DeleteAttendanceDescriptor deleteAttendanceDescriptor) {
         assert personToEdit != null;
 
         Name updatedName = deleteAttendanceDescriptor.getName().orElse(personToEdit.getName());

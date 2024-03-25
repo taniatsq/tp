@@ -37,7 +37,7 @@ public class ModelManager implements Model {
     private final FilteredList<Classes> filteredClasses;
     private Classes selectedClass;
     private AddressBook selectedClassAddressBook;
-    private JsonAddressBookStorage Storage;
+    private JsonAddressBookStorage storage;
 
 
     /**
@@ -157,7 +157,7 @@ public class ModelManager implements Model {
         selectedClassAddressBook.addPerson(person);
         filteredPersons = new FilteredList<>(this.selectedClassAddressBook.getPersonList());
         try {
-            this.Storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
+            this.storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
         } catch (IOException e) {
             logger.warning("Error adding person to the selected class address book: " + e.getMessage());
         }
@@ -185,7 +185,7 @@ public class ModelManager implements Model {
 
         // Update the storage with the edited AddressBook
         try {
-            Storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
+            storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
         } catch (IOException e) {
             logger.warning("Error saving the address book after editing person: " + e.getMessage());
             // Consider what action to take if saving fails
@@ -259,11 +259,11 @@ public class ModelManager implements Model {
 
         selectedClass = classes;
         // selectedClassAddressBook = selectedClass.getAddressBook();
-        this.Storage = new JsonAddressBookStorage(selectedClass.getFilePath());
+        this.storage = new JsonAddressBookStorage(selectedClass.getFilePath());
         userPrefs.setAddressBookFilePath(selectedClass.getFilePath());
 
         try {
-            Optional<ReadOnlyAddressBook> optionalAddressBook = Storage.readAddressBook();
+            Optional<ReadOnlyAddressBook> optionalAddressBook = storage.readAddressBook();
 
             if (optionalAddressBook.isPresent()) {
                 selectedClassAddressBook = new AddressBook(optionalAddressBook.get());

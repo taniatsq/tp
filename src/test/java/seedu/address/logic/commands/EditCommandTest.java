@@ -62,24 +62,24 @@ public class EditCommandTest {
 
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
-    //        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
-    //        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
-    //
-    //        PersonBuilder personInList = new PersonBuilder(lastPerson);
-    //        Person editedPerson = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-    //                .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1"))).build();
-    //
-    //        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-    //                .withPhone(VALID_PHONE_BOB).withAttendances(VALID_DATE_1).build();
-    //        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
-    //        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
-    //                 Messages.format(editedPerson));
-    //
-    //        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(),
-    //                new ClassBook(model.getClassBook()));
-    //        expectedModel.setPerson(lastPerson, editedPerson);
-    //
-    //        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        //        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        //        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+        //
+        //        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        //        Person editedPerson = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+        //                .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1"))).build();
+        //
+        //        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
+        //                .withPhone(VALID_PHONE_BOB).withAttendances(VALID_DATE_1).build();
+        //        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+        //        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
+        //                 Messages.format(editedPerson));
+        //
+        //        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(),
+        //                new ClassBook(model.getClassBook()));
+        //        expectedModel.setPerson(lastPerson, editedPerson);
+        //
+        //        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
         model.selectClass(new Classes(new CourseCode("class1")));
         Index indexLastPerson = Index.fromOneBased(1);
         Person lastPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());

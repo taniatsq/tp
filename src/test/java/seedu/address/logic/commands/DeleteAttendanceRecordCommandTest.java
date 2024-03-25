@@ -1,9 +1,7 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_1;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalPersons.getTypicalClassBook;
 
@@ -15,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.Messages;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ClassBook;
 import seedu.address.model.Model;
@@ -30,7 +27,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.StudentId;
 import seedu.address.model.tag.Attendance;
-import seedu.address.testutil.PersonBuilder;
 
 class DeleteAttendanceRecordCommandTest {
 
@@ -42,7 +38,7 @@ class DeleteAttendanceRecordCommandTest {
     }
 
     @Test
-    public void execute__failure() {
+    public void execute_deleteAttendanceRecord_failure() {
         DeleteAttendanceRecordCommand deleteAttendanceRecordCommand = new DeleteAttendanceRecordCommand(
                 new Attendance(new AttendanceStatus(VALID_DATE_1, "1")));
         String expectedMessage = String.format(DeleteAttendanceRecordCommand.MESSAGE_SUCCESS, "[" + VALID_DATE_1 + "]");
@@ -57,7 +53,8 @@ class DeleteAttendanceRecordCommandTest {
         for (int i = 0; i < personList.size(); i++) {
             Index index = Index.fromZeroBased(i);
 
-            DeleteAttendanceRecordCommand.DeleteAttendanceDescriptor deleteAttendanceDescriptor = new DeleteAttendanceRecordCommand.DeleteAttendanceDescriptor();
+            DeleteAttendanceRecordCommand.DeleteAttendanceDescriptor
+                    deleteAttendanceDescriptor = new DeleteAttendanceRecordCommand.DeleteAttendanceDescriptor();
             deleteAttendanceDescriptor.setName(personList.get(i).getName());
             deleteAttendanceDescriptor.setPhone(personList.get(i).getPhone());
             deleteAttendanceDescriptor.setEmail(personList.get(i).getEmail());
@@ -91,7 +88,8 @@ class DeleteAttendanceRecordCommandTest {
 
 
     private static Person createEditedPerson(Person personToEdit,
-                                             DeleteAttendanceRecordCommand.DeleteAttendanceDescriptor deleteAttendanceDescriptor) {
+                                             DeleteAttendanceRecordCommand
+                                                     .DeleteAttendanceDescriptor deleteAttendanceDescriptor) {
         assert personToEdit != null;
 
         Name updatedName = deleteAttendanceDescriptor.getName().orElse(personToEdit.getName());

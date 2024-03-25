@@ -11,7 +11,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.person.AttendanceStatus;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.CourseCode;

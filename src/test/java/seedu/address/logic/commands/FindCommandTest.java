@@ -11,11 +11,13 @@ import static seedu.address.testutil.TypicalPersons.FIONA;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalPersons.getTypicalClassBook;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -27,6 +29,9 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 public class FindCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalClassBook());
     private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalClassBook());
+
+    public FindCommandTest() throws DataLoadingException, IOException {
+    }
 
     @Test
     public void equals() {

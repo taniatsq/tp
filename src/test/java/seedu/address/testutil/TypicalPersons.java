@@ -69,8 +69,29 @@ public class TypicalPersons {
             .withEmail(VALID_EMAIL_BOB).withStudentID(VALID_STUDENT_ID_BOB).withDate(VALID_DATE_1, VALID_DATE_2)
             .build();
 
-    public static final Classes TYPICAL_CLASS_1 = new ClassBuilder().withCC("CS2103T").build();
-    public static final Classes TYPICAL_CLASS_2 = new ClassBuilder().withCC("CS2103").build();
+    public static final Classes TYPICAL_CLASS_1;
+
+    static {
+        try {
+            TYPICAL_CLASS_1 = new ClassBuilder().withCC("CS2103T").build();
+        } catch (DataLoadingException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static final Classes TYPICAL_CLASS_2;
+
+    static {
+        try {
+            TYPICAL_CLASS_2 = new ClassBuilder().withCC("CS2103").build();
+        } catch (DataLoadingException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

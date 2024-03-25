@@ -25,7 +25,8 @@ public interface Logic {
      * @throws CommandException If an error occurs during command execution.
      * @throws ParseException If an error occurs during parsing.
      */
-    CommandResult execute(String commandText) throws CommandException, ParseException, IOException, DataLoadingException;
+    CommandResult execute(String commandText) throws CommandException, ParseException, IOException,
+            DataLoadingException;
 
     /**
      * Returns the AddressBook.

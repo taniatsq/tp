@@ -1,10 +1,10 @@
 package seedu.address.logic.parser;
 
+import java.io.IOException;
+
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.parser.exceptions.ParseException;
-
-import java.io.IOException;
 
 /**
  * Represents a Parser that is able to parse user input into a {@code Command} of type {@code T}.

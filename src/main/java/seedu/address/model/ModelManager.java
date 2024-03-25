@@ -156,9 +156,7 @@ public class ModelManager implements Model {
         try {
             storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
         } catch (IOException e) {
-            logger.warning("Error saving the address book after editing person: " + e.getMessage());
-            // Consider what action to take if saving fails
-            // e.g., throw a new CommandException or runtime exception
+            logger.warning("Error saving the address book after deleting person: " + e.getMessage());
         }
     }
 

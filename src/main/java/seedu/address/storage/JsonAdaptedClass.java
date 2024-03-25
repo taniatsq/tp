@@ -52,6 +52,6 @@ public class JsonAdaptedClass {
 
         final CourseCode modelCourseCode = new CourseCode(courseCode);
 
-        return new Classes(modelCourseCode, new AddressBook());
+        return new Classes(modelCourseCode);
     }
 }

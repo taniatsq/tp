@@ -12,10 +12,12 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STUDENT_ID_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STUDENT_ID_BOB;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ClassBook;
 import seedu.address.model.person.Classes;
@@ -89,9 +91,9 @@ public class TypicalPersons {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 
-    public static ClassBook getTypicalClassBook() {
+    public static ClassBook getTypicalClassBook() throws DataLoadingException, IOException {
         ClassBook cb = new ClassBook();
-        cb.createClass(new Classes(new CourseCode("cs2103"), new AddressBook()));
+        cb.createClass(new Classes(new CourseCode("cs2103")));
         return cb;
     }
 }

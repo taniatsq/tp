@@ -32,7 +32,7 @@ public class ClassBookTest {
     }
 
     @Test
-    public void resetData_withValidReadOnlyClassBook_replacesData() {
+    public void resetData_withValidReadOnlyClassBook_replacesData() throws DataLoadingException, IOException {
         ClassBook newData = getTypicalClassBook();
         classBook.resetData(newData);
         assertEquals(newData, classBook);
@@ -62,7 +62,7 @@ public class ClassBookTest {
 
     @Test
     public void createClass_newClass_success() throws DataLoadingException, IOException {
-        Classes sampleClass = new Classes(new CourseCode("CS101"), new AddressBook());
+        Classes sampleClass = new Classes(new CourseCode("CS101"));
         ClassBook classBook = new ClassBook();
         classBook.createClass(sampleClass);
         assertTrue(classBook.hasClass(sampleClass));

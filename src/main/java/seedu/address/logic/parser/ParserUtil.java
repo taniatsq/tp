@@ -113,7 +113,7 @@ public class ParserUtil {
         if (!CourseCode.isValidClass(trimmedCourseCode)) {
             throw new ParseException(CourseCode.MESSAGE_CONSTRAINTS);
         }
-        return new Classes(new CourseCode(trimmedCourseCode), new AddressBook());
+        return new Classes(new CourseCode(trimmedCourseCode));
     }
 
     /**

@@ -65,8 +65,8 @@ public class SampleDataUtil {
 
     public static Classes[] getSampleClasses() throws IOException, DataLoadingException {
         return new Classes[] {
-            new Classes(new CourseCode("CS2103T"), new AddressBook()),
-            new Classes(new CourseCode("CS2101"), new AddressBook())
+            new Classes(new CourseCode("CS2103T")),
+            new Classes(new CourseCode("CS2101"))
         };
     }
     public static ReadOnlyClassBook getSampleClassBook() {

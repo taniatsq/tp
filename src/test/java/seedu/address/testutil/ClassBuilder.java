@@ -1,8 +1,11 @@
 package seedu.address.testutil;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.CourseCode;
+
+import java.io.IOException;
 
 /**
  * A utility class to help with building Classes objects.
@@ -28,7 +31,7 @@ public class ClassBuilder {
         return this;
     }
 
-    public Classes build() {
-        return new Classes(cc, new AddressBook());
+    public Classes build() throws DataLoadingException, IOException {
+        return new Classes(cc);
     }
 }

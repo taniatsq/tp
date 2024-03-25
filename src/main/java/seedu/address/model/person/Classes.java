@@ -26,9 +26,9 @@ public class Classes {
     /**
      * Constructor for Classes.
      */
-    public Classes(CourseCode courseCode, AddressBook addressBook) throws IOException, DataLoadingException {
+    public Classes(CourseCode courseCode) throws IOException, DataLoadingException {
         this.courseCode = courseCode;
-        this.addressBook = addressBook;
+        this.addressBook = new AddressBook();
         if (Files.exists(getFilePath())) {
             addressBookStorage = new JsonAddressBookStorage(getFilePath());
             this.addressBook = new AddressBook(addressBookStorage.readAddressBook(getFilePath()).orElse(addressBook));

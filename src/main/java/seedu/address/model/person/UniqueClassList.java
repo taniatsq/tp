@@ -3,6 +3,7 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
@@ -88,6 +89,8 @@ public class UniqueClassList implements Iterable<Classes> {
     public void remove(Classes toRemove) {
         requireNonNull(toRemove);
         internalList.remove(toRemove);
+        File f = new File(toRemove.getFilePath().toUri());
+        f.delete();
     }
 
     /**

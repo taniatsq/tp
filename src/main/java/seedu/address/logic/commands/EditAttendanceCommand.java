@@ -84,9 +84,10 @@ public class EditAttendanceCommand extends Command {
             model.setPerson(personToEdit, editedPerson);
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
             names.append(editedPerson.getName());
+            names.append(", ");
         }
     //        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, names));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, names.substring(0, names.length()-2)));
     }
 
     private static Person createEditedPerson(Person personToEdit,

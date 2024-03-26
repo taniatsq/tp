@@ -168,6 +168,7 @@ public class ModelManager implements Model {
     @Override
     public void createClass(Classes classes) {
         classBook.createClass(classes);
+        selectClass(classes);
     }
 
     @Override

@@ -14,7 +14,7 @@ public class RemoveClassCommandParserTest {
     private RemoveClassCommandParser parser = new RemoveClassCommandParser();
 
     @Test
-    public void parse_ValidArgs_returnsRemoveClassCommand() {
+    public void parse_validArgs_returnsRemoveClassCommand() {
         assertParseSuccess(parser, "1", new RemoveClassCommand(INDEX_FIRST_PERSON));
     }
 

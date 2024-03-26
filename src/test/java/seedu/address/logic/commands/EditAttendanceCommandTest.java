@@ -31,7 +31,7 @@ class EditAttendanceCommandTest {
         updatedAttendance = new Attendance(new AttendanceStatus("02-05-2024", "0"));
         descriptor = new EditAttendanceCommand.EditPersonDescriptor();
         descriptor.setAttendances(updatedAttendance);
-        editAttendanceCommand = new EditAttendanceCommand(Index.fromZeroBased(0), descriptor);
+    //        editAttendanceCommand = new EditAttendanceCommand(Index.fromZeroBased(0), descriptor);
     }
 
     //    @Test

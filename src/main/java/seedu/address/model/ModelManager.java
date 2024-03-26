@@ -21,7 +21,6 @@ import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.ui.UiUpdateListener;
 
-
 /**
  * Represents the in-memory model of the address book data.
  */
@@ -37,7 +36,7 @@ public class ModelManager implements Model {
     private final FilteredList<Classes> filteredClasses;
     private Classes selectedClass;
     private AddressBook selectedClassAddressBook;
-    private JsonAddressBookStorage Storage;
+    private JsonAddressBookStorage storage;
 
 
     /**
@@ -157,7 +156,7 @@ public class ModelManager implements Model {
         selectedClassAddressBook.addPerson(person);
         filteredPersons = new FilteredList<>(this.selectedClassAddressBook.getPersonList());
         try {
-            this.Storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
+            this.storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
         } catch (IOException e) {
             logger.warning("Error adding person to the selected class address book: " + e.getMessage());
         }
@@ -169,6 +168,7 @@ public class ModelManager implements Model {
     @Override
     public void createClass(Classes classes) {
         classBook.createClass(classes);
+        selectClass(classes);
     }
 
     @Override
@@ -185,7 +185,7 @@ public class ModelManager implements Model {
 
         // Update the storage with the edited AddressBook
         try {
-            Storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
+            storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
         } catch (IOException e) {
             logger.warning("Error saving the address book after editing person: " + e.getMessage());
             // Consider what action to take if saving fails
@@ -258,12 +258,12 @@ public class ModelManager implements Model {
         requireNonNull(classes);
 
         selectedClass = classes;
-        // selectedClassAddressBook = selectedClass.getAddressBook();
-        this.Storage = new JsonAddressBookStorage(selectedClass.getFilePath());
+        //      selectedClassAddressBook = selectedClass.getAddressBook();
+        this.storage = new JsonAddressBookStorage(selectedClass.getFilePath());
         userPrefs.setAddressBookFilePath(selectedClass.getFilePath());
 
         try {
-            Optional<ReadOnlyAddressBook> optionalAddressBook = Storage.readAddressBook();
+            Optional<ReadOnlyAddressBook> optionalAddressBook = storage.readAddressBook();
 
             if (optionalAddressBook.isPresent()) {
                 selectedClassAddressBook = new AddressBook(optionalAddressBook.get());
@@ -282,12 +282,15 @@ public class ModelManager implements Model {
         // Predicate<Person> predicate = person -> selectedClassAddressBook.getPersonList().contains(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnClassSelected(classes);;
+            listener.updateUiOnClassSelected(classes);
         }
         notifyUiUpdateListenersOnClassSelected(classes);
     }
 
-
+    //    @Override
+    //    public void viewClasses() {
+    //        notifyUiUpdateListenersOnView();
+    //    }
 
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
@@ -301,5 +304,11 @@ public class ModelManager implements Model {
             listener.updateUiOnClassSelected(selectedClass);
         }
     }
+
+    //    public void notifyUiUpdateListenersOnView() {
+    //        for (UiUpdateListener listener : uiUpdateListeners) {
+    //            listener.updateUiOnView();
+    //        }
+    //    }
 
 }

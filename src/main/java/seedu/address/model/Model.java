@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.Person;
+import seedu.address.ui.UiUpdateListener;
 
 /**
  * The API of the Model component.
@@ -104,4 +105,5 @@ public interface Model {
     void selectClass(Classes classes);
     String getSelectedClassName();
 
+    //    void viewClasses();
 }

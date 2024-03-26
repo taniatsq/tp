@@ -102,4 +102,13 @@ public class UiManager implements Ui, UiUpdateListener {
         }
     }
 
+    //    @Override
+    //    public void updateUiOnView() {
+    //        try {
+    //            mainWindow.fillWithCommandBox(); // Fill the inner parts of the main window
+    //        } catch (Exception e) {
+    //            logger.severe("Error updating UI on view: " + e.getMessage());
+    //        }
+    //    }
+
 }

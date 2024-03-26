@@ -283,13 +283,14 @@ public class ModelManager implements Model {
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         for (UiUpdateListener listener : uiUpdateListeners) {
             listener.updateUiOnClassSelected(classes);
-            ;
         }
         notifyUiUpdateListenersOnClassSelected(classes);
     }
 
-
-
+    //    @Override
+    //    public void viewClasses() {
+    //        notifyUiUpdateListenersOnView();
+    //    }
 
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
@@ -303,5 +304,11 @@ public class ModelManager implements Model {
             listener.updateUiOnClassSelected(selectedClass);
         }
     }
+
+    //    public void notifyUiUpdateListenersOnView() {
+    //        for (UiUpdateListener listener : uiUpdateListeners) {
+    //            listener.updateUiOnView();
+    //        }
+    //    }
 
 }

@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import org.junit.jupiter.api.BeforeEach;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ClassBook;
 import seedu.address.model.Model;
@@ -31,7 +30,7 @@ class EditAttendanceCommandTest {
         updatedAttendance = new Attendance(new AttendanceStatus("02-05-2024", "0"));
         descriptor = new EditAttendanceCommand.EditPersonDescriptor();
         descriptor.setAttendances(updatedAttendance);
-    //        editAttendanceCommand = new EditAttendanceCommand(Index.fromZeroBased(0), descriptor);
+        //        editAttendanceCommand = new EditAttendanceCommand(Index.fromZeroBased(0), descriptor);
     }
 
     //    @Test

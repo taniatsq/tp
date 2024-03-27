@@ -69,9 +69,9 @@ public class EditAttendanceCommand extends Command {
             }
         }
 
-    //        if (index.getZeroBased() >= lastShownList.size()) {
-    //            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-    //        }
+        //        if (index.getZeroBased() >= lastShownList.size()) {
+        //            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        //        }
         StringBuilder names = new StringBuilder();
         for (Index i : indexs) {
             Person personToEdit = lastShownList.get(i.getZeroBased());
@@ -86,8 +86,8 @@ public class EditAttendanceCommand extends Command {
             names.append(editedPerson.getName());
             names.append(", ");
         }
-    //        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, names.substring(0, names.length()-2)));
+        //        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, names.substring(0, names.length() - 2)));
     }
 
     private static Person createEditedPerson(Person personToEdit,

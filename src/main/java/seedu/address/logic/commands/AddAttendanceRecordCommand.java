@@ -26,7 +26,7 @@ import seedu.address.model.tag.Attendance;
  */
 public class AddAttendanceRecordCommand extends Command {
 
-    public static final String COMMAND_WORD = "attendance";
+    public static final String COMMAND_WORD = "adda";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add attendance record. "
             + "Parameters: "

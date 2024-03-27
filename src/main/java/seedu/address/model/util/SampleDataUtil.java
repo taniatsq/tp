@@ -1,8 +1,10 @@
 package seedu.address.model.util;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ClassBook;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -24,32 +26,14 @@ public class SampleDataUtil {
     public static final Description EMPTY_DESCRIPTION = new Description("");
     public static Person[] getSamplePersons() {
         return new Person[] {
-            //            new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-            //                new StudentId("A1111111D"),
-            //                getAttendanceSet("02-02-2024")),
-            //            new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-            //                new StudentId("A2222222D"),
-            //                getAttendanceSet("02-02-2024")),
-            //            new Person(new Name("Charlotte Oli"), new Phone("93210283"), new Email("char@example.com"),
-            //                new StudentId("A3333333D"),
-            //                getAttendanceSet("02-02-2024")),
-            //            new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-            //                new StudentId("A4444444D"),
-            //                getAttendanceSet("02-02-2024")),
-            //            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-            //                new StudentId("A5555555D"),
-            //                getAttendanceSet("02-02-2024")),
-            //            new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-            //                new StudentId("A6666666D"),
-            //                getAttendanceSet("02-02-2024"))
         };
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
-        for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
-        }
+        //        for (Person samplePerson : getSamplePersons()) {
+        //            sampleAb.addPerson(samplePerson);
+        //        }
         return sampleAb;
     }
 
@@ -66,7 +50,7 @@ public class SampleDataUtil {
     }
 
 
-    public static Classes[] getSampleClasses() {
+    public static Classes[] getSampleClasses() throws DataLoadingException, IOException {
         return new Classes[] {
             new Classes(new CourseCode("CS2103T")),
             new Classes(new CourseCode("CS2101"))
@@ -74,9 +58,9 @@ public class SampleDataUtil {
     }
     public static ReadOnlyClassBook getSampleClassBook() {
         ClassBook sampleCb = new ClassBook();
-        for (Classes sampleClasses : getSampleClasses()) {
-            sampleCb.createClass(sampleClasses);
-        }
+        //        for (Classes sampleClasses : getSampleClasses()) {
+        //            sampleCb.createClass(sampleClasses);
+        //        }
         return sampleCb;
     }
 

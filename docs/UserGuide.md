@@ -4,9 +4,9 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# TutorHelperBot User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+TutorHelperBot is a **desktop app for managing your tutorial contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TutorHelperBot can get your contact management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -174,6 +174,15 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 ### Archiving data files `[coming in v2.0]`
 
+
+### Viewing the classes
+Format: `view`
+
+
+### Select class
+Format: `select`
+
+
 _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
@@ -202,3 +211,5 @@ Action     | Format, Examples
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`
+**View**   | `view`
+**Select**   | `select INDEX`

@@ -29,7 +29,8 @@ public class EditAttendanceCommandParser implements Parser<EditAttendanceCommand
     public EditAttendanceCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_ATTENDANCE_RECORD, PREFIX_ATTENDANCE_STATUS, PREFIX_MULTIPLE_STUDENTS);
+                ArgumentTokenizer.tokenize(args, PREFIX_ATTENDANCE_RECORD,
+                        PREFIX_ATTENDANCE_STATUS, PREFIX_MULTIPLE_STUDENTS);
 
 
         ArrayList<Index> index = new ArrayList<>();

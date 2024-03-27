@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENTID;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -72,7 +71,7 @@ public class AddCommand extends Command {
         }
 
         List<Person> lastShownList = model.getFilteredPersonList();
-        if (lastShownList.size()>= 1) {
+        if (lastShownList != null && lastShownList.size() >= 1) {
             Set<Attendance> allDates = lastShownList.get(0).getAttendances();
             Set<Attendance> newDates = new HashSet<>();
             for (Attendance i : allDates) {

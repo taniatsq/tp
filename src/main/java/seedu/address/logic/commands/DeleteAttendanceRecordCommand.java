@@ -1,11 +1,7 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_RECORD;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENTID;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -14,12 +10,12 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.AttendanceStatus;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -28,76 +24,92 @@ import seedu.address.model.person.StudentId;
 import seedu.address.model.tag.Attendance;
 
 /**
- * Adds a person to the currently selected class' address book.
+ * Deletes an attendance record of all students in that selected class.
  */
-public class AddCommand extends Command {
+public class DeleteAttendanceRecordCommand extends Command {
 
-    public static final String COMMAND_WORD = "add";
+    public static final String COMMAND_WORD = "delattendance";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete attendance record. "
             + "Parameters: "
-            + PREFIX_NAME + "NAME "
-            + PREFIX_PHONE + "PHONE "
-            + PREFIX_EMAIL + "EMAIL "
-            + PREFIX_STUDENTID + "STUDENTID "
-            + "[" + PREFIX_ATTENDANCE_RECORD + "Attendance]...\n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
-            + PREFIX_PHONE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
-            + PREFIX_STUDENTID + "A0255333B "
-            + PREFIX_ATTENDANCE_RECORD + "friends "
-            + PREFIX_ATTENDANCE_RECORD + "owesMoney";
+            + PREFIX_ATTENDANCE_RECORD + "DATE\n"
+            + "Example: " + COMMAND_WORD + " ar/ 19-03-2024";
 
-    public static final String MESSAGE_SUCCESS = "New student added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the class";
 
-    private Person toAdd;
+    public static final String MESSAGE_SUCCESS = "Attendance deleted for: %1$s";
+    private Attendance date;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Create a DeleteAttendanceRecordCommand Object with the selected date to delete.
+     * @param date of attendance to delete.
      */
-    public AddCommand(Person person) {
-        requireNonNull(person);
-        toAdd = person;
+    public DeleteAttendanceRecordCommand(Attendance date) {
+        requireAllNonNull(date);
+        this.date = date;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-
-        if (model.hasPerson(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        }
-
+        requireAllNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
-        if (lastShownList != null && lastShownList.size() >= 1) {
-            Set<Attendance> allDates = lastShownList.get(0).getAttendances();
-            Set<Attendance> newDates = new HashSet<>();
-            for (Attendance i : allDates) {
-                newDates.add(new Attendance(new AttendanceStatus(i.attendanceName.getDate(), "2")));
-            }
-            EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-            editPersonDescriptor.setAttendances(newDates);
-            toAdd = createEditedPerson(toAdd, editPersonDescriptor);
+        if (lastShownList.size() == 0) {
+            throw new CommandException(Messages.MESSAGE_NO_PERSON_IN_THE_CLASS);
         }
 
-        model.addPerson(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        boolean dateExisted = false;
+        for (Attendance i : lastShownList.get(0).getAttendances()) {
+            if (date.attendanceName.getDate().equals(i.attendanceName.getDate())) {
+                dateExisted = true;
+                break;
+            }
+        }
+
+        if (!dateExisted) {
+            throw new CommandException(Messages.MESSAGE_DATE_NOT_FOUND);
+        }
+
+
+        for (int i = 0; i < lastShownList.size(); i++) {
+            Index index = Index.fromZeroBased(i);
+
+            DeleteAttendanceDescriptor deleteAttendanceDescriptor = new DeleteAttendanceDescriptor();
+            deleteAttendanceDescriptor.setName(lastShownList.get(i).getName());
+            deleteAttendanceDescriptor.setPhone(lastShownList.get(i).getPhone());
+            deleteAttendanceDescriptor.setEmail(lastShownList.get(i).getEmail());
+            deleteAttendanceDescriptor.setStudentId(lastShownList.get(i).getStudentId());
+            Set<Attendance> set = new HashSet<>(lastShownList.get(i).getAttendances());
+            for (Attendance attendance : set) {
+                if (attendance.attendanceName.getDate().equals(date.attendanceName.getDate())) {
+                    set.remove(attendance);
+                    break;
+                }
+            }
+            deleteAttendanceDescriptor.setAttendances(set);
+
+            Person personToEdit = lastShownList.get(index.getZeroBased());
+            Person editedPerson = createEditedPerson(personToEdit, deleteAttendanceDescriptor);
+
+            model.setPerson(personToEdit, editedPerson);
+            model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+        }
+        return new CommandResult(String.format(MESSAGE_SUCCESS, date));
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Update the student's info
+     * @param personToEdit targeted user to update.
+     * @param deleteAttendanceDescriptor the updated information of the person
+     * @return the updated student
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private static Person createEditedPerson(Person personToEdit,
+                                             DeleteAttendanceDescriptor deleteAttendanceDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        StudentId updatedStudentId = editPersonDescriptor.getStudentId().orElse(personToEdit.getStudentId());
-        Set<Attendance> updatedAttendances = editPersonDescriptor.getTags().orElse(personToEdit.getAttendances());
+        Name updatedName = deleteAttendanceDescriptor.getName().orElse(personToEdit.getName());
+        Phone updatedPhone = deleteAttendanceDescriptor.getPhone().orElse(personToEdit.getPhone());
+        Email updatedEmail = deleteAttendanceDescriptor.getEmail().orElse(personToEdit.getEmail());
+        StudentId updatedStudentId = deleteAttendanceDescriptor.getStudentId().orElse(personToEdit.getStudentId());
+        Set<Attendance> updatedAttendances = deleteAttendanceDescriptor.getTags().orElse(personToEdit.getAttendances());
 
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances);
@@ -109,46 +121,28 @@ public class AddCommand extends Command {
             return true;
         }
 
-        // instanceof handles nulls
-        if (!(other instanceof AddCommand)) {
+        if (!(other instanceof DeleteAttendanceRecordCommand)) {
             return false;
         }
 
-        AddCommand otherAddCommand = (AddCommand) other;
-        return toAdd.equals(otherAddCommand.toAdd);
+        DeleteAttendanceRecordCommand otherAddAttendanceRecordCommand = (DeleteAttendanceRecordCommand) other;
+        return date.equals(otherAddAttendanceRecordCommand.date);
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .add("toAdd", toAdd)
-                .toString();
-    }
 
     /**
      * Stores the details to edit the person with. Each non-empty field value will replace the
      * corresponding field value of the person.
      */
-    public static class EditPersonDescriptor {
+    public static class DeleteAttendanceDescriptor {
         private Name name;
         private Phone phone;
         private Email email;
         private StudentId studentId;
         private Set<Attendance> attendances;
 
-        public EditPersonDescriptor() {}
+        public DeleteAttendanceDescriptor() {}
 
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setStudentId(toCopy.studentId);
-            setAttendances(toCopy.attendances);
-        }
 
         /**
          * Returns true if at least one field is edited.
@@ -213,11 +207,11 @@ public class AddCommand extends Command {
             }
 
             // instanceof handles nulls
-            if (!(other instanceof EditPersonDescriptor)) {
+            if (!(other instanceof DeleteAttendanceDescriptor)) {
                 return false;
             }
 
-            EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
+            DeleteAttendanceDescriptor otherEditPersonDescriptor = (DeleteAttendanceDescriptor) other;
             return Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)

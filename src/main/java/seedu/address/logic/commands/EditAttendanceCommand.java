@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_RECORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,18 +39,18 @@ public class EditAttendanceCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
 
-    private final Index index;
+    private final ArrayList<Index> indexs;
     private final EditPersonDescriptor editPersonDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param indexs of the people in the filtered person list to edit
      * @param editPersonDescriptor details to edit the person with
      */
-    public EditAttendanceCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
-        requireNonNull(index);
+    public EditAttendanceCommand(ArrayList<Index> indexs, EditPersonDescriptor editPersonDescriptor) {
+        requireNonNull(indexs);
         requireNonNull(editPersonDescriptor);
 
-        this.index = index;
+        this.indexs = indexs;
         this.editPersonDescriptor = editPersonDescriptor;
     }
 
@@ -58,20 +59,31 @@ public class EditAttendanceCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        for (Index i : indexs) {
+            if (i.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            }
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        //        if (index.getZeroBased() >= lastShownList.size()) {
+        //            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        //        }
+        StringBuilder names = new StringBuilder();
+        for (Index i : indexs) {
+            Person personToEdit = lastShownList.get(i.getZeroBased());
+            Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
+                throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            }
+
+            model.setPerson(personToEdit, editedPerson);
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            names.append(editedPerson.getName());
+            names.append(", ");
         }
-
-        model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+        //        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, names.substring(0, names.length() - 2)));
     }
 
     private static Person createEditedPerson(Person personToEdit,
@@ -97,29 +109,29 @@ public class EditAttendanceCommand extends Command {
         return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, personToEdit.getAttendances(), updatedDescription);
     }
 
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
+    //    @Override
+    //    public boolean equals(Object other) {
+    //        if (other == this) {
+    //            return true;
+    //        }
+    //
+    //        // instanceof handles nulls
+    //        if (!(other instanceof EditCommand)) {
+    //            return false;
+    //        }
+    //
+    //        EditAttendanceCommand otherEditAttendanceCommand = (EditAttendanceCommand) other;
+    //        return index.equals(otherEditAttendanceCommand.index)
+    //                && editPersonDescriptor.equals(otherEditAttendanceCommand.editPersonDescriptor);
+    //    }
 
-        // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
-            return false;
-        }
-
-        EditAttendanceCommand otherEditAttendanceCommand = (EditAttendanceCommand) other;
-        return index.equals(otherEditAttendanceCommand.index)
-                && editPersonDescriptor.equals(otherEditAttendanceCommand.editPersonDescriptor);
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .add("index", index)
-                .add("editPersonDescriptor", editPersonDescriptor)
-                .toString();
-    }
+    //    @Override
+    //    public String toString() {
+    //        return new ToStringBuilder(this)
+    //                .add("index", index)
+    //                .add("editPersonDescriptor", editPersonDescriptor)
+    //                .toString();
+    //    }
 
     /**
      * Stores the details to edit the person with. Each non-empty field value will replace the
@@ -229,7 +241,8 @@ public class EditAttendanceCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(studentId, otherEditPersonDescriptor.studentId)
-                    && Objects.equals(attendances, otherEditPersonDescriptor.attendances);
+                    && Objects.equals(attendances, otherEditPersonDescriptor.attendances)
+                    && Objects.equals(description, otherEditPersonDescriptor.description);
         }
 
         @Override

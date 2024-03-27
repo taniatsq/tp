@@ -34,6 +34,7 @@ import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
+import seedu.address.ui.UiUpdateListener;
 
 /**
  * Runs the application.
@@ -72,10 +73,9 @@ public class MainApp extends Application {
         logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic);
-
         ModelManager modelManager = (ModelManager) model;
         UiManager uiManager = (UiManager) ui;
-        modelManager.addUiUpdateListener(uiManager);
+        modelManager.addUiUpdateListener((UiUpdateListener) uiManager);
     }
 
     /**

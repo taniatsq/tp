@@ -12,7 +12,7 @@ import seedu.address.model.person.AttendanceStatus;
 public class Attendance {
 
     public static final String MESSAGE_CONSTRAINTS = "Attendance date should be in dd-MM-yyyy";
-    public static final String VALIDATION_REGEX = "(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[1,2])-(19|20)\\d{2}";
+    public static final String VALIDATION_REGEX = "(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0,1,2])-(19|20)\\d{2}";
 
     public static final String VALIDATION_REGEX_STATUS = "[012]";
 

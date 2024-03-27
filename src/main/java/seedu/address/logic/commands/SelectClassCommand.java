@@ -8,8 +8,6 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.Classes;
 
-
-
 /**
  * Selects the Class to be viewed or modified currently.
  */

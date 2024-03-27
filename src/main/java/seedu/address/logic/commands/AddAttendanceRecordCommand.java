@@ -71,7 +71,7 @@ public class AddAttendanceRecordCommand extends Command {
             }
             set.add(this.date);
             editPersonDescriptor.setAttendances(set);
-
+            editPersonDescriptor.setDescription(lastShownList.get(i).getDescription());
             Person personToEdit = lastShownList.get(index.getZeroBased());
             Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 

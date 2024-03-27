@@ -241,7 +241,8 @@ public class EditAttendanceCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(studentId, otherEditPersonDescriptor.studentId)
-                    && Objects.equals(attendances, otherEditPersonDescriptor.attendances);
+                    && Objects.equals(attendances, otherEditPersonDescriptor.attendances)
+                    && Objects.equals(description, otherEditPersonDescriptor.description);
         }
 
         @Override

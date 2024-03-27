@@ -72,7 +72,7 @@ public class AddCommand extends Command {
         }
 
         List<Person> lastShownList = model.getFilteredPersonList();
-        if (lastShownList.size()>= 1) {
+        if (lastShownList != null && lastShownList.size()>= 1) {
             Set<Attendance> allDates = lastShownList.get(0).getAttendances();
             Set<Attendance> newDates = new HashSet<>();
             for (Attendance i : allDates) {

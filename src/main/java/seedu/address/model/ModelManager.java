@@ -148,6 +148,15 @@ public class ModelManager implements Model {
     @Override
     public void deletePerson(Person target) {
         selectedClassAddressBook.removePerson(target);
+
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
+        // Update the storage with the edited AddressBook
+        try {
+            storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
+        } catch (IOException e) {
+            logger.warning("Error saving the address book after deleting person: " + e.getMessage());
+        }
     }
 
     @Override

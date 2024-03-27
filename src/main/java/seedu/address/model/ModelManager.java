@@ -21,7 +21,6 @@ import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.ui.UiUpdateListener;
 
-
 /**
  * Represents the in-memory model of the address book data.
  */
@@ -178,6 +177,7 @@ public class ModelManager implements Model {
     @Override
     public void createClass(Classes classes) {
         classBook.createClass(classes);
+        selectClass(classes);
     }
 
     @Override
@@ -267,7 +267,7 @@ public class ModelManager implements Model {
         requireNonNull(classes);
 
         selectedClass = classes;
-        // selectedClassAddressBook = selectedClass.getAddressBook();
+        //      selectedClassAddressBook = selectedClass.getAddressBook();
         this.storage = new JsonAddressBookStorage(selectedClass.getFilePath());
         userPrefs.setAddressBookFilePath(selectedClass.getFilePath());
 
@@ -291,12 +291,15 @@ public class ModelManager implements Model {
         // Predicate<Person> predicate = person -> selectedClassAddressBook.getPersonList().contains(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnClassSelected(classes);;
+            listener.updateUiOnClassSelected(classes);
         }
         notifyUiUpdateListenersOnClassSelected(classes);
     }
 
-
+    //    @Override
+    //    public void viewClasses() {
+    //        notifyUiUpdateListenersOnView();
+    //    }
 
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
@@ -310,5 +313,11 @@ public class ModelManager implements Model {
             listener.updateUiOnClassSelected(selectedClass);
         }
     }
+
+    //    public void notifyUiUpdateListenersOnView() {
+    //        for (UiUpdateListener listener : uiUpdateListeners) {
+    //            listener.updateUiOnView();
+    //        }
+    //    }
 
 }

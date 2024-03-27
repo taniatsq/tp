@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.exceptions.DuplicateClassException;
 
 /**
  * A list of classes that enforces uniqueness between its elements and does not allow nulls.
@@ -42,9 +43,9 @@ public class UniqueClassList implements Iterable<Classes> {
      */
     public void add(Classes toAdd) {
         requireNonNull(toAdd);
-        //      if (contains(toAdd)) {
-        //      throw new DuplicateClassException()
-        //      }
+        if (contains(toAdd)) {
+              throw new DuplicateClassException();
+        }
         internalList.add(toAdd);
     }
 
@@ -58,12 +59,12 @@ public class UniqueClassList implements Iterable<Classes> {
         requireAllNonNull(target, editedClass);
 
         int index = internalList.indexOf(target);
-        //      if (index == -1) {
-        //      throw new CcNotFoundException()
-        //      }
-        //      if (!target.isSamePerson(editedClass) && contains(editedClass) {
-        //      throw new DuplicateClassException();
-        //      }
+//        if (index == -1) {
+//            throw new CcNotFoundException();
+//        }
+        if (!target.isSameClass(editedClass) && contains(editedClass)) {
+            throw new DuplicateClassException();
+        }
 
         internalList.set(index, editedClass);
     }
@@ -75,9 +76,9 @@ public class UniqueClassList implements Iterable<Classes> {
 
     public void setClasses(List<Classes> classes) {
         requireAllNonNull(classes);
-        //      if (!classesAreUnique(classes)) {
-        //      throw new DuplicateClassException();
-        //      }
+        if (!classesAreUnique(classes)) {
+            throw new DuplicateClassException();
+        }
 
         internalList.setAll(classes);
     }

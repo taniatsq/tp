@@ -16,11 +16,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.StudentId;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Attendance;
 
 /**
@@ -109,8 +105,8 @@ public class EditAttendanceCommand extends Command {
         if (!found) {
             throw new CommandException(Messages.MESSAGE_DATE_NOT_FOUND);
         }
-
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, personToEdit.getAttendances());
+        Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, personToEdit.getAttendances(), updatedDescription);
     }
 
     //    @Override
@@ -148,6 +144,8 @@ public class EditAttendanceCommand extends Command {
         private StudentId studentId;
         private Attendance attendances;
 
+        private Description description;
+
         public EditPersonDescriptor() {}
 
         /**
@@ -160,6 +158,7 @@ public class EditAttendanceCommand extends Command {
             setEmail(toCopy.email);
             setStudentId(toCopy.studentId);
             setAttendances(toCopy.attendances);
+            setDescription(toCopy.description);
         }
 
         /**
@@ -218,6 +217,14 @@ public class EditAttendanceCommand extends Command {
             return attendances;
         }
 
+        public Optional<Description> getDescription() {
+            return Optional.ofNullable(description);
+        }
+
+        public void setDescription(Description description) {
+            this.description = description;
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -234,7 +241,8 @@ public class EditAttendanceCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(studentId, otherEditPersonDescriptor.studentId)
-                    && Objects.equals(attendances, otherEditPersonDescriptor.attendances);
+                    && Objects.equals(attendances, otherEditPersonDescriptor.attendances)
+                    && Objects.equals(description, otherEditPersonDescriptor.description);
         }
 
         @Override

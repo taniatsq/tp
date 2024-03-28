@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_RECORD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -19,12 +20,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.AttendanceStatus;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.StudentId;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Attendance;
 
 /**
@@ -47,7 +43,8 @@ public class AddCommand extends Command {
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_STUDENTID + "A0255333B "
             + PREFIX_ATTENDANCE_RECORD + "friends "
-            + PREFIX_ATTENDANCE_RECORD + "owesMoney";
+            + PREFIX_ATTENDANCE_RECORD + "owesMoney"
+            + PREFIX_DESCRIPTION + "wants to explore BioInformatics";
 
     public static final String MESSAGE_SUCCESS = "New student added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the class";
@@ -98,9 +95,10 @@ public class AddCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         StudentId updatedStudentId = editPersonDescriptor.getStudentId().orElse(personToEdit.getStudentId());
         Set<Attendance> updatedAttendances = editPersonDescriptor.getTags().orElse(personToEdit.getAttendances());
+        Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
 
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances, updatedDescription);
     }
 
     @Override
@@ -135,6 +133,7 @@ public class AddCommand extends Command {
         private Email email;
         private StudentId studentId;
         private Set<Attendance> attendances;
+        private Description description;
 
         public EditPersonDescriptor() {}
 
@@ -204,6 +203,13 @@ public class AddCommand extends Command {
          */
         public Optional<Set<Attendance>> getTags() {
             return (attendances != null) ? Optional.of(Collections.unmodifiableSet(attendances)) : Optional.empty();
+        }
+
+        public void setDescription(Description description) {
+            this.description = description;
+        }
+        public Optional<Description> getDescription() {
+            return Optional.ofNullable(description);
         }
 
         @Override

@@ -39,7 +39,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Attendance> attendanceList = ParserUtil.parseAttendances(
                 argMultimap.getAllValues(PREFIX_ATTENDANCE_RECORD));
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-
         Person person = new Person(name, phone, email, studentId, attendanceList, description);
 
         return new AddCommand(person);

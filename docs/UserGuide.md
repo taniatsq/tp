@@ -4,9 +4,9 @@
   pageNav: 3
 ---
 
-# TutorHelperBot User Guide
+# MustVas User Guide
 
-TutorHelperBot is a **desktop app for managing your tutorial contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TutorHelperBot can get your contact management tasks done faster than traditional GUI apps.
+MustVas is a **desktop app for managing your tutorial contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TutorHelperBot can get your contact management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -251,3 +251,4 @@ Action     | Format, Examples
 **View**   | `view`
 **Select** | `select INDEX` <br> e.g., `select 1`
 **Create** | `create c/CLASS_NAME` <br> e.g., `create c/CS2103`
+**Remove** | `rm INDEX` <br> e.g., `rm 2`

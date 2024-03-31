@@ -95,11 +95,14 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
-
+    String getFormattedClassList();
     void createClass(Classes classes);
     void removeClass(Classes classes);
 
     boolean hasClass(Classes classes);
 
+    void selectClass(Classes classes);
+    String getSelectedClassName();
 
+    //    void viewClasses();
 }

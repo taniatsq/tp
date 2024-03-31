@@ -172,7 +172,8 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<Person> getFilteredPersonList() {
-            throw new AssertionError("This method should not be called.");
+            //            throw new AssertionError("This method should not be called.");
+            return null;
         }
 
         @Override
@@ -183,6 +184,11 @@ public class AddCommandTest {
         @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String getFormattedClassList() {
+            return null;
         }
 
         @Override
@@ -198,6 +204,16 @@ public class AddCommandTest {
         @Override
         public boolean hasClass(Classes classes) {
             return false;
+        }
+
+        @Override
+        public void selectClass(Classes classes) {
+
+        }
+
+        @Override
+        public String getSelectedClassName() {
+            return null;
         }
     }
 

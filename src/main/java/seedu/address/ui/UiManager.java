@@ -11,11 +11,12 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
+import seedu.address.model.person.Classes;
 
 /**
  * The manager of the UI component.
  */
-public class UiManager implements Ui {
+public class UiManager implements Ui, UiUpdateListener {
 
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
@@ -42,7 +43,8 @@ public class UiManager implements Ui {
         try {
             mainWindow = new MainWindow(primaryStage, logic);
             mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts();
+            //            mainWindow.fillInnerParts();
+            mainWindow.fillWithCommandBox();
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
@@ -84,5 +86,29 @@ public class UiManager implements Ui {
         Platform.exit();
         System.exit(1);
     }
+
+    /**
+     * Updates the UI when a class is selected.
+     * This method fills the inner parts of the main window based on the selected class.
+     * @param selectedClass The selected class.
+     */
+    @Override
+    public void updateUiOnClassSelected(Classes selectedClass) {
+        try {
+            //logic.selectClass(selectedClass); // Update the logic with the selected class
+            mainWindow.fillInnerParts(); // Fill the inner parts of the main window
+        } catch (Exception e) {
+            logger.severe("Error updating UI on class selection: " + e.getMessage());
+        }
+    }
+
+    //    @Override
+    //    public void updateUiOnView() {
+    //        try {
+    //            mainWindow.fillWithCommandBox(); // Fill the inner parts of the main window
+    //        } catch (Exception e) {
+    //            logger.severe("Error updating UI on view: " + e.getMessage());
+    //        }
+    //    }
 
 }

@@ -14,11 +14,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.StudentId;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Attendance;
 
 /**
@@ -26,7 +22,7 @@ import seedu.address.model.tag.Attendance;
  */
 public class AddAttendanceRecordCommand extends Command {
 
-    public static final String COMMAND_WORD = "attendance";
+    public static final String COMMAND_WORD = "adda";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add attendance record. "
             + "Parameters: "
@@ -75,7 +71,7 @@ public class AddAttendanceRecordCommand extends Command {
             }
             set.add(this.date);
             editPersonDescriptor.setAttendances(set);
-
+            editPersonDescriptor.setDescription(lastShownList.get(i).getDescription());
             Person personToEdit = lastShownList.get(index.getZeroBased());
             Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
@@ -100,9 +96,9 @@ public class AddAttendanceRecordCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         StudentId updatedStudentId = editPersonDescriptor.getStudentId().orElse(personToEdit.getStudentId());
         Set<Attendance> updatedAttendances = editPersonDescriptor.getTags().orElse(personToEdit.getAttendances());
+        Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
 
-
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances, updatedDescription);
     }
 
     @Override

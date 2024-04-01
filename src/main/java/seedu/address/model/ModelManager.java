@@ -17,6 +17,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.person.Classes;
+import seedu.address.model.person.CourseCode;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.ui.UiUpdateListener;
@@ -148,6 +149,15 @@ public class ModelManager implements Model {
     @Override
     public void deletePerson(Person target) {
         selectedClassAddressBook.removePerson(target);
+
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
+        // Update the storage with the edited AddressBook
+        try {
+            storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
+        } catch (IOException e) {
+            logger.warning("Error saving the address book after deleting person: " + e.getMessage());
+        }
     }
 
     @Override
@@ -164,6 +174,14 @@ public class ModelManager implements Model {
         Predicate<Person> predicate = updatedPerson -> selectedClassAddressBook.getPersonList().contains(updatedPerson);
         updateFilteredPersonList(predicate);
     }
+
+    // public void addPerson(Person person, CourseCode courseCode) {
+    //     Classes classes = new Classes(courseCode);
+    //     if (classBook.hasClass(classes)) {
+    //         classes.getAddressBook().addPerson(person);
+    //     }
+    //     updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    // }
 
     @Override
     public void createClass(Classes classes) {

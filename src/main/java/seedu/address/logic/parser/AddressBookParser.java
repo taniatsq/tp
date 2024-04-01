@@ -12,9 +12,11 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.commands.AddAttendanceRecordCommand;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddDescriptionCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CreateClassCommand;
+import seedu.address.logic.commands.DeleteAttendanceRecordCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditAttendanceCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -95,8 +97,14 @@ public class AddressBookParser {
         case AddAttendanceRecordCommand.COMMAND_WORD:
             return new AddAttendanceRecordCommandParser().parse(arguments);
 
+        case AddDescriptionCommand.COMMAND_WORD:
+            return new AddDescriptionCommandParser().parse(arguments);
+
         case EditAttendanceCommand.COMMAND_WORD:
             return new EditAttendanceCommandParser().parse(arguments);
+
+        case DeleteAttendanceRecordCommand.COMMAND_WORD:
+            return new DeleteAttendanceRecordCommandParser().parse(arguments);
 
         case SelectClassCommand.COMMAND_WORD:
             return new SelectClassCommandParser().parse(arguments);

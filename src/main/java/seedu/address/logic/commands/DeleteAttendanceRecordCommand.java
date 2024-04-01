@@ -24,7 +24,7 @@ import seedu.address.model.tag.Attendance;
  */
 public class DeleteAttendanceRecordCommand extends Command {
 
-    public static final String COMMAND_WORD = "delattendance";
+    public static final String COMMAND_WORD = "dela";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete attendance record. "
             + "Parameters: "

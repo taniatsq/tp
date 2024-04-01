@@ -175,8 +175,11 @@ public class ParserUtil {
         requireNonNull(date, status);
         String trimmedDate = date.trim();
         String trimmedStatus = status.trim();
-        if (!Attendance.isValidDate(trimmedDate) || !Attendance.isValidStatus(trimmedStatus)) {
+        if (!Attendance.isValidDate(trimmedDate)) {
             throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
+        }
+        if (!Attendance.isValidStatus(trimmedStatus)) {
+            throw new ParseException(Attendance.MESSAGE_CONSTRAINTS_STATUS);
         }
         return new AttendanceStatus(date, status);
     }

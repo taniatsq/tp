@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.*;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -36,8 +37,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         StudentId studentId = ParserUtil.parseStudentId(argMultimap.getValue(PREFIX_STUDENTID).get());
-        Set<Attendance> attendanceList = ParserUtil.parseAttendances(
-                argMultimap.getAllValues(PREFIX_ATTENDANCE_RECORD));
+        //        Set<Attendance> attendanceList = ParserUtil.parseAttendances(
+        //                argMultimap.getAllValues(PREFIX_ATTENDANCE_RECORD));
+        Set<Attendance> attendanceList = new HashSet<>();
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
         Person person = new Person(name, phone, email, studentId, attendanceList, description);
 

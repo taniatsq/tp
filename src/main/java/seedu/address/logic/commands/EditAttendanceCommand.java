@@ -16,7 +16,12 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.*;
+import seedu.address.model.person.Description;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.StudentId;
 import seedu.address.model.tag.Attendance;
 
 /**
@@ -106,7 +111,8 @@ public class EditAttendanceCommand extends Command {
             throw new CommandException(Messages.MESSAGE_DATE_NOT_FOUND);
         }
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, personToEdit.getAttendances(), updatedDescription);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, personToEdit.getAttendances(),
+                updatedDescription);
     }
 
     //    @Override

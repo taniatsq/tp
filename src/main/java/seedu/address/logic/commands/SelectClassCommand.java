@@ -16,8 +16,8 @@ public class SelectClassCommand extends Command {
     public static final String COMMAND_WORD = "select";
 
     public static final String MESSAGE_SUCCESS = "Here is your class: ";
-    public static final String addInstruction = "Please use the 'add' command to add students to the class." +
-            "\nYou may type 'add' in the box to get help on how to use it!";
+    public static final String ADD_INSTRUCTION = "Please use the 'add' command to add students to the class."
+            + "\nYou may type 'add' in the box to get help on how to use it!";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Enters individual class view, "
             + "displaying all students in the class"
@@ -44,7 +44,7 @@ public class SelectClassCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(MESSAGE_SUCCESS + selectedClass.getCourseCode()
-        + "\n" + addInstruction);
+        + "\n" + ADD_INSTRUCTION);
     }
 
 }

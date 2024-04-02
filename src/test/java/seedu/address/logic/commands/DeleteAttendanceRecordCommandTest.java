@@ -5,6 +5,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalPersons.getTypicalClassBook;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,6 +14,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.exceptions.DataLoadingException;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ClassBook;
 import seedu.address.model.Model;
@@ -21,6 +24,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.AttendanceStatus;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.CourseCode;
+import seedu.address.model.person.Description;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -32,13 +36,16 @@ class DeleteAttendanceRecordCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalClassBook());
 
+    DeleteAttendanceRecordCommandTest() throws DataLoadingException, IOException {
+    }
+
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws DataLoadingException, IOException {
         model.selectClass(new Classes(new CourseCode("class1")));
     }
 
     @Test
-    public void execute_deleteAttendanceRecord_failure() {
+    public void execute_deleteAttendanceRecord_failure() throws DataLoadingException, IOException, CommandException {
         DeleteAttendanceRecordCommand deleteAttendanceRecordCommand = new DeleteAttendanceRecordCommand(
                 new Attendance(new AttendanceStatus(VALID_DATE_1, "1")));
         String expectedMessage = String.format(DeleteAttendanceRecordCommand.MESSAGE_SUCCESS, "[" + VALID_DATE_1 + "]");
@@ -87,18 +94,20 @@ class DeleteAttendanceRecordCommandTest {
 
 
 
-    private static Person createEditedPerson(Person personToEdit,
-                                             DeleteAttendanceRecordCommand
-                                                     .DeleteAttendanceDescriptor deleteAttendanceDescriptor) {
+    private static Person createEditedPerson(Person personToEdit, DeleteAttendanceRecordCommand
+            .DeleteAttendanceDescriptor deleteAttendanceDescriptor) {
         assert personToEdit != null;
 
         Name updatedName = deleteAttendanceDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = deleteAttendanceDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = deleteAttendanceDescriptor.getEmail().orElse(personToEdit.getEmail());
         StudentId updatedStudentId = deleteAttendanceDescriptor.getStudentId().orElse(personToEdit.getStudentId());
+        Description updatedDescription = deleteAttendanceDescriptor.getDescription()
+                        .orElse(personToEdit.getDescription());
         Set<Attendance> updatedAttendances = deleteAttendanceDescriptor.getTags().orElse(personToEdit.getAttendances());
 
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances,
+                updatedDescription);
     }
 }

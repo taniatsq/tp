@@ -3,6 +3,8 @@ package seedu.address.logic.commands;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 
+import java.util.List;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -10,9 +12,9 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Description;
 import seedu.address.model.person.Person;
 
-import java.util.List;
-
-
+/**
+ * Manages Descriptions of an existing student in the class book.
+ */
 public class AddDescriptionCommand extends Command {
 
     public static final String COMMAND_WORD = "description";
@@ -53,7 +55,9 @@ public class AddDescriptionCommand extends Command {
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
-        return new CommandResult(String.format(!description.value.isEmpty() ? MESSAGE_ADD_SUCCESS : MESSAGE_DELETE_SUCCESS,
+        return new CommandResult(String.format(!description.value.isEmpty()
+                                                ? MESSAGE_ADD_SUCCESS
+                                                : MESSAGE_DELETE_SUCCESS,
                 personToEdit));
     }
 

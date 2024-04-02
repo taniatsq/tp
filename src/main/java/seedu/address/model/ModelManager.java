@@ -17,9 +17,9 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.person.Classes;
-import seedu.address.model.person.CourseCode;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.ui.Ui;
 import seedu.address.ui.UiUpdateListener;
 
 /**
@@ -305,10 +305,10 @@ public class ModelManager implements Model {
         notifyUiUpdateListenersOnClassSelected(classes);
     }
 
-    //    @Override
-    //    public void viewClasses() {
-    //        notifyUiUpdateListenersOnView();
-    //    }
+//        @Override
+//        public void viewClasses() {
+//            notifyUiUpdateListenersOnView();
+//        }
 
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
@@ -323,10 +323,10 @@ public class ModelManager implements Model {
         }
     }
 
-    //    public void notifyUiUpdateListenersOnView() {
-    //        for (UiUpdateListener listener : uiUpdateListeners) {
-    //            listener.updateUiOnView();
-    //        }
-    //    }
+//        public void notifyUiUpdateListenersOnView() {
+//            for (UiUpdateListener listener : uiUpdateListeners) {
+//                listener.updateUiOnView();
+//            }
+//        }
 
 }

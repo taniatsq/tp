@@ -104,5 +104,5 @@ public interface Model {
     void selectClass(Classes classes);
     String getSelectedClassName();
 
-    //    void viewClasses();
+    void viewClasses();
 }

@@ -25,6 +25,7 @@ public class UiManager implements Ui, UiUpdateListener {
 
     private Logic logic;
     private MainWindow mainWindow;
+    private boolean isUpdatingUi = false;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
@@ -102,13 +103,18 @@ public class UiManager implements Ui, UiUpdateListener {
         }
     }
 
-    //    @Override
-    //    public void updateUiOnView() {
-    //        try {
-    //            mainWindow.fillWithCommandBox(); // Fill the inner parts of the main window
-    //        } catch (Exception e) {
-    //            logger.severe("Error updating UI on view: " + e.getMessage());
-    //        }
-    //    }
+//        @Override
+//        public void updateUiOnView() {
+//            try {
+//                System.out.println(isUpdatingUi);
+//                if (!isUpdatingUi) { // Check if UI update is already in progress
+//                    isUpdatingUi = true; // Set flag to indicate UI update is in progress
+//                    mainWindow.fillWithCommandBox(); // Fill the inner parts of the main window
+//                    isUpdatingUi = false; // Reset the flag
+//                }
+//            } catch (Exception e) {
+//                logger.severe("Error updating UI on view: " + e.getMessage());
+//            }
+//        }
 
 }

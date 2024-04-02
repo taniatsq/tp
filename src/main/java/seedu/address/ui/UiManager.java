@@ -25,6 +25,7 @@ public class UiManager implements Ui, UiUpdateListener {
 
     private Logic logic;
     private MainWindow mainWindow;
+    private boolean isUpdatingUi = false;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
@@ -100,6 +101,7 @@ public class UiManager implements Ui, UiUpdateListener {
             logger.severe("Error updating UI on class selection: " + e.getMessage());
         }
     }
+
 
     @Override
     public void updateUiOnView() {

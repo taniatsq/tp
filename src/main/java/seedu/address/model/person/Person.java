@@ -75,7 +75,8 @@ public class Person {
         }
 
         return otherPerson != null
-                && otherPerson.getStudentId().equals(getStudentId());
+                && otherPerson.getStudentId().equals(getStudentId())
+                || otherPerson.getEmail().equals(getEmail());
     }
 
     /**

@@ -21,9 +21,12 @@ public class ViewClassesCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         String formattedClassList = model.getFormattedClassList();
+
+
         if (formattedClassList.isEmpty()) {
             return new CommandResult(createInstruction);
         }
+        model.viewClasses();
         return new CommandResult(MESSAGE_SUCCESS + formattedClassList + selectInstruction);
     }
 }

@@ -12,5 +12,7 @@ public interface UiUpdateListener {
      */
     void updateUiOnClassSelected(Classes selectedClass);
 
+    void updateUiOnView();
+
     //    void updateUiOnView();
 }

@@ -38,7 +38,7 @@ public class ModelManager implements Model {
     private Classes selectedClass;
     private AddressBook selectedClassAddressBook;
     private JsonAddressBookStorage storage;
-
+    int startedUp = 0;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -175,14 +175,6 @@ public class ModelManager implements Model {
         updateFilteredPersonList(predicate);
     }
 
-    // public void addPerson(Person person, CourseCode courseCode) {
-    //     Classes classes = new Classes(courseCode);
-    //     if (classBook.hasClass(classes)) {
-    //         classes.getAddressBook().addPerson(person);
-    //     }
-    //     updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    // }
-
     @Override
     public void createClass(Classes classes) {
         classBook.createClass(classes);
@@ -305,14 +297,11 @@ public class ModelManager implements Model {
         notifyUiUpdateListenersOnClassSelected(classes);
     }
 
-    //    @Override
-    //    public void viewClasses() {
-    //        notifyUiUpdateListenersOnView();
-    //    }
 
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
     }
+
 
     public void removeUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.remove(listener);
@@ -323,10 +312,17 @@ public class ModelManager implements Model {
         }
     }
 
-    //    public void notifyUiUpdateListenersOnView() {
-    //        for (UiUpdateListener listener : uiUpdateListeners) {
-    //            listener.updateUiOnView();
-    //        }
-    //    }
+    private void notifyUiUpdateListenersOnView() {
+        for (UiUpdateListener listener : uiUpdateListeners) {
+            listener.updateUiOnView();
+        }
+    }
 
+    public void viewClasses() {
+        selectedClass = null;
+        selectedClassAddressBook = null;
+
+        updateFilteredPersonList(updatedPerson -> false);
+
+    }
 }

@@ -2,16 +2,19 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.AttendanceStatus;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.CourseCode;
+import seedu.address.model.person.Description;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -104,7 +107,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code courseCode} is invalid.
      */
-    public static Classes parseClass(String courseCode) throws ParseException {
+    public static Classes parseClass(String courseCode) throws ParseException, IOException, DataLoadingException {
         requireNonNull(courseCode);
         String trimmedCourseCode = courseCode.trim();
         if (!CourseCode.isValidClass(trimmedCourseCode)) {
@@ -155,6 +158,16 @@ public class ParserUtil {
         return attendanceSet;
     }
 
+    /**
+     * Parses a {@code String description} into an {@code Description}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static Description parseDescription(String description) {
+        requireNonNull(description);
+        String trimmedDescription = description.trim();
+
+        return new Description(trimmedDescription);
+    }
     /**
      * Parses {@code String date} and {@code String status} into a {@code AttendanceStatus}.
      */

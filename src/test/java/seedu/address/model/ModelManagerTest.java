@@ -8,6 +8,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.person.Classes;
@@ -34,6 +36,10 @@ public class ModelManagerTest {
     private ModelManager modelManager = new ModelManager();
     private Logic logicStub;
     private final Classes class1 = new Classes(new CourseCode("class1"));
+
+    public ModelManagerTest() throws DataLoadingException, IOException {
+    }
+
     @BeforeEach
     public void setUp() {
         List<Classes> classesList = new ArrayList<>();
@@ -100,7 +106,6 @@ public class ModelManagerTest {
     public void hasPerson_personNotInAddressBook_returnsFalse() {
         assertFalse(modelManager.hasPerson(ALICE));
     }
-
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
         ObservableList<Classes> classList = logicStub.getFilteredClassList();

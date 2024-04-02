@@ -43,7 +43,8 @@ public class UiManager implements Ui, UiUpdateListener {
         try {
             mainWindow = new MainWindow(primaryStage, logic);
             mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts();
+            //            mainWindow.fillInnerParts();
+            mainWindow.fillWithCommandBox();
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
@@ -94,10 +95,18 @@ public class UiManager implements Ui, UiUpdateListener {
     @Override
     public void updateUiOnClassSelected(Classes selectedClass) {
         try {
-            //logic.selectClass(selectedClass); // Update the logic with the selected class
             mainWindow.fillInnerParts(); // Fill the inner parts of the main window
         } catch (Exception e) {
             logger.severe("Error updating UI on class selection: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUiOnView() {
+        try {
+            mainWindow.fillInnerParts(); // Fill the inner parts of the main window
+        } catch (Exception e) {
+            logger.severe("Error updating UI on view command: " + e.getMessage());
         }
     }
 

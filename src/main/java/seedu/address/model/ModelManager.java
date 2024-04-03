@@ -319,9 +319,8 @@ public class ModelManager implements Model {
     }
 
     public void viewClasses() {
-        selectedClass = null;
-        selectedClassAddressBook = null;
-
+        // selectedClass = null;
+        // selectedClassAddressBook = null;
         updateFilteredPersonList(updatedPerson -> false);
 
     }

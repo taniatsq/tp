@@ -261,29 +261,29 @@ The Classes feature is built using the basic structure of `AddressBook`. `Classe
 ### 1. Basic structure
 A `ClassBook` instance holds all current `Classes` instances. This is stored in the data folder as `classbook.json`
 file. <br />
-Each `Classes` instance contains an instance of `Addressbook`, which holds a list of `Person` instances 
-representing the students in the Class. Each `Classes` instance stored in data as `[className].json` where 
+Each `Classes` instance contains an instance of `Addressbook`, which holds a list of `Person` instances
+representing the students in the Class. Each `Classes` instance stored in data as `[className].json` where
 className is the name of the `Classes` instance e.g. `CS2103.json`
 
 ### 2. Changes to Storage
 Problem 1:
-The original structure of AB3 only allows for a single file path for storage, which was set to `addressbook.json` 
+The original structure of AB3 only allows for a single file path for storage, which was set to `addressbook.json`
 by default. This was a big problem, as our intended implementation of the Classes feature necessitated
 multiple .json files to make sharing data between tutors easier. <br />
 
-Solution 1 v1.0: 
+Solution 1 v1.0:
 Rather than use the filepath specified in the `preferences.json`, `ModelManager` was changed to use
 its own instance of `Storage`, to call the `saveAddressBook` with `selectedClass.getFilePath()`
 as the second parameter. This works, but SLAP is not ideal with the current implementation.
 
 ### 3. Changes to UI
 Problem 1:
-Since the original AB3 had only one command (find) that required the UI to be updated, the UI was implemented to update 
+Since the original AB3 had only one command (find) that required the UI to be updated, the UI was implemented to update
 based on the contents of the `filteredPersonsList`. This was inadequate for our classes feature, which
-requires the UI's `PersonListPanel` to be updated upon selecting a different class. 
+requires the UI's `PersonListPanel` to be updated upon selecting a different class.
 
 Solution 1:
-A list of `UiUpdateListener` - `List<UiUpdateListener> uiUpdateListeners` is created in ModelManager by calling 
+A list of `UiUpdateListener` - `List<UiUpdateListener> uiUpdateListeners` is created in ModelManager by calling
 `modelManager.addUiUpdateListener(uiManager);` in MainApp. The listeners monitors for calls to the `select` command,
 and call `mainWindow.fillInnerParts()` to update the UI PersonListPanel.
 
@@ -308,15 +308,15 @@ and call `mainWindow.fillInnerParts()` to update the UI PersonListPanel.
 
 **Target user profile**:
 
-* NUS CS2103T Tutors who has to keep track of students' profile and progress during class
-* has a need to manage a significant number of contact
-* manages student's profile such as attendance, grade, etc
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* NUS TAs who has to keep track of students' profile and attendance record during class
+* Has a need to manage a significant number of contacts, including potentially different classes
+* Manages student's profile such as contact information, attendance, etc.
+* Prefer desktop apps over other types
+* Can type fast
+* Prefers typing to mouse interactions
+* Is reasonably comfortable using CLI apps
 
-**Value proposition**: Makes tutors life easier by increasing convenience of checking progress and compacting all the relevant information for easy access (GitHub PR reviews, Canvas quiz results, iP progress tracker, etc.)
+**Value proposition**: Makes tutors life easier by increasing convenience of checking progress and compacting all the relevant information for easy access (Student contact information, attendance records, summary of attendance statuses, etc.)
 
 
 ### User stories
@@ -329,41 +329,42 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user| create new class | separate students into their respective classes |
 | `* * *`  | user| delete class | remove classes that is not needed anymore |
 | `* * *`  | user | add a new student to my class | keep track of my students' profiles |
-| `* * *`  | user | remove a student from the class | keep an updated record of students in the class |
+| `* * *`  | user | delete a student from the class | keep an updated record of students in the class |
 | `* *`    | user | write descriptions for each student | take note of certain students based on the description |
 | `* * *`  | user | create an attendance sheet for my students | record a student's attendance |
 | `* *`    | user | edit the attendance sheet of students | conveniently make changes to attendance when necessary |
 | `* * *`  | user | record attendance status for my students (PRESENT, ABSENT, VALID REASON) | acknowledge their attendance |
 | `* * *`  | user | delete an attendance sheet | remove any unnecessary attendance sheet |
+| `*`      | organised user | view the attendance rate of a student | easily have an idea of a specific student's overall attendance rate at one glance |
 | `*`      | organised user | browse my contacts in the default alphabetical setting | easily scroll to find a particular contact |
-| `* *`    | forgetful user | schedule reminders for important events or follow-ups associated with a specific contact | don't miss important dates or tasks |
+| `* `    | forgetful user | schedule reminders for important events or follow-ups associated with a specific contact | don't miss important dates or tasks |
 
 
 ### Use cases
 
-(For all use cases below, the **System** is the `TutorHelperBot` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `MustVas` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Select a class when the program is first opened (UC-01)**
 
 **MSS**
 
 1.  User enters the program
-2.  TutorHelperBot shows a list of classes
+2.  MustVas shows a list of classes
 3.  User selects a class
-4.  TuthorHelperBot shows the list of students in the selected class
+4.  MustVas shows the list of students in the selected class
 
     Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
-  * 2a1. TutorHelperBot shows a message that the list is empty.
+  * 2a1. MustVas shows a message that the list is empty.
 
   Use case ends.
 
 * 3a. The user enters an invalid class.
 
-    * 3a1. TutorHelperBot shows an error message about selecting an invalid class.
+    * 3a1. MustVas shows an error message about selecting an invalid class.
 
       Use case ends.
 
@@ -374,14 +375,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to create new class with all the details
-2.  TutorHelperBot shows the created class
+2.  MustVas shows the created class
 
     Use case ends.
 
 **Extensions**
 
 * 1a. Enter an invalid command.
-  * 1a1. TutorHelperBot shows an error message.
+  * 1a1. MustVas shows an error message.
 
   Use case ends.
 
@@ -390,18 +391,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to view a student's profile
-2.  TutorHelperBot shows the details of the selected student
+1.  User requests to select a class 
+2.  MustVas shows the details of the selected class
 
     Use case ends.
 
 **Extensions**
 
 * 1a. Enter an invalid command.
-  * 1a1. TutorHelperBot shows an error message.
+  * 1a1. MustVas shows an error message.
 
-* 1b. Enter an invalid student
-  * 1a1. TutorHelperBot shows an error message that stated student is not existed.
+* 1b. Enter an invalid class
+  * 1a1. MustVas shows an error message that stated class does not exist.
 
   Use case ends.
 
@@ -414,8 +415,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Each class should accept up to 30 students without issue
-5.  No student should exist in more than 2 classes
-
 
 ### Glossary
 

@@ -14,9 +14,8 @@ public class ViewClassesCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Here are your classes: ";
     public static final String selectInstruction = "\nPlease use the 'select' command to choose a class to manage!"
             + "\nOr use the 'create' command to create a class to manage!";
-    public static final String createInstruction = "You are not managing any classes currently." +
-            "\nPlease use the 'create' command to create a class to manage!";
-    
+    public static final String createInstruction = "You are not managing any classes currently.\nPlease use "
+            + "the 'create' command to create a class to manage!";
 
     @Override
     public CommandResult execute(Model model) {

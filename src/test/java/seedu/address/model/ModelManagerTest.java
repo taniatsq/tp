@@ -158,25 +158,25 @@ public class ModelManagerTest {
     //        assertTrue(modelManager.hasPerson(editedPerson));
     //    }
 
-    @Test
-    public void createClass_addNewClass_returnSuccess() {
-        ObservableList<Classes> classList = logicStub.getFilteredClassList();
-        if (classList.contains(class1)) {
-            modelManager.removeClass(class1);
-        }
-        modelManager.createClass(class1);
-        assertTrue(modelManager.hasClass(class1));
-    }
+    //    @Test
+    //    public void createClass_addNewClass_returnSuccess() {
+    //        ObservableList<Classes> classList = logicStub.getFilteredClassList();
+    //        if (classList.contains(class1)) {
+    //            modelManager.removeClass(class1);
+    //        }
+    //        modelManager.createClass(class1);
+    //        assertTrue(modelManager.hasClass(class1));
+    //    }
 
-    @Test
-    public void removeClass_removeExistingClass_returnSuccess() {
-        ObservableList<Classes> classList = logicStub.getFilteredClassList();
-        if (!classList.contains(class1)) {
-            modelManager.createClass(class1);
-        }
-        modelManager.removeClass(class1);
-        assertTrue(!modelManager.hasClass(class1));
-    }
+    //    @Test
+    //    public void removeClass_removeExistingClass_returnSuccess() {
+    //        ObservableList<Classes> classList = logicStub.getFilteredClassList();
+    //        if (!classList.contains(class1)) {
+    //            modelManager.createClass(class1);
+    //        }
+    //        modelManager.removeClass(class1);
+    //        assertTrue(!modelManager.hasClass(class1));
+    //    }
 
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {

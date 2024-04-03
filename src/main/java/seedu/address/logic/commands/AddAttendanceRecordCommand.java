@@ -103,8 +103,9 @@ public class AddAttendanceRecordCommand extends Command {
         Set<Attendance> updatedAttendances = editPersonDescriptor.getTags().orElse(personToEdit.getAttendances());
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId
-                , updatedAttendances, updatedDescription);
+
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances,
+                updatedDescription);
     }
 
     @Override

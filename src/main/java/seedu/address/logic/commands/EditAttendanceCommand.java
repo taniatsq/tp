@@ -111,8 +111,10 @@ public class EditAttendanceCommand extends Command {
             throw new CommandException(Messages.MESSAGE_DATE_NOT_FOUND);
         }
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId
-                , personToEdit.getAttendances(), updatedDescription);
+
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, personToEdit.getAttendances(),
+                updatedDescription);
+
     }
 
     //    @Override

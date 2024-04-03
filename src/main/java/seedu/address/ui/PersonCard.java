@@ -113,10 +113,10 @@ public class PersonCard extends UiPart<Region> {
                     presentAndValid++;
                 }
             }
-            attendancePercentage.setText(String.format("Attendance Percentage: %.2f%%"
-                    , (presentAndValid * 100.0) / attendances.size()));
+            attendancePercentage.setText(String.format("Attendance Percentage: %.2f%%", (
+                    presentAndValid * 100.0) / attendances.size()));
         }
-      description.setText(person.getDescription().value);
+        description.setText(person.getDescription().value);
     }
 
     /**

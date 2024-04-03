@@ -7,6 +7,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: is valid as declared in {@link #isValidName(String)}
  */
 
+/**
+ * Represents a Student's remark in the class book.
+ * Guarantees: immutable; is always valid
+ */
 public class Description {
     public static final String MESSAGE_CONSTRAINTS =
             "Description can include only alphanumeric characters; Can be left empty also";

@@ -1,7 +1,12 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_RECORD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENTID;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -101,7 +106,8 @@ public class EditCommand extends Command {
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
 
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances, updatedDescription);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances,
+                updatedDescription);
     }
 
     @Override

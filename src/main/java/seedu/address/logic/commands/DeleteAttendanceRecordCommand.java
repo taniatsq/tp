@@ -109,6 +109,7 @@ public class DeleteAttendanceRecordCommand extends Command {
         Name updatedName = deleteAttendanceDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = deleteAttendanceDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = deleteAttendanceDescriptor.getEmail().orElse(personToEdit.getEmail());
+
         StudentId updatedStudentId = deleteAttendanceDescriptor.getStudentId().orElse(personToEdit.getStudentId());
         Set<Attendance> updatedAttendances = deleteAttendanceDescriptor.getTags().orElse(personToEdit.getAttendances());
         Description updatedDescription = deleteAttendanceDescriptor.getDescription()
@@ -117,6 +118,7 @@ public class DeleteAttendanceRecordCommand extends Command {
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances,
                 updatedDescription);
+
     }
 
     @Override

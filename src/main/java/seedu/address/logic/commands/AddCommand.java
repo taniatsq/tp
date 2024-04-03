@@ -104,6 +104,7 @@ public class AddCommand extends Command {
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
 
 
+
         return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances,
                 updatedDescription);
     }

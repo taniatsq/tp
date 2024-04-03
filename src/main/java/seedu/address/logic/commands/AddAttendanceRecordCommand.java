@@ -32,7 +32,7 @@ public class AddAttendanceRecordCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add attendance record. "
             + "Parameters: "
             + PREFIX_ATTENDANCE_RECORD + "DATE\n"
-            + "Example: " + COMMAND_WORD + " ar/ 19-03-2024";
+            + "Example: " + COMMAND_WORD + " ar/19-03-2024";
 
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET = "attendance command not implemented yet";
@@ -102,6 +102,7 @@ public class AddAttendanceRecordCommand extends Command {
         StudentId updatedStudentId = editPersonDescriptor.getStudentId().orElse(personToEdit.getStudentId());
         Set<Attendance> updatedAttendances = editPersonDescriptor.getTags().orElse(personToEdit.getAttendances());
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
+
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances,
                 updatedDescription);

@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import java.util.List;
 
 import java.util.List;
 

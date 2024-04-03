@@ -96,25 +96,20 @@ public class UiManager implements Ui, UiUpdateListener {
     @Override
     public void updateUiOnClassSelected(Classes selectedClass) {
         try {
-            //logic.selectClass(selectedClass); // Update the logic with the selected class
             mainWindow.fillInnerParts(); // Fill the inner parts of the main window
         } catch (Exception e) {
             logger.severe("Error updating UI on class selection: " + e.getMessage());
         }
     }
 
-    //        @Override
-    //        public void updateUiOnView() {
-    //            try {
-    //                System.out.println(isUpdatingUi);
-    //                if (!isUpdatingUi) { // Check if UI update is already in progress
-    //                    isUpdatingUi = true; // Set flag to indicate UI update is in progress
-    //                    mainWindow.fillWithCommandBox(); // Fill the inner parts of the main window
-    //                    isUpdatingUi = false; // Reset the flag
-    //                }
-    //            } catch (Exception e) {
-    //                logger.severe("Error updating UI on view: " + e.getMessage());
-    //            }
-    //        }
+
+    @Override
+    public void updateUiOnView() {
+        try {
+            mainWindow.fillInnerParts(); // Fill the inner parts of the main window
+        } catch (Exception e) {
+            logger.severe("Error updating UI on view command: " + e.getMessage());
+        }
+    }
 
 }

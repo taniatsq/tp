@@ -4,9 +4,12 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalPersons.getTypicalClassBook;
 
+import java.io.IOException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -20,7 +23,7 @@ public class AddCommandIntegrationTest {
     private Model model;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws DataLoadingException, IOException {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalClassBook());
     }
 

@@ -112,7 +112,7 @@ Adds a student to the StudentBook.
 
 ![add_new_student_with_no_attendance.jpg](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fadd_new_student_with_no_attendance.jpg)
 
-Format: `add [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID`
 
 * `PHONE NUMBER` must consist of 8 digits.
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
@@ -143,7 +143,7 @@ Add an attendance record to all exiting student in the studentId book.
 
 ![add_attendance_command.png](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fadd_attendance_command.png)
 
-Format: `adda [ar/DATE]`
+Format: `adda ar/DATE`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * The entered date, `DATE`, must not exist in any of the student's existing list of attendance dates.
@@ -158,7 +158,7 @@ Edits the exiting attendance record in the student's list of attendance in the s
 
 ![edit_attendance_command_mulitple.PNG](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fedit_attendance_command_mulitple.PNG)
 
-Format: `edita INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]`
+Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * Edits the student at the specified `INDEX(S)`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​, up to the size of the class.
@@ -176,7 +176,7 @@ Deletes the specified attendance date from all the student's list of attendance 
 
 ![delete_attendance_command.png](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fdelete_attendance_command.png)
 
-Format: `dela [ar/DATE]`
+Format: `dela ar/DATE`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * The entered date, `DATE`, must exist in the student's existing list of attendance dates.

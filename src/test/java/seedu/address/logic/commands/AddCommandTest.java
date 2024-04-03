@@ -215,6 +215,11 @@ public class AddCommandTest {
         public String getSelectedClassName() {
             return null;
         }
+
+        @Override
+        public void viewClasses() {
+
+        }
     }
 
     /**

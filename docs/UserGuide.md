@@ -117,7 +117,8 @@ Format: `add [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
 * `PHONE NUMBER` must consist of 8 digits.
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
-* 
+* If there are existing attendance records allocated to the existing students, the newly added student will have default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
+![add_new_student_with_attendance.PNG](..%2F..%2FImages%2Fadd_new_student_with_attendance.PNG)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`

@@ -110,7 +110,7 @@ Format: `select INDEX`
 
 Adds a student to the StudentBook.
 
-![add_new_student_with_no_attendance.jpg](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fadd_new_student_with_no_attendance.jpg)
+![add_new_student_with_no_attendance.jpg](images/add_new_student_with_no_attendance.jpg)
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID`
 

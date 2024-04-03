@@ -118,7 +118,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID`
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
 * If there are existing attendance records allocated to the existing students, the newly added student will have default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
-![add_new_student_with_attendance.PNG](..%2F..%2FImages%2Fadd_new_student_with_attendance.PNG)
+![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`
@@ -141,7 +141,7 @@ Examples:
 
 Add an attendance record to all exiting student in the studentId book.
 
-![add_attendance_command.png](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fadd_attendance_command.png)
+![add_attendance_command](images/add_attendance_command.png)
 
 Format: `adda ar/DATE`
 
@@ -156,7 +156,7 @@ Examples:
 
 Edits the exiting attendance record in the student's list of attendance in the studentId book. **Any number of student** can be edited at one go.
 
-![edit_attendance_command_mulitple.PNG](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fedit_attendance_command_mulitple.PNG)
+![edit_attendance_command_mulitple](images/edit_attendance_command_mulitple.PNG)
 
 Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 
@@ -174,7 +174,7 @@ Examples:
 
 Deletes the specified attendance date from all the student's list of attendance records in studentId book.
 
-![delete_attendance_command.png](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fdelete_attendance_command.png)
+![delete_attendance_command](images/delete_attendance_command.png)
 
 Format: `dela ar/DATE`
 

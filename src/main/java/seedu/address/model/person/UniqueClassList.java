@@ -9,7 +9,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.exceptions.CCNotFoundException;
+import seedu.address.model.person.exceptions.CourseCodeNotFoundException;
 import seedu.address.model.person.exceptions.DuplicateClassException;
 
 /**
@@ -46,7 +46,7 @@ public class UniqueClassList implements Iterable<Classes> {
     public void add(Classes toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-              throw new DuplicateClassException();
+            throw new DuplicateClassException();
         }
         internalList.add(toAdd);
     }
@@ -62,7 +62,7 @@ public class UniqueClassList implements Iterable<Classes> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new CCNotFoundException();
+            throw new CourseCodeNotFoundException();
         }
         if (!target.isSameClass(editedClass) && contains(editedClass)) {
             throw new DuplicateClassException();
@@ -90,8 +90,8 @@ public class UniqueClassList implements Iterable<Classes> {
      */
     public void remove(Classes toRemove) {
         requireNonNull(toRemove);
-        if(!internalList.remove(toRemove)) {
-            throw new CCNotFoundException();
+        if (!internalList.remove(toRemove)) {
+            throw new CourseCodeNotFoundException();
         }
         File f = new File(toRemove.getFilePath().toUri());
         f.delete();

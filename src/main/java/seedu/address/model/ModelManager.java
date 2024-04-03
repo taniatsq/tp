@@ -295,6 +295,12 @@ public class ModelManager implements Model {
         notifyUiUpdateListenersOnClassSelected(classes);
     }
 
+    //        @Override
+    //        public void viewClasses() {
+    //            notifyUiUpdateListenersOnView();
+    //        }
+
+
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
     }
@@ -308,6 +314,12 @@ public class ModelManager implements Model {
             listener.updateUiOnClassSelected(selectedClass);
         }
     }
+
+    //        public void notifyUiUpdateListenersOnView() {
+    //            for (UiUpdateListener listener : uiUpdateListeners) {
+    //                listener.updateUiOnView();
+    //            }
+    //        }
 
 
     private void notifyUiUpdateListenersOnView() {

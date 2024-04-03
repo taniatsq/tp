@@ -141,6 +141,8 @@ Examples:
 
 Add an attendance record to all exiting student in the studentId book.
 
+![add_attendance_command.png](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fadd_attendance_command.png)
+
 Format: `adda [ar/DATE]`
 
 * The format for `DATE` is `dd-MM-yyyy`.
@@ -152,13 +154,15 @@ Examples:
 
 ### Editing an attendance for any number of person : `edita`
 
-Edits the exiting attendance record in the student's list of attendance in the studentId book. Any number of student can be edited at one go.
+Edits the exiting attendance record in the student's list of attendance in the studentId book. **Any number of student** can be edited at one go.
+
+![edit_attendance_command_mulitple.PNG](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fedit_attendance_command_mulitple.PNG)
 
 Format: `edit INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * Edits the student at the specified `INDEX(S)`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​, up to the size of the class.
-* At least one index is provided.
+* At least one index is provided. **Multiple number of index** is allowed at a time, separated by commas.
 * All the selected student will have their status of the selected attendance date, `DATE`, to be reflected to `STATUS`
 * The entered date, `DATE`, must exist in the student's existing list of attendance dates.
 
@@ -170,6 +174,8 @@ Examples:
 
 Deletes the specified attendance date from all the student's list of attendance records in studentId book.
 
+![delete_attendance_command.png](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fdelete_attendance_command.png)
+
 Format: `dela [ar/DATE]`
 
 * The format for `DATE` is `dd-MM-yyyy`.
@@ -177,7 +183,7 @@ Format: `dela [ar/DATE]`
 * Deletes the specified date, `DATE` from all the student's list of attendance records.
 
 Examples:
-* `dela ar/01-01-2024` Deletes the attendance record, `01-01-2024`, from all students' existing list of attendance records.
+* `dela ar/02-02-2024` Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
 
 ### Listing a class to view : `list`
 

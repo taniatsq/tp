@@ -44,8 +44,8 @@ public class CreateClassCommand extends Command {
         }
 
         model.createClass(toCreate);
-        return new CommandResult(
-                (String.format(MESSAGE_SUCCESS, Messages.classFormat(toCreate)) + "\n"
+        return new CommandResult((
+                String.format(MESSAGE_SUCCESS, Messages.classFormat(toCreate)) + "\n"
                     + String.format(MESSAGE_SUCCESS2, Messages.classFormat(toCreate))
                 )
         );

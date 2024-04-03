@@ -43,7 +43,7 @@ public class ArgumentMultimap {
     public Optional<String> getValue(Prefix prefix) {
         if (prefix == PREFIX_DESCRIPTION) {
             List<String> values = getAllValues(prefix);
-            return values.isEmpty() ? Optional.of("") : Optional.of(values.get(values.size()-1));
+            return values.isEmpty() ? Optional.of("") : Optional.of(values.get(values.size() - 1));
         } else {
             List<String> values = getAllValues(prefix);
             return values.isEmpty() ? Optional.empty() : Optional.of(values.get(values.size() - 1));
@@ -64,7 +64,7 @@ public class ArgumentMultimap {
 
     public String getDescValue(Prefix prefix) {
         List<String> values = getAllValues(prefix);
-        return values.isEmpty() ? "" : values.get(values.size()-1);
+        return values.isEmpty() ? "" : values.get(values.size() - 1);
     }
 
     /**

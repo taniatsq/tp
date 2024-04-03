@@ -210,6 +210,11 @@ public class CreateClassCommandTest {
         public String getSelectedClassName() {
             return null;
         }
+
+        @Override
+        public void viewClasses() {
+
+        }
     }
 
     /**

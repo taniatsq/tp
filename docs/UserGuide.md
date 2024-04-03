@@ -110,11 +110,14 @@ Format: `select INDEX`
 
 Adds a student to the StudentBook.
 
+![add_new_student_with_no_attendance.jpg](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fadd_new_student_with_no_attendance.jpg)
+
 Format: `add [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
 
 * `PHONE NUMBER` must consist of 8 digits.
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
+* 
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`

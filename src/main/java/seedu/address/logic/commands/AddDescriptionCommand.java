@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -9,8 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Description;
 import seedu.address.model.person.Person;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+
 
 /**
  * Manages Descriptions of an existing student in the class book.

@@ -28,7 +28,7 @@ public class ViewClassesCommand extends Command {
         }
 
         model.viewClasses();
-        return new CommandResult(MESSAGE_SUCCESS + formattedClassList + selectInstruction);
+        return new CommandResult(MESSAGE_SUCCESS + formattedClassList + SELECT_INSTRUCTION);
     }
 }
 

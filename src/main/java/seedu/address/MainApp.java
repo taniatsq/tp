@@ -34,6 +34,7 @@ import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
+import seedu.address.ui.UiUpdateListener;
 
 /**
  * Runs the application.
@@ -61,8 +62,10 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
+
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         ClassBookStorage classBookStorage = new JsonClassBookStorage(userPrefs.getClassBookFilePath());
+
         storage = new StorageManager(addressBookStorage, userPrefsStorage, classBookStorage);
 
         model = initModelManager(storage, userPrefs);
@@ -70,6 +73,9 @@ public class MainApp extends Application {
         logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic);
+        ModelManager modelManager = (ModelManager) model;
+        UiManager uiManager = (UiManager) ui;
+        modelManager.addUiUpdateListener((UiUpdateListener) uiManager);
     }
 
     /**
@@ -192,6 +198,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting AddressBook " + MainApp.VERSION);
+
         ui.start(primaryStage);
     }
 

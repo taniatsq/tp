@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 import seedu.address.logic.Messages;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+
 /**
  * Stores mapping of prefixes to their respective arguments.
  * Each key may be associated with multiple argument values.
@@ -39,8 +41,13 @@ public class ArgumentMultimap {
      * Returns the last value of {@code prefix}.
      */
     public Optional<String> getValue(Prefix prefix) {
-        List<String> values = getAllValues(prefix);
-        return values.isEmpty() ? Optional.empty() : Optional.of(values.get(values.size() - 1));
+        if (prefix == PREFIX_DESCRIPTION) {
+            List<String> values = getAllValues(prefix);
+            return values.isEmpty() ? Optional.of("") : Optional.of(values.get(values.size()-1));
+        } else {
+            List<String> values = getAllValues(prefix);
+            return values.isEmpty() ? Optional.empty() : Optional.of(values.get(values.size() - 1));
+        }
     }
 
     /**
@@ -53,6 +60,11 @@ public class ArgumentMultimap {
             return new ArrayList<>();
         }
         return new ArrayList<>(argMultimap.get(prefix));
+    }
+
+    public String getDescValue(Prefix prefix) {
+        List<String> values = getAllValues(prefix);
+        return values.isEmpty() ? "" : values.get(values.size()-1);
     }
 
     /**

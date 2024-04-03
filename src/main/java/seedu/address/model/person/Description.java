@@ -2,14 +2,10 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
 /**
  * Represents a Person's name in the address book.
  * Guarantees: is valid as declared in {@link #isValidName(String)}
- */
-
-/**
- * Represents a Student's remark in the class book.
- * Guarantees: immutable; is always valid
  */
 public class Description {
     public static final String MESSAGE_CONSTRAINTS =

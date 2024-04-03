@@ -19,7 +19,6 @@ import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
-import seedu.address.ui.Ui;
 import seedu.address.ui.UiUpdateListener;
 
 /**
@@ -38,7 +37,6 @@ public class ModelManager implements Model {
     private Classes selectedClass;
     private AddressBook selectedClassAddressBook;
     private JsonAddressBookStorage storage;
-    int startedUp = 0;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -318,6 +316,9 @@ public class ModelManager implements Model {
         }
     }
 
+    /**
+     * Hides all currently viewed students.
+     */
     public void viewClasses() {
         // selectedClass = null;
         // selectedClassAddressBook = null;

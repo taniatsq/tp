@@ -36,7 +36,7 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
 
    * `add n/John Doe p/98765432 e/johnd@example.com s/A0251980B ar/01-01-2011` : Adds a student named `John Doe` to the Student Book.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 1` : Deletes the 3rd contact shown in the current list.
 
    * `clear` : Deletes all contacts.
 
@@ -158,7 +158,7 @@ Edits the exiting attendance record in the student's list of attendance in the s
 
 ![edit_attendance_command_mulitple.PNG](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fedit_attendance_command_mulitple.PNG)
 
-Format: `edit INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]`
+Format: `edita INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * Edits the student at the specified `INDEX(S)`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​, up to the size of the class.
@@ -197,12 +197,12 @@ Finds students whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* The search is case-insensitive. e.g `andrew` will match `Andrew`
+* The order of the keywords does not matter. e.g. `Nic Faaheem` will match `Faaheem Nic`
 * Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* Only full words will be matched e.g. `andr` will not match `andrew`
 * Students matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+  e.g. `Tania Tan` will return `Tania Low`, `Tania Ooi`
 
 Examples:
 * `find andrew` returns `andrew` and `Andrew`
@@ -288,10 +288,10 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, A1234567U `
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`
@@ -299,3 +299,6 @@ Action     | Format, Examples
 **Select** | `select INDEX` <br> e.g., `select 1`
 **Create** | `create c/CLASS_NAME` <br> e.g., `create c/CS2103`
 **Remove** | `rm INDEX` <br> e.g., `rm 2`
+**Add Attendance**   | `adda [ar/DATE]` <br> e.g., `adda ar/01-01-2024`
+**Edit Attendance**  | `edita INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]` <br> e.g., `edita 1 ar/01-01-2024 st/2`
+**Delete Attendance** | `dela [ar/DATE]` <br> e.g., `dela ar/02-02-2024`

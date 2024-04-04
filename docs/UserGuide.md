@@ -192,15 +192,15 @@ Format: `dela ar/DATE`
 Examples:
 * `dela ar/02-02-2024` Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
 
-### Adding a description : `description`
+### Adding\Editing a description : `description`
 
-Add a description to the selected student.
+Add a description to the selected student or Edit a description of the selected student.
 
 ![DescriptionCommand](images/DescriptionCommand.jpg)
 
 Format: `description INDEX desc/DESCRIPTION`
 
-* Only one description is allowed. The old description will be replaced by the new description.
+* Only one description is allowed. The old description will be replaced with the new description.
 
 Examples:
 *  `description 1 desc/Loves coding` Adds a description `Loves coding` to first student. 
@@ -308,7 +308,7 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, A1234567U `
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com s/A1111111D desc/Loves coding `
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
@@ -319,6 +319,7 @@ Action     | Format, Examples
 **Select** | `select INDEX` <br> e.g., `select 1`
 **Create** | `create c/CLASS_NAME` <br> e.g., `create c/CS2103`
 **Remove** | `rm INDEX` <br> e.g., `rm 2`
-**Add Attendance**   | `adda [ar/DATE]` <br> e.g., `adda ar/01-01-2024`
-**Edit Attendance**  | `edita INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]` <br> e.g., `edita 1 ar/01-01-2024 st/2`
-**Delete Attendance** | `dela [ar/DATE]` <br> e.g., `dela ar/02-02-2024`
+**Add Attendance**   | `adda ar/DATE` <br> e.g., `adda ar/01-01-2024`
+**Edit Attendance**  | `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS` <br> e.g., `edita 1 ar/01-01-2024 st/2`
+**Delete Attendance** | `dela ar/DATE` <br> e.g., `dela ar/02-02-2024`
+**Add\Edit Description | `description INDEX desc/DESCRIPTION` <br> e.g., `description 1 desc/Loves coding`

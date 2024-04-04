@@ -115,17 +115,19 @@ Adds a student to the StudentBook.
 
 ![add_new_student_with_no_attendance](images/add_new_student_with_not_attendance.jpg)
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 
 * `PHONE NUMBER` must consist of 8 digits.
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
 * The newly added student will be automatically positioned alphabetically by name.
+* The description field is optional. You may write any description for the new student.
 * If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
 ![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`
+* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B` : Add a new student.
+* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B desc/Enjoy coding` : Add a new student with a description.
 
 ### Editing a student : `edit`
 
@@ -189,6 +191,24 @@ Format: `dela ar/DATE`
 
 Examples:
 * `dela ar/02-02-2024` Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
+
+### Adding an description : `description`
+
+Edits the existing attendance record in the student's list of attendance in the studentId book. **Any number of students** can be edited in one go.
+
+![edit_attendance_command_mulitple](images/edit_attendance_command_mulitple.PNG)
+
+Format: `description INDEX desc/DESCRIPTION`
+
+* The format for `DATE` is `dd-MM-yyyy`.
+* Edits the student at the specified `INDEX(S)`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​, up to the size of the class.
+* At least one index is provided. **Multiple number of index** is allowed at a time, separated by commas.
+* All the selected student will have their status of the selected attendance date, `DATE`, to be reflected to `STATUS`
+* The entered date, `DATE`, must exist in the student's existing list of attendance dates.
+
+Examples:
+*  `edita 1 ar/01-01-2024 st/2` Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
+*  `edita 2, 3 ar/01-01-2024 st/0` Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
 
 ### Listing a class to view : `list`
 

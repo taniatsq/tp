@@ -322,4 +322,4 @@ Action     | Format, Examples
 **Add Attendance**   | `adda ar/DATE` <br> e.g., `adda ar/01-01-2024`
 **Edit Attendance**  | `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS` <br> e.g., `edita 1 ar/01-01-2024 st/2`
 **Delete Attendance** | `dela ar/DATE` <br> e.g., `dela ar/02-02-2024`
-**Add\Edit Description | `description INDEX desc/DESCRIPTION` <br> e.g., `description 1 desc/Loves coding`
+**Add\Edit Description** | `description INDEX desc/DESCRIPTION` <br> e.g., `description 1 desc/Loves coding`

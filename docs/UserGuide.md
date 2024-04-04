@@ -34,7 +34,13 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
   
    * `select 1` : Selects the specified class of index 1 from the class list.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com s/A0251980B ar/01-01-2011` : Adds a student named `John Doe` to the Student Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com s/A0251980B` : Adds a student named `John Doe` to the Student Book.
+  
+   * `adda ar/01-01-2024` : Adds an attendance record with the date `01-01-2024` and a default status `1` to all the existing students.
+  
+   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `2`.
+  
+   * `dela ar/01-01-2024` : Deletes all the attendance record with the date `01-01-2024` from all the students.
 
    * `delete 1` : Deletes the 3rd contact shown in the current list.
 
@@ -56,10 +62,7 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [ar/DATE]` can be used as `n/John Doe ar/01-01-2011` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[ar/DATE]…​` can be used as ` ` (i.e. 0 times), `ar/01-01-2011`, `ar/01-01-2011 ar/01-02-2011` etc.
+  e.g `n/NAME [p/PHONE_NUMBER]` can be used as `n/John Doe p/85018888` or as `n/John Doe`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -74,7 +77,7 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
 
 Shows a message explaning how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/HelpCommand.png)
 
 Format: `help`
 
@@ -112,17 +115,18 @@ Adds a student to the StudentBook.
 
 ![add_new_student_with_no_attendance](images/add_new_student_with_not_attendance.jpg)
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 
-* `PHONE NUMBER` must consist of 8 digits.
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
 * The newly added student will be automatically positioned alphabetically by name.
+* The description field is optional. You may write any description for the new student.
 * If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
 ![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`
+* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B` : Add a new student.
+* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B desc/Enjoy coding` : Add a new student with a description.
 
 ### Editing a student : `edit`
 
@@ -186,6 +190,19 @@ Format: `dela ar/DATE`
 
 Examples:
 * `dela ar/02-02-2024` Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
+
+### Adding\Editing a description : `description`
+
+Add a description to the selected student or Edit a description of the selected student.
+
+![DescriptionCommand](images/DescriptionCommand.jpg)
+
+Format: `description INDEX desc/DESCRIPTION`
+
+* Only one description is allowed. The old description will be replaced with the new description.
+
+Examples:
+*  `description 1 desc/Loves coding` Adds a description `Loves coding` to first student. 
 
 ### Listing a class to view : `list`
 
@@ -290,7 +307,7 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, A1234567U `
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com s/A1111111D desc/Loves coding `
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
@@ -301,6 +318,7 @@ Action     | Format, Examples
 **Select** | `select INDEX` <br> e.g., `select 1`
 **Create** | `create c/CLASS_NAME` <br> e.g., `create c/CS2103`
 **Remove** | `rm INDEX` <br> e.g., `rm 2`
-**Add Attendance**   | `adda [ar/DATE]` <br> e.g., `adda ar/01-01-2024`
-**Edit Attendance**  | `edita INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]` <br> e.g., `edita 1 ar/01-01-2024 st/2`
-**Delete Attendance** | `dela [ar/DATE]` <br> e.g., `dela ar/02-02-2024`
+**Add Attendance**   | `adda ar/DATE` <br> e.g., `adda ar/01-01-2024`
+**Edit Attendance**  | `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS` <br> e.g., `edita 1 ar/01-01-2024 st/2`
+**Delete Attendance** | `dela ar/DATE` <br> e.g., `dela ar/02-02-2024`
+**Add\Edit Description** | `description INDEX desc/DESCRIPTION` <br> e.g., `description 1 desc/Loves coding`

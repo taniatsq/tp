@@ -117,7 +117,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID`
 * `PHONE NUMBER` must consist of 8 digits.
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
-* If there are existing attendance records allocated to the existing students, the newly added student will have default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
+* The newly added student will be automatically positioned alphabetically by name.
+* If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
 ![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
 
 Examples:
@@ -139,7 +140,7 @@ Examples:
 
 ### Adding an attendance record : `adda`
 
-Add an attendance record to all exiting student in the studentId book.
+Add an attendance record to all existing students in the studentId book.
 
 ![add_attendance_command](images/add_attendance_command.png)
 
@@ -147,14 +148,15 @@ Format: `adda ar/DATE`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * The entered date, `DATE`, must not exist in any of the student's existing list of attendance dates.
+* The newly added attendance record will be automatically sorted based on the date.
 * The default value for status is '1' which represents 'Present'.
 
 Examples:
-*  `adda ar/01-01-2024` All the existing student will have a newly added attendance with date `01-01-2024` and a default status `1`.
+*  `adda ar/01-01-2024` All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
 
-### Editing an attendance for any number of person : `edita`
+### Editing an attendance for any number of students : `edita`
 
-Edits the exiting attendance record in the student's list of attendance in the studentId book. **Any number of student** can be edited at one go.
+Edits the existing attendance record in the student's list of attendance in the studentId book. **Any number of students** can be edited in one go.
 
 ![edit_attendance_command_mulitple](images/edit_attendance_command_mulitple.PNG)
 

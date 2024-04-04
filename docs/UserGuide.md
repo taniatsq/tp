@@ -21,7 +21,7 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
 
 1. Copy the file to the folder you want to use as the _home folder_ for your MustVas.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar MustVas.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 

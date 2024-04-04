@@ -77,7 +77,7 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
 
 Shows a message explaning how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/HelpCommand.png)
 
 Format: `help`
 

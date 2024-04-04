@@ -117,7 +117,6 @@ Adds a student to the StudentBook.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 
-* `PHONE NUMBER` must consist of 8 digits.
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
 * The newly added student will be automatically positioned alphabetically by name.

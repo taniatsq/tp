@@ -118,7 +118,8 @@ Adds a student to the StudentBook.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
-* There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
+* `PHONE_NUMBER` must range from `80000000` to `99999999`. 
+* There should not be any duplicate `PHONE_NUMBER`, `EMAIL` or `STUDENT_ID`.
 * The newly added student will be automatically positioned alphabetically by name.
 * The description field is optional. You may write any description for the new student.
 * If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
@@ -132,11 +133,12 @@ Examples:
 
 Edits an existing student in the StudentBook.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [s/STUDENT_ID]`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* If the input values for `PHONE_NUMBER`, `EMAIL` and `STUDENT_ID` already exist (including the target user), the command will be rejected.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email studentId of the 1st person to be `91234567` and `johndoe@example.com` respectively.

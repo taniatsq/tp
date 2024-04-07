@@ -324,6 +324,11 @@ _Details coming soon ..._
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
+**Q**: How can I see the class that I am on right now? <br>
+**A**: You can see the class that you have currently selected in the bottom left corner of the application (as shown below). <br>
+![selected_class_showing](images/SelectedClassFAQ.png)
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues

@@ -5,14 +5,37 @@
 ---
 
 # MustVas User Guide
-Welcome to MustVas's User Guide where you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as the relevant examples to get you started! Simply navigate to our [features section](#features) for a thorough read through, or click on a specific section to review in our Table of Contents for any queries you might have. Keep a lookout for the frequently asked questions down below which may help you address some basic common questions!
+Welcome to MustVas's User Guide where you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as the relevant examples to get you started! Simply navigate to our [features section](#features) for a thorough read through, or click on a specific section to review in our Table of Contents for any queries you might have. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as reference for the key command prompts to use in MustVas.
 
 Having been built for TAs by TAs, MustVas is a desktop app designed to help fellow Teaching Assistants (TAs) manage tutorial contacts. Its key features include **creating and selecting classes, adding students' contacts and tracking their attendance**. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, MustVas can get your contact management tasks done faster than traditional GUI apps. We hope that MustVas will provide a new and better way for you to manage your students in the long run. Happy teaching!
 
 NOTE: Users who are not familiar with using a CLI need not fret. Our commands have been specifically catered to a beginner's use - they are simple and easy to learn! Assistance is also provided automatically whenever there is an invalid command. 
 
 <!-- * Table of Contents -->
-
+## Table Of Contents
+1. Quick Start
+2. Features
+  - [Help](#viewing-help--help)
+  - [Create class](#creating-a-class--create)
+  - [View classes](#viewing-the-classes--view)
+  - [Select class](#selecting-a-class-to-view--select)
+  - [Add student](#adding-a-student--add)
+  - [Edit student](#editing-a-student--edit)
+  - [Add attendance](#adding-an-attendance-record--adda)
+  - [Edit attendance](#editing-an-attendance-for-any-number-of-students--edita)
+  - [Delete attendance](#deleting-an-attendance-record--dela)
+  - [Add/Edit description](#addingediting-a-description--description)
+  - [List](#listing-a-class-to-view--list)
+  - [Find](#locating-students-by-name--find)
+  - [Delete student](#deleting-a-student--delete)
+  - [Remove class](#removing-a-class--rm)
+  - [Clear](#clearing-all-entries--clear)
+  - [Exit](#exiting-the-program--exit)
+3. [Saving the data] (#saving the data)
+4. [Editing the data file] (#editing the data file)
+5. [Frequently Asked Questions] (#faq)
+6. [Known Issues] (#known issues)
+7. [Command Summary] (#command summary)
 
 <page-nav-print />
 
@@ -251,7 +274,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the StudentBook.
 * `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
 
-### Removing a class: `rm`
+### Removing a class : `rm`
 
 Removes the specified class from the ClassBook.
 

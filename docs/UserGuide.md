@@ -31,11 +31,11 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
   - [Remove class](#removing-a-class--rm)
   - [Clear](#clearing-all-entries--clear)
   - [Exit](#exiting-the-program--exit)
-3. [Saving the data] (#saving the data)
-4. [Editing the data file] (#editing the data file)
-5. [Frequently Asked Questions] (#faq)
-6. [Known Issues] (#known issues)
-7. [Command Summary] (#command summary)
+3. [Saving the data](#saving-the-data)
+4. [Editing the data file](#editing-the-data-file)
+5. [Frequently Asked Questions](#faq)
+6. [Known Issues](#known-issues)
+7. [Command Summary](#command-summary)
 
 <page-nav-print />
 

@@ -42,14 +42,12 @@ public class AddCommand extends Command {
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_STUDENTID + "STUDENTID "
-            + "[" + PREFIX_ATTENDANCE_RECORD + "Attendance]...\n"
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION" + "] \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_STUDENTID + "A0255333B "
-            + PREFIX_ATTENDANCE_RECORD + "friends "
-            + PREFIX_ATTENDANCE_RECORD + "owesMoney"
             + PREFIX_DESCRIPTION + "wants to explore BioInformatics";
 
     public static final String MESSAGE_SUCCESS = "New student added: %1$s";

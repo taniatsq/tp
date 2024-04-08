@@ -34,7 +34,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
-                        PREFIX_STUDENTID, PREFIX_ATTENDANCE_RECORD, PREFIX_DESCRIPTION);
+                        PREFIX_STUDENTID, PREFIX_DESCRIPTION);
 
         Index index;
 
@@ -64,8 +64,6 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setDescription(ParserUtil
                     .parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
-        parseAttendanceForEdit(argMultimap.getAllValues(PREFIX_ATTENDANCE_RECORD))
-                .ifPresent(editPersonDescriptor::setAttendances);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);

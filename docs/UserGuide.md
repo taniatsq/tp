@@ -17,25 +17,26 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 2. [Features](#features)
     - [Help](#viewing-help--help)
     - [Create class](#creating-a-class--create)
+    - [Remove class](#removing-a-class--rm)
     - [View classes](#viewing-the-classes--view)
     - [Select class](#selecting-a-class-to-view--select)
-    - [Add student](#adding-a-student--add)
-    - [Edit student](#editing-a-student--edit)
-    - [Add attendance](#adding-an-attendance-record--adda)
-    - [Edit attendance](#editing-an-attendance-for-any-number-of-students--edita)
-    - [Delete attendance](#deleting-an-attendance-record--dela)
-    - [Add/Edit description](#addingediting-a-description--description)
-    - [List](#listing-a-class-to-view--list)
-    - [Find](#locating-students-by-name--find)
-    - [Delete student](#deleting-a-student--delete)
-    - [Remove class](#removing-a-class--rm)
-    - [Clear](#clearing-all-entries--clear)
+      - [Add student](#adding-a-student--add)
+      - [Delete student](#deleting-a-student--delete)
+      - [Edit student](#editing-a-student--edit)
+      - [Add attendance](#adding-an-attendance-record--adda)
+      - [Delete attendance](#deleting-an-attendance-record--dela)
+      - [Edit attendance](#editing-an-attendance-for-any-number-of-students--edita)
+      - [Add/Edit description](#addingediting-a-description--description)
+      - [List](#listing-a-class-to-view--list)
+      - [Find](#locating-students-by-name--find)
+      - [Clear](#clearing-all-entries--clear)
     - [Exit](#exiting-the-program--exit)
 3. [Saving the data](#saving-the-data)
 4. [Editing the data file](#editing-the-data-file)
-5. [Frequently Asked Questions](#faq)
-6. [Known Issues](#known-issues)
-7. [Command Summary](#command-summary)
+5. [Coming Soon...](#coming-soon)
+6. [Frequently Asked Questions](#faq)
+7. [Known Issues](#known-issues)
+8. [Command Summary](#command-summary)
 
 <page-nav-print />
 
@@ -70,7 +71,7 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
   
    * `dela ar/01-01-2024` : Deletes all the attendance record with the date `01-01-2024` from all the students.
 
-   * `delete 1` : Deletes the 3rd contact shown in the current list.
+   * `delete 1` : Deletes the 1st contact shown in the current list.
 
    * `clear` : Deletes all contacts.
 
@@ -121,6 +122,17 @@ Examples:
 * `create c/CS2101`
 * `create c/CS2103T`
 
+### Removing a class : `rm`
+
+Removes the specified class from the ClassBook.
+
+Format: `rm INDEX`
+
+* Deletes the class at the specified `INDEX`.
+* The index refers to the index number shown in the displayed class list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* Removes class from ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
+
 ### Viewing the classes : `view`
 
 Shows list of classes in result display.
@@ -136,6 +148,8 @@ Shows a list of all students in the selected class.
 ![SelectCommand](images/SelectCommand.png)
 
 Format: `select INDEX`
+
+* The subsequent features (i.e. `add`, `delete`, `edit`, `adda`, `dela`, `edita`, `description`, `list`, `find`, `clear`) are to be used after selecting a class.
 
 ### Adding a student : `add`
 
@@ -156,6 +170,20 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 Examples:
 * `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B` : Add a new student.
 * `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B desc/Enjoy coding` : Add a new student with a description.
+
+### Deleting a student : `delete`
+
+Deletes the specified student from the StudentBook.
+
+Format: `delete INDEX`
+
+* Deletes the student at the specified `INDEX`.
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `delete 2` deletes the 2nd person in the StudentBook.
+* `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
 
 ### Editing a student : `edit`
 
@@ -188,6 +216,21 @@ Format: `adda ar/DATE`
 Examples:
 *  `adda ar/01-01-2024` All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
 
+### Deleting an attendance record : `dela`
+
+Deletes the specified attendance date from all the student's list of attendance records in studentId book.
+
+![delete_attendance_command](images/delete_attendance_command.png)
+
+Format: `dela ar/DATE`
+
+* The format for `DATE` is `dd-MM-yyyy`.
+* The entered date, `DATE`, must exist in the student's existing list of attendance dates.
+* Deletes the specified date, `DATE` from all the student's list of attendance records.
+
+Examples:
+* `dela ar/02-02-2024` Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
+
 ### Editing an attendance for any number of students : `edita`
 
 Edits the existing attendance record in the student's list of attendance in the studentId book. **Any number of students** can be edited in one go.
@@ -205,21 +248,6 @@ Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 Examples:
 *  `edita 1 ar/01-01-2024 st/2` Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
 *  `edita 2, 3 ar/01-01-2024 st/0` Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
-
-### Deleting an attendance record : `dela`
-
-Deletes the specified attendance date from all the student's list of attendance records in studentId book.
-
-![delete_attendance_command](images/delete_attendance_command.png)
-
-Format: `dela ar/DATE`
-
-* The format for `DATE` is `dd-MM-yyyy`.
-* The entered date, `DATE`, must exist in the student's existing list of attendance dates.
-* Deletes the specified date, `DATE` from all the student's list of attendance records.
-
-Examples:
-* `dela ar/02-02-2024` Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
 
 ### Adding\Editing a description : `description`
 
@@ -260,31 +288,6 @@ Examples:
 * `find nic faaheem` returns `nic`, `faaheem`<br>
   ![result for 'find nic faaheem'](images/FindExample2.png)
 
-### Deleting a student : `delete`
-
-Deletes the specified student from the StudentBook.
-
-Format: `delete INDEX`
-
-* Deletes the student at the specified `INDEX`.
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the StudentBook.
-* `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
-
-### Removing a class : `rm`
-
-Removes the specified class from the ClassBook.
-
-Format: `rm INDEX`
-
-* Deletes the class at the specified `INDEX`.
-* The index refers to the index number shown in the displayed class list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* Removes class from ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
-
 ### Clearing all entries : `clear`
 
 Clears all entries from the StudentBook in a selected class.
@@ -312,10 +315,8 @@ If your changes to the data file makes its format invalid, StudentBook will disc
 Furthermore, certain edits can cause the StudentBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Archiving data files `[coming in v2.0]`
-
-
-_Details coming soon ..._
+### Coming Soon...
+**Clear All**: Instead of manually using the `rm` command to remove each individual class, or the `clear` command to clear the selected StudentBook, this feature will clear all data (including ClassBooks and their respective StudentBooks), increasing convenience for users.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -327,6 +328,12 @@ _Details coming soon ..._
 **Q**: How can I see the class that I am on right now? <br>
 **A**: You can see the class that you have currently selected in the bottom left corner of the application (as shown below). <br>
 ![selected_class_showing](images/SelectedClassFAQ.png)
+
+**Q**: How can I manually delete students/classes? <br>
+**A**: Find your data folder in your home directory where MustVas is stored. In this folder, you will see the `classbook.json` file that contains, as well as another classbook folder that contains the individual `.json` files of the StudentBook, named after its class name. 
+![manually delete class](images/ManuallyDeleteFiles.png)
+- You may delete the individual StudentBook by deleting its individual .json file under the classbook folder. Do note that doing so will be akin to using the `clear` command on that class, effectively setting an empty StudentBook to be used.
+- However, if you do intend to manually delete an entire class, do remember to delete both its _courseCode_ field in `classbook.json` and its respective `.json` file in the classbook folder. Otherwise, deleting just the _courseCode_ field in the `classbook.json` file would use the same `.json` file if a class of the same _courseCode_ got created again.
 
 
 --------------------------------------------------------------------------------------------------------------------

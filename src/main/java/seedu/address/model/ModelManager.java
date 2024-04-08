@@ -158,6 +158,15 @@ public class ModelManager implements Model {
         }
     }
 
+    public void clear() {
+        selectedClassAddressBook.resetData(new AddressBook());
+        try {
+            storage.saveAddressBook(selectedClassAddressBook, selectedClass.getFilePath());
+        } catch (IOException e) {
+            logger.warning("Error saving the address book after deleting person: " + e.getMessage());
+        }
+    }
+
     @Override
     public void addPerson(Person person) {
         requireNonNull(person);

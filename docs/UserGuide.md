@@ -311,6 +311,10 @@ Examples:
   ![Find example 1](images/FindCommandCapsInsensitive.png)
 * `find nic faaheem` returns `nic`, `faaheem`<br>
   ![result for 'find nic faaheem'](images/FindExample2.png)
+* `find John Doe` returns `John Doe`, `Johnathan Doe`, `Johnette Doe`<br>
+    ![result for 'find nic faaheem'](images/FindExample3.png)
+**Warning**
+> If multiple search terms are used, all search terms will be matched with full words as well as incomplete words!
 
 ### Clearing all entries : `clear`
 

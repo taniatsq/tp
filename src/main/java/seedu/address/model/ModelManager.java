@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -181,6 +182,7 @@ public class ModelManager implements Model {
     public void removeClass(Classes classes) {
         hideStudentsUi();
         classBook.removeClass(classes);
+        userPrefs.setAddressBookFilePath(Paths.get(""));
         notifyUiUpdateListeners();
     }
 
@@ -230,6 +232,7 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
         notifyUiUpdateListeners();
+
     }
 
     @Override

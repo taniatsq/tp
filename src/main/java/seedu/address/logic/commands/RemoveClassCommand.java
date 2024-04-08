@@ -28,11 +28,11 @@ public class RemoveClassCommand extends Command {
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Class: %1$s";
 
     private final Index targetIndex;
-    private ViewClassesCommand viewClassesCommand;
+    // private ViewClassesCommand viewClassesCommand;
 
     public RemoveClassCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
-        this.viewClassesCommand = new ViewClassesCommand();
+        // this.viewClassesCommand = new ViewClassesCommand();
     }
 
     @Override
@@ -47,7 +47,6 @@ public class RemoveClassCommand extends Command {
         Classes classToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.removeClass(classToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.classFormat(classToDelete)));
-
     }
 
     @Override

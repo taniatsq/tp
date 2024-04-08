@@ -267,7 +267,6 @@ public class ModelManager implements Model {
         requireNonNull(classes);
 
         selectedClass = classes;
-        //      selectedClassAddressBook = selectedClass.getAddressBook();
         this.storage = new JsonAddressBookStorage(selectedClass.getFilePath());
         userPrefs.setAddressBookFilePath(selectedClass.getFilePath());
 
@@ -287,12 +286,7 @@ public class ModelManager implements Model {
         }
 
         filteredPersons = new FilteredList<>(this.selectedClassAddressBook.getPersonList());
-
-        // Predicate<Person> predicate = person -> selectedClassAddressBook.getPersonList().contains(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUi();
-        }
         notifyUiUpdateListeners();
     }
 

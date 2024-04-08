@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
-import java.util.List;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Description;
 import seedu.address.model.person.Person;
+
+
 
 /**
  * Manages Descriptions of an existing student in the class book.

@@ -50,26 +50,26 @@ public class TypicalPersons {
             .withEmail("cornelia@example.com").withStudentID("A6666666D")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
                     new Attendance(new AttendanceStatus(VALID_DATE_2, "1"))).build();
-    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
+    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("94822224")
             .withEmail("werner@example.com").withStudentID("A7777777D")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
                     new Attendance(new AttendanceStatus(VALID_DATE_2, "1"))).build();
-    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
+    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("94832427")
             .withEmail("lydia@example.com").withStudentID("A8888888D")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
                     new Attendance(new AttendanceStatus(VALID_DATE_2, "1")))
             .withDescription("Cannot").build();
-    public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
+    public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("94824422")
             .withEmail("anna@example.com").withStudentID("A9999999D")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
                     new Attendance(new AttendanceStatus(VALID_DATE_2, "1"))).build();
 
     // Manually added
-    public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
+    public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("84824242")
             .withEmail("stefan@example.com").withStudentID("A9516234E")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
                     new Attendance(new AttendanceStatus(VALID_DATE_2, "1"))).build();
-    public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
+    public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("84821321")
             .withEmail("hans@example.com").withStudentID("A9876336D")
             .withDate(new Attendance(new AttendanceStatus(VALID_DATE_1, "1")),
                     new Attendance(new AttendanceStatus(VALID_DATE_2, "1"))).build();

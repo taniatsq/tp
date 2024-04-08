@@ -5,10 +5,38 @@
 ---
 
 # MustVas User Guide
+Welcome to MustVas's User Guide where you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as the relevant examples to get you started! Simply navigate to our [features section](#features) for a thorough read through, or click on a specific section to review in our [Table of Contents](#table-of-contents) for any queries you might have. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as reference for the key command prompts to use in MustVas.
 
-MustVas is a **desktop app for managing your tutorial contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TutorHelperBot can get your contact management tasks done faster than traditional GUI apps.
+Having been built for TAs by TAs, MustVas is a desktop app designed to help fellow Teaching Assistants (TAs) manage tutorial contacts. Its key features include **creating and selecting classes, adding students' contacts and tracking their attendance**. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, MustVas can get your contact management tasks done faster than traditional GUI apps. We hope that MustVas will provide a new and better way for you to manage your students in the long run. Happy teaching!
+
+NOTE: Users who are not familiar with using a CLI need not fret. Our commands have been specifically catered to a beginner's use - they are simple and easy to learn! Assistance is also provided automatically whenever there is an invalid command. 
 
 <!-- * Table of Contents -->
+## Table Of Contents
+1. [Quick Start](#quick-start)
+2. [Features](#features)
+    - [Help](#viewing-help--help)
+    - [Create class](#creating-a-class--create)
+    - [View classes](#viewing-the-classes--view)
+    - [Select class](#selecting-a-class-to-view--select)
+    - [Add student](#adding-a-student--add)
+    - [Edit student](#editing-a-student--edit)
+    - [Add attendance](#adding-an-attendance-record--adda)
+    - [Edit attendance](#editing-an-attendance-for-any-number-of-students--edita)
+    - [Delete attendance](#deleting-an-attendance-record--dela)
+    - [Add/Edit description](#addingediting-a-description--description)
+    - [List](#listing-a-class-to-view--list)
+    - [Find](#locating-students-by-name--find)
+    - [Delete student](#deleting-a-student--delete)
+    - [Remove class](#removing-a-class--rm)
+    - [Clear](#clearing-all-entries--clear)
+    - [Exit](#exiting-the-program--exit)
+3. [Saving the data](#saving-the-data)
+4. [Editing the data file](#editing-the-data-file)
+5. [Frequently Asked Questions](#faq)
+6. [Known Issues](#known-issues)
+7. [Command Summary](#command-summary)
+
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
@@ -17,13 +45,13 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `MustVas.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-1/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your TutorHelperBot.
+1. Copy the file to the folder you want to use as the _home folder_ for your MustVas.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar MustVas.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. <br>
+   ![Ui](images/UI_initial.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -34,7 +62,13 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
   
    * `select 1` : Selects the specified class of index 1 from the class list.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com s/A0251980B ar/01-01-2011` : Adds a student named `John Doe` to the Student Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com s/A0251980B` : Adds a student named `John Doe` to the Student Book.
+  
+   * `adda ar/01-01-2024` : Adds an attendance record with the date `01-01-2024` and a default status `1` to all the existing students.
+  
+   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `2`.
+  
+   * `dela ar/01-01-2024` : Deletes all the attendance record with the date `01-01-2024` from all the students.
 
    * `delete 1` : Deletes the 3rd contact shown in the current list.
 
@@ -56,10 +90,7 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [ar/DATE]` can be used as `n/John Doe ar/01-01-2011` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[ar/DATE]…​` can be used as ` ` (i.e. 0 times), `ar/01-01-2011`, `ar/01-01-2011 ar/01-02-2011` etc.
+  e.g `n/NAME [p/PHONE_NUMBER]` can be used as `n/John Doe p/85018888` or as `n/John Doe`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -74,7 +105,7 @@ MustVas is a **desktop app for managing your tutorial contacts, optimized for us
 
 Shows a message explaning how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/HelpCommand.png)
 
 Format: `help`
 
@@ -110,28 +141,32 @@ Format: `select INDEX`
 
 Adds a student to the StudentBook.
 
-![add_new_student_with_no_attendance.jpg](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fadd_new_student_with_no_attendance.jpg)
+![add_new_student_with_no_attendance](images/add_new_student_with_not_attendance.jpg)
 
-Format: `add [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 
-* `PHONE NUMBER` must consist of 8 digits.
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
-* There should not be any duplicate `EMAIL` or `PHONE_NUMBER`.
-* If there are existing attendance records allocated to the existing students, the newly added student will have default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
-![add_new_student_with_attendance.PNG](..%2F..%2FImages%2Fadd_new_student_with_attendance.PNG)
+* `PHONE_NUMBER` must range from `80000000` to `99999999`. 
+* There should not be any duplicate `PHONE_NUMBER`, `EMAIL` or `STUDENT_ID`.
+* The newly added student will be automatically positioned alphabetically by name.
+* The description field is optional. You may write any description for the new student.
+* If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
+![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`
+* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B` : Add a new student.
+* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B desc/Enjoy coding` : Add a new student with a description.
 
 ### Editing a student : `edit`
 
 Edits an existing student in the StudentBook.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [s/STUDENT_ID]`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* If the input values for `PHONE_NUMBER`, `EMAIL` and `STUDENT_ID` already exist (including the target user), the command will be rejected.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email studentId of the 1st person to be `91234567` and `johndoe@example.com` respectively.
@@ -139,26 +174,27 @@ Examples:
 
 ### Adding an attendance record : `adda`
 
-Add an attendance record to all exiting student in the studentId book.
+Add an attendance record to all existing students in the studentId book.
 
-![add_attendance_command.png](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fadd_attendance_command.png)
+![add_attendance_command](images/add_attendance_command.png)
 
-Format: `adda [ar/DATE]`
+Format: `adda ar/DATE`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * The entered date, `DATE`, must not exist in any of the student's existing list of attendance dates.
+* The newly added attendance record will be automatically sorted based on the date.
 * The default value for status is '1' which represents 'Present'.
 
 Examples:
-*  `adda ar/01-01-2024` All the existing student will have a newly added attendance with date `01-01-2024` and a default status `1`.
+*  `adda ar/01-01-2024` All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
 
-### Editing an attendance for any number of person : `edita`
+### Editing an attendance for any number of students : `edita`
 
-Edits the exiting attendance record in the student's list of attendance in the studentId book. **Any number of student** can be edited at one go.
+Edits the existing attendance record in the student's list of attendance in the studentId book. **Any number of students** can be edited in one go.
 
-![edit_attendance_command_mulitple.PNG](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fedit_attendance_command_mulitple.PNG)
+![edit_attendance_command_mulitple](images/edit_attendance_command_mulitple.PNG)
 
-Format: `edita INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]`
+Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * Edits the student at the specified `INDEX(S)`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​, up to the size of the class.
@@ -174,9 +210,9 @@ Examples:
 
 Deletes the specified attendance date from all the student's list of attendance records in studentId book.
 
-![delete_attendance_command.png](..%2Fsrc%2Fmain%2Fresources%2Fimages%2Fdelete_attendance_command.png)
+![delete_attendance_command](images/delete_attendance_command.png)
 
-Format: `dela [ar/DATE]`
+Format: `dela ar/DATE`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * The entered date, `DATE`, must exist in the student's existing list of attendance dates.
@@ -184,6 +220,19 @@ Format: `dela [ar/DATE]`
 
 Examples:
 * `dela ar/02-02-2024` Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
+
+### Adding\Editing a description : `description`
+
+Add a description to the selected student or Edit a description of the selected student.
+
+![DescriptionCommand](images/DescriptionCommand.jpg)
+
+Format: `description INDEX desc/DESCRIPTION`
+
+* Only one description is allowed. The old description will be replaced with the new description.
+
+Examples:
+*  `description 1 desc/Loves coding` Adds a description `Loves coding` to first student. 
 
 ### Listing a class to view : `list`
 
@@ -225,7 +274,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the StudentBook.
 * `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
 
-### Removing a class: `rm`
+### Removing a class : `rm`
 
 Removes the specified class from the ClassBook.
 
@@ -275,6 +324,11 @@ _Details coming soon ..._
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
+**Q**: How can I see the class that I am on right now? <br>
+**A**: You can see the class that you have currently selected in the bottom left corner of the application (as shown below). <br>
+![selected_class_showing](images/SelectedClassFAQ.png)
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
@@ -288,7 +342,7 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, A1234567U `
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com s/A1111111D desc/Loves coding `
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
@@ -299,6 +353,7 @@ Action     | Format, Examples
 **Select** | `select INDEX` <br> e.g., `select 1`
 **Create** | `create c/CLASS_NAME` <br> e.g., `create c/CS2103`
 **Remove** | `rm INDEX` <br> e.g., `rm 2`
-**Add Attendance**   | `adda [ar/DATE]` <br> e.g., `adda ar/01-01-2024`
-**Edit Attendance**  | `edita INDEX1, INDEX2, …​ [ar/DATE] [st/STATUS]` <br> e.g., `edita 1 ar/01-01-2024 st/2`
-**Delete Attendance** | `dela [ar/DATE]` <br> e.g., `dela ar/02-02-2024`
+**Add Attendance**   | `adda ar/DATE` <br> e.g., `adda ar/01-01-2024`
+**Edit Attendance**  | `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS` <br> e.g., `edita 1 ar/01-01-2024 st/2`
+**Delete Attendance** | `dela ar/DATE` <br> e.g., `dela ar/02-02-2024`
+**Add\Edit Description** | `description INDEX desc/DESCRIPTION` <br> e.g., `description 1 desc/Loves coding`

@@ -215,6 +215,11 @@ public class AddAttendanceRecordCommandTest {
         public String getSelectedClassName() {
             return null;
         }
+
+        @Override
+        public void viewClasses() {
+
+        }
     }
 
 

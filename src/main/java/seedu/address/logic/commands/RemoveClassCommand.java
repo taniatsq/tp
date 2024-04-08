@@ -3,6 +3,9 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
@@ -25,9 +28,11 @@ public class RemoveClassCommand extends Command {
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Class: %1$s";
 
     private final Index targetIndex;
+    private ViewClassesCommand viewClassesCommand;
 
     public RemoveClassCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
+        this.viewClassesCommand = new ViewClassesCommand();
     }
 
     @Override
@@ -42,6 +47,7 @@ public class RemoveClassCommand extends Command {
         Classes classToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.removeClass(classToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.classFormat(classToDelete)));
+
     }
 
     @Override

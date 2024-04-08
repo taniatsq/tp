@@ -107,4 +107,5 @@ public interface Model {
     String getSelectedClassName();
 
     void viewClasses();
+    void hideStudentsUi();
 }

@@ -231,6 +231,7 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+        notifyUiUpdateListeners();
     }
 
     @Override
@@ -302,15 +303,6 @@ public class ModelManager implements Model {
         uiUpdateListeners.add(listener);
     }
 
-
-    public void removeUiUpdateListener(UiUpdateListener listener) {
-        uiUpdateListeners.remove(listener);
-    }
-    private void notifyUiUpdateListenersOnClassSelected(Classes selectedClass) {
-        for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUi();
-        }
-    }
 
     private void notifyUiUpdateListeners() {
         for (UiUpdateListener listener : uiUpdateListeners) {

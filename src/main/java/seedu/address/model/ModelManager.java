@@ -158,6 +158,12 @@ public class ModelManager implements Model {
         }
     }
 
+    /**
+     * Clears all data from the currently selected class address book.
+     * This operation effectively resets the data to an empty address book.
+     * After clearing the data, the empty address book is saved to the storage
+     * at the file path associated with the selected class.
+     */
     public void clear() {
         selectedClassAddressBook.resetData(new AddressBook());
         try {

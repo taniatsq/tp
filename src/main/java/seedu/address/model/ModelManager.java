@@ -297,11 +297,6 @@ public class ModelManager implements Model {
         notifyUiUpdateListeners();
     }
 
-    //        @Override
-    //        public void viewClasses() {
-    //            notifyUiUpdateListenersOnView();
-    //        }
-
 
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);

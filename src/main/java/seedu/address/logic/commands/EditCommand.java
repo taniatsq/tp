@@ -177,13 +177,14 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setStudentId(toCopy.studentId);
             setAttendances(toCopy.attendances);
+            setDescription(toCopy.description);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, studentId, attendances);
+            return CollectionUtil.isAnyNonNull(name, phone, email, studentId, attendances, description);
         }
 
         public void setName(Name name) {

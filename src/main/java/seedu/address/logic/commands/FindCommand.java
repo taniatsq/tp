@@ -31,7 +31,10 @@ public class FindCommand extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
+                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
+                        model.getFilteredPersonList().size()) +
+                        "\nPlease use the 'list' function to see your current class!" +
+                        "\nOr use the 'select' function to see another class!");
     }
 
     @Override

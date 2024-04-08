@@ -28,8 +28,6 @@ public class ModelManager implements Model {
 
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
     private final List<UiUpdateListener> uiUpdateListeners;
-
-    // private final AddressBook addressBook;
     private final ClassBook classBook;
     private final UserPrefs userPrefs;
     private FilteredList<Person> filteredPersons;
@@ -246,6 +244,7 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+        notifyUiUpdateListeners();
     }
 
     @Override
@@ -315,16 +314,6 @@ public class ModelManager implements Model {
 
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
-    }
-
-
-    public void removeUiUpdateListener(UiUpdateListener listener) {
-        uiUpdateListeners.remove(listener);
-    }
-    private void notifyUiUpdateListenersOnClassSelected(Classes selectedClass) {
-        for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUi();
-        }
     }
 
     private void notifyUiUpdateListeners() {

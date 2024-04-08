@@ -55,6 +55,12 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New student added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the class";
 
+    public static final String MESSAGE_DUPLICATE_EMAIL = "This email already exits in the address book.";
+
+    public static final String MESSAGE_DUPLICATE_STUDENT_ID = "This student id already exists in the address book.";
+
+    public static final String MESSAGE_DUPLICATE_PHONE = "This phone already exists in the address book.";
+
     private Person toAdd;
 
     /**
@@ -69,11 +75,26 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasPerson(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        }
+//        if (model.hasPerson(toAdd)) {
+//            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+//        }
 
         List<Person> lastShownList = model.getFilteredPersonList();
+
+        for (Person p : lastShownList) {
+            if (toAdd.getPhone().equals(p.getPhone())) {
+                throw new CommandException(MESSAGE_DUPLICATE_PHONE);
+            }
+
+            if (toAdd.getEmail().equals(p.getEmail())) {
+                throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
+            }
+
+            if (toAdd.getStudentId().equals(p.getStudentId())) {
+                throw new CommandException(MESSAGE_DUPLICATE_STUDENT_ID);
+            }
+        }
+
         if (lastShownList != null && lastShownList.size() >= 1) {
             Set<Attendance> allDates = lastShownList.get(0).getAttendances();
             Set<Attendance> newDates = new HashSet<>();

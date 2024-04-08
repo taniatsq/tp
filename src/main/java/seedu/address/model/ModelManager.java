@@ -158,6 +158,10 @@ public class ModelManager implements Model {
         }
     }
 
+    /**
+     * Clears student address book of selected class.
+     */
+    @Override
     public void clear() {
         selectedClassAddressBook.resetData(new AddressBook());
         try {

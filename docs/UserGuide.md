@@ -119,8 +119,8 @@ Simultaneously creates a class in the ClassBook and an empty StudentBook.
 Format: `create c/CLASS_NAME`
 
 Examples: 
-* `create c/CS2101`
-* `create c/CS2103T`
+* `create c/CS2101`: Creates a class with course code 'CS2101'.
+* `create c/CS2103T`: Creates a class with course code 'CS2103T'.
 
 ### Removing a class : `rm`
 
@@ -168,8 +168,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 ![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B` : Add a new student.
-* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B desc/Enjoy coding` : Add a new student with a description.
+* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`: Adds a new student.
+* `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B desc/Enjoy coding`: Adds a new student with a description.
 
 ### Deleting a student : `delete`
 
@@ -182,8 +182,8 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the StudentBook.
-* `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
+* `list` followed by `delete 2`: Deletes the 2nd person in the StudentBook.
+* `find Betsy` followed by `delete 1`: Deletes the 1st student in the results of the `find` command.
 
 ### Editing a student : `edit`
 
@@ -197,8 +197,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
 * If the input values for `PHONE_NUMBER`, `EMAIL` and `STUDENT_ID` already exist (including the target user), the command will be rejected.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email studentId of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower ar/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing attendances.
+*  `edit 1 p/91234567 e/johndoe@example.com`: Edits the phone number and email studentId of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower ar/`: Edits the name of the 2nd person to be `Betsy Crower` and clears all existing attendances.
 
 ### Adding an attendance record : `adda`
 
@@ -211,10 +211,12 @@ Format: `adda ar/DATE`
 * The format for `DATE` is `dd-MM-yyyy`.
 * The entered date, `DATE`, must not exist in any of the student's existing list of attendance dates.
 * The newly added attendance record will be automatically sorted based on the date.
-* The default value for status is '1' which represents 'Present'.
-
+* The default value for status is '1' for 'Present', represented by a green tick.
+* If a new student has been added and there are existing attendance record, using the `adda` command will produce a default status value of '2' for 'Valid Reason', represented by a blue dot.
+* To edit the status value as well as more information on valid status inputs that we carry, do refer to the [`edita`](#editing-an-attendance-for-any-number-of-students--edita) command below for more information.
+  
 Examples:
-*  `adda ar/01-01-2024` All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
+*  `adda ar/01-01-2024`: All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
 
 ### Editing an attendance for any number of students : `edita`
 
@@ -226,14 +228,17 @@ Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 
 * The format for `DATE` is `dd-MM-yyyy`.
 * Edits the student at the specified `INDEX(S)`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​, up to the size of the class.
-* There won't be any problem if an index is entered multiple times.
-* At least one index is provided. **Multiple number of index** is allowed at a time, separated by commas.
+* The command requires at least one index to be present at a time, though **multiple indexes** is also allowed, the latter of which needs to be separated by commas.
 * All the selected student will have their status of the selected attendance date, `DATE`, to be reflected to `STATUS`
-* The entered date, `DATE`, must exist in the student's existing list of attendance dates.
+  * The entered date, `DATE`, must exist in the student's existing list of attendance dates.
+  * `STATUS`
+    - 0 for 'Absent', represented by a red cross ❌ 
+    - 1 for 'Present', represented by a green tick ✅ 
+    - 2 for 'Valid Reason', represented by a blue dot 🔵 
 
 Examples:
-*  `edita 1 ar/01-01-2024 st/2` Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
-*  `edita 2, 3 ar/01-01-2024 st/0` Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
+*  `edita 1 ar/01-01-2024 st/2`: Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
+*  `edita 2, 3 ar/01-01-2024 st/0`: Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
 
 ### Deleting an attendance record : `dela`
 
@@ -248,7 +253,7 @@ Format: `dela ar/DATE`
 * Deletes the specified date, `DATE` from all the student's list of attendance records.
 
 Examples:
-* `dela ar/02-02-2024` Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
+* `dela ar/02-02-2024`: Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
 
 ### Editing an attendance for any number of students : `edita`
 
@@ -265,8 +270,8 @@ Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 * The entered date, `DATE`, must exist in the student's existing list of attendance dates.
 
 Examples:
-*  `edita 1 ar/01-01-2024 st/2` Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
-*  `edita 2, 3 ar/01-01-2024 st/0` Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
+*  `edita 1 ar/01-01-2024 st/2`: Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
+*  `edita 2, 3 ar/01-01-2024 st/0`: Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
 
 ### Adding\Editing a description : `description`
 
@@ -279,7 +284,7 @@ Format: `description INDEX desc/DESCRIPTION`
 * **Only one description is allowed**. The old description will be replaced with the new description.
 
 Examples:
-*  `description 1 desc/Loves coding` Adds a description `Loves coding` to first student. 
+*  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student. 
 
 ### Listing a class to view : `list`
 
@@ -301,7 +306,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
   e.g. `Tania Tan` will return `Tania Low`, `Tania Ooi`
 
 Examples:
-* `find andrew` returns `andrew` and `Andrew`
+* `find andrew`: Returns `andrew` and `Andrew`
 
   ![Find example 1](images/FindCommandCapsInsensitive.png)
 * `find nic faaheem` returns `nic`, `faaheem`<br>

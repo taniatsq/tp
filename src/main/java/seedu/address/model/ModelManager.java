@@ -181,7 +181,9 @@ public class ModelManager implements Model {
 
     @Override
     public void removeClass(Classes classes) {
+        hideStudentsUi();
         classBook.removeClass(classes);
+        notifyUiUpdateListeners();
     }
 
     @Override
@@ -290,9 +292,9 @@ public class ModelManager implements Model {
         // Predicate<Person> predicate = person -> selectedClassAddressBook.getPersonList().contains(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnClassSelected(classes);
+            listener.updateUi();
         }
-        notifyUiUpdateListenersOnClassSelected(classes);
+        notifyUiUpdateListeners();
     }
 
     //        @Override
@@ -311,20 +313,13 @@ public class ModelManager implements Model {
     }
     private void notifyUiUpdateListenersOnClassSelected(Classes selectedClass) {
         for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnClassSelected(selectedClass);
+            listener.updateUi();
         }
     }
 
-    //        public void notifyUiUpdateListenersOnView() {
-    //            for (UiUpdateListener listener : uiUpdateListeners) {
-    //                listener.updateUiOnView();
-    //            }
-    //        }
-
-
-    private void notifyUiUpdateListenersOnView() {
+    private void notifyUiUpdateListeners() {
         for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnView();
+            listener.updateUi();
         }
     }
 
@@ -332,9 +327,12 @@ public class ModelManager implements Model {
      * Hides all currently viewed students.
      */
     public void viewClasses() {
-        // selectedClass = null;
-        // selectedClassAddressBook = null;
-        updateFilteredPersonList(updatedPerson -> false);
-
+       hideStudentsUi();
     }
+
+    public void hideStudentsUi() {
+        updateFilteredPersonList(updatedPerson -> false);
+    }
+
+
 }

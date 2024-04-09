@@ -43,6 +43,7 @@ public class EditAttendanceCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_FAILURE = "Create/Select a class before editing an attendance record";
 
     private final ArrayList<Index> indexs;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -62,6 +63,9 @@ public class EditAttendanceCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if (model.getSelectedClassName() == "No class selected!") {
+            return new CommandResult(MESSAGE_FAILURE);
+        }
         List<Person> lastShownList = model.getFilteredPersonList();
 
         for (Index i : indexs) {

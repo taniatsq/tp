@@ -38,6 +38,8 @@ public class DeleteAttendanceRecordCommand extends Command {
 
 
     public static final String MESSAGE_SUCCESS = "Attendance deleted for: %1$s";
+    public static final String MESSAGE_FAILURE = "Create/Select a class before deleting an attendance record";
+
     private Attendance date;
 
     /**
@@ -52,6 +54,9 @@ public class DeleteAttendanceRecordCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireAllNonNull(model);
+        if (model.getSelectedClassName() == "No class selected!") {
+            return new CommandResult(MESSAGE_FAILURE);
+        }
         List<Person> lastShownList = model.getFilteredPersonList();
         if (lastShownList.size() == 0) {
             throw new CommandException(Messages.MESSAGE_NO_PERSON_IN_THE_CLASS);

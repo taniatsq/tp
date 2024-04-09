@@ -90,7 +90,7 @@ public class AddCommand extends Command {
             model.addPerson(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
         } catch (NullPointerException e) {
-            return new CommandResult(String.format(MESSAGE_FAILURE));
+            return new CommandResult(MESSAGE_FAILURE);
         }
     }
 

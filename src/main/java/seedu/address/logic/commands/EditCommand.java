@@ -60,7 +60,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_DUPLICATE_STUDENT_ID = "This student id already exists in the address book.";
 
     public static final String MESSAGE_DUPLICATE_PHONE = "This phone already exists in the address book.";
-
+    public static final String MESSAGE_FAILURE = "Select a class before editing a student!";
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
 
@@ -79,6 +79,9 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if (model.getSelectedClassName() == "No class selected!") {
+            return new CommandResult(MESSAGE_FAILURE);
+        }
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {

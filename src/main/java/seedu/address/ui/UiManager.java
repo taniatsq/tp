@@ -25,7 +25,6 @@ public class UiManager implements Ui, UiUpdateListener {
 
     private Logic logic;
     private MainWindow mainWindow;
-    private boolean isUpdatingUi = false;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
@@ -89,27 +88,15 @@ public class UiManager implements Ui, UiUpdateListener {
     }
 
     /**
-     * Updates the UI when a class is selected.
+     * Updates the UI when a change is made
      * This method fills the inner parts of the main window based on the selected class.
-     * @param selectedClass The selected class.
      */
     @Override
-    public void updateUiOnClassSelected(Classes selectedClass) {
+    public void updateUi() {
         try {
             mainWindow.fillInnerParts(); // Fill the inner parts of the main window
         } catch (Exception e) {
             logger.severe("Error updating UI on class selection: " + e.getMessage());
         }
     }
-
-
-    @Override
-    public void updateUiOnView() {
-        try {
-            mainWindow.fillInnerParts(); // Fill the inner parts of the main window
-        } catch (Exception e) {
-            logger.severe("Error updating UI on view command: " + e.getMessage());
-        }
-    }
-
 }

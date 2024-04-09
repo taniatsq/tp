@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,8 +29,6 @@ public class ModelManager implements Model {
 
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
     private final List<UiUpdateListener> uiUpdateListeners;
-
-    // private final AddressBook addressBook;
     private final ClassBook classBook;
     private final UserPrefs userPrefs;
     private FilteredList<Person> filteredPersons;
@@ -158,10 +157,12 @@ public class ModelManager implements Model {
         }
     }
 
-    /**
-     * Clears student address book of selected class.
+
+     * Clears all data from the currently selected class address book.
+     * This operation effectively resets the data to an empty address book.
+     * After clearing the data, the empty address book is saved to the storage
+     * at the file path associated with the selected class.
      */
-    @Override
     public void clear() {
         selectedClassAddressBook.resetData(new AddressBook());
         try {
@@ -194,7 +195,10 @@ public class ModelManager implements Model {
 
     @Override
     public void removeClass(Classes classes) {
+        hideStudentsUi();
         classBook.removeClass(classes);
+        userPrefs.setAddressBookFilePath(Paths.get(""));
+        notifyUiUpdateListeners();
     }
 
     @Override
@@ -242,6 +246,8 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+        notifyUiUpdateListeners();
+
     }
 
     @Override
@@ -279,7 +285,6 @@ public class ModelManager implements Model {
         requireNonNull(classes);
 
         selectedClass = classes;
-        //      selectedClassAddressBook = selectedClass.getAddressBook();
         this.storage = new JsonAddressBookStorage(selectedClass.getFilePath());
         userPrefs.setAddressBookFilePath(selectedClass.getFilePath());
 
@@ -299,45 +304,18 @@ public class ModelManager implements Model {
         }
 
         filteredPersons = new FilteredList<>(this.selectedClassAddressBook.getPersonList());
-
-        // Predicate<Person> predicate = person -> selectedClassAddressBook.getPersonList().contains(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnClassSelected(classes);
-        }
-        notifyUiUpdateListenersOnClassSelected(classes);
+        notifyUiUpdateListeners();
     }
-
-    //        @Override
-    //        public void viewClasses() {
-    //            notifyUiUpdateListenersOnView();
-    //        }
 
 
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
     }
 
-
-    public void removeUiUpdateListener(UiUpdateListener listener) {
-        uiUpdateListeners.remove(listener);
-    }
-    private void notifyUiUpdateListenersOnClassSelected(Classes selectedClass) {
+    private void notifyUiUpdateListeners() {
         for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnClassSelected(selectedClass);
-        }
-    }
-
-    //        public void notifyUiUpdateListenersOnView() {
-    //            for (UiUpdateListener listener : uiUpdateListeners) {
-    //                listener.updateUiOnView();
-    //            }
-    //        }
-
-
-    private void notifyUiUpdateListenersOnView() {
-        for (UiUpdateListener listener : uiUpdateListeners) {
-            listener.updateUiOnView();
+            listener.updateUi();
         }
     }
 
@@ -345,10 +323,11 @@ public class ModelManager implements Model {
      * Hides all currently viewed students.
      */
     public void viewClasses() {
-        // selectedClass = null;
-        // selectedClassAddressBook = null;
-        updateFilteredPersonList(updatedPerson -> false);
+       hideStudentsUi();
+    }
 
+    public void hideStudentsUi() {
+        updateFilteredPersonList(updatedPerson -> false);
     }
 
 

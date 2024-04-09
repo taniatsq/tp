@@ -365,8 +365,8 @@ Furthermore, certain edits can cause the StudentBook to behave in unexpected way
 - You may delete the individual StudentBook by deleting its individual .json file under the classbook folder. Do note that doing so will be akin to using the `clear` command on that class, effectively setting an empty StudentBook to be used.
 - However, if you do intend to manually delete an entire class, do remember to delete both its _courseCode_ field in `classbook.json` and its respective `.json` file in the classbook folder. Otherwise, deleting just the _courseCode_ field in the `classbook.json` file would cause the same StudentBook to be used if a class of the same _courseCode_ is created again (i.e. `create c/class5` would reuse its old StudentBook with its old student contacts and not create a new empty StudentBook).
 
-**Q** How do I fix "This student already exists in the class" error?
-**A** This error is likely due to duplicate fields in `PHONE`, `EMAIL` or `STUDENT_ID`. Check that the new student to be added does not have these duplicate fields that are already present among students in your current class.
+**Q**: How do I fix "This student already exists in the class" error? <br>
+**A**: This error is likely due to duplicate fields in `PHONE`, `EMAIL` or `STUDENT_ID`. Check that the new student to be added does not have these duplicate fields that are already present among students in your current class.
 
 
 --------------------------------------------------------------------------------------------------------------------

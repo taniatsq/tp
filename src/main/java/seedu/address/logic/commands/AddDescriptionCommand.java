@@ -29,7 +29,7 @@ public class AddDescriptionCommand extends Command {
     public static final String MESSAGE_DELETE_SUCCESS = "Description removed from Person: %1$s";
 
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Description: %2$s";
-
+    public static final String MESSAGE_FAILURE = "Create/Select a class before adding a description to students";
     private final Description description;
     private final Index index;
     /**
@@ -44,6 +44,10 @@ public class AddDescriptionCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+
+        if (model.getSelectedClassName() == "No class selected!") {
+            return new CommandResult(MESSAGE_FAILURE);
+        }
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {

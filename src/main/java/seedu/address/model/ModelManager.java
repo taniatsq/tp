@@ -232,7 +232,6 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
         notifyUiUpdateListeners();
-
     }
 
     @Override
@@ -311,9 +310,10 @@ public class ModelManager implements Model {
        hideStudentsUi();
     }
 
+    /**
+     * Hides all currently viewed students.
+     */
     public void hideStudentsUi() {
         updateFilteredPersonList(updatedPerson -> false);
     }
-
-
 }

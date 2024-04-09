@@ -38,6 +38,7 @@ public class AddAttendanceRecordCommand extends Command {
     public static final String MESSAGE_NOT_IMPLEMENTED_YET = "attendance command not implemented yet";
     public static final String MESSAGE_SUCCESS = "New attendance added for: %1$s";
     public static final String MESSAGE_ARGUMENTS = "Date: %1$s";
+    public static final String MESSAGE_FAILURE = "Create/Select a class before adding a new attendance record";
     private Attendance date;
 
     /**
@@ -52,6 +53,9 @@ public class AddAttendanceRecordCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
 
         requireNonNull(model);
+        if (model.getSelectedClassName() == "No class selected!") {
+            return new CommandResult(MESSAGE_FAILURE);
+        }
         List<Person> lastShownList = model.getFilteredPersonList();
         if (lastShownList.size() == 0) {
             throw new CommandException(Messages.MESSAGE_NO_PERSON_IN_THE_CLASS);

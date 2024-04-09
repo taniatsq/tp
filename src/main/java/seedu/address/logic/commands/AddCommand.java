@@ -51,6 +51,8 @@ public class AddCommand extends Command {
             + PREFIX_DESCRIPTION + "wants to explore BioInformatics";
 
     public static final String MESSAGE_SUCCESS = "New student added: %1$s";
+    public static final String MESSAGE_FAILURE = "Create/Select a class first before adding a student!";
+
     public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the class";
 
     public static final String MESSAGE_DUPLICATE_EMAIL = "This email already exits in the address book.";
@@ -103,9 +105,12 @@ public class AddCommand extends Command {
             editPersonDescriptor.setAttendances(newDates);
             toAdd = createEditedPerson(toAdd, editPersonDescriptor);
         }
-
-        model.addPerson(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        try {
+            model.addPerson(toAdd);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        } catch (NullPointerException e) {
+            return new CommandResult(MESSAGE_FAILURE);
+        }
     }
 
     /**

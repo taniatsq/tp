@@ -157,7 +157,7 @@ public class ModelManager implements Model {
         }
     }
 
-
+    /**
      * Clears all data from the currently selected class address book.
      * This operation effectively resets the data to an empty address book.
      * After clearing the data, the empty address book is saved to the storage
@@ -197,7 +197,9 @@ public class ModelManager implements Model {
     public void removeClass(Classes classes) {
         hideStudentsUi();
         classBook.removeClass(classes);
-        userPrefs.setAddressBookFilePath(Paths.get(""));
+        userPrefs.setAddressBookFilePath(Paths.get("No class selected!"));
+        this.selectedClass = null;
+        this.selectedClassAddressBook = new AddressBook();
         notifyUiUpdateListeners();
     }
 

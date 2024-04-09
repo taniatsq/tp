@@ -75,9 +75,9 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-//        if (model.hasPerson(toAdd)) {
-//            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-//        }
+        if (model.getSelectedClassName() == "No class selected!") {
+            return new CommandResult(MESSAGE_FAILURE);
+        }
 
         List<Person> lastShownList = model.getFilteredPersonList();
 

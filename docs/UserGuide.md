@@ -340,9 +340,10 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 
 <box type="warning" seamless>
 
-**Caution:**
-If your changes to the data file makes its format invalid, StudentBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the StudentBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+**Caution:** 
+- If your changes to the classbook.json data file makes its format invalid, ClassBook will discard its classes in the classlist and start with an empty data file at the next run. Fortunately, in this case, your StudentBook data (e.g. `class1.json`) will not be lost. It can be recovered by simply recreating the class of that same name in the application (e.g. using the `create` command to `create c/class1`). 
+- Furthermore, certain edits to the individual `[class].json` file (i.e. the StudentBook) can cause the application to behave in unexpected ways (e.g. , if a value entered is outside the acceptable range). In the worst case, an invalid modification to the data will cause the program to crash. In this scenario, you are advised to manually delete the modified `[class].json` file before running the program again. 
+- As such, do refrain from editing  manually in the JSON file. Edit the data file only if you are confident that you can update it correctly.
 </box>
 
 ### Coming Soon...
@@ -374,7 +375,7 @@ Furthermore, certain edits can cause the StudentBook to behave in unexpected way
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **When using view after selecting a class**, if you try to view classes after having selected a class, the StudentBook of the previously selected class will still be on display, until you select another class.
+2. **When using view after selecting a class**, if you try to view classes after having selected a class, the StudentBook of the previously selected class is still considered your selected class, until you select another class to manage.
 
 --------------------------------------------------------------------------------------------------------------------
 

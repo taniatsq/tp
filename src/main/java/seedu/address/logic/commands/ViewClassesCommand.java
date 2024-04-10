@@ -22,7 +22,6 @@ public class ViewClassesCommand extends Command {
         requireNonNull(model);
         String formattedClassList = model.getFormattedClassList();
 
-
         if (formattedClassList.isEmpty()) {
             return new CommandResult(CREATE_INSTRUCTION);
         }

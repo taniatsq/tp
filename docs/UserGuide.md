@@ -268,7 +268,7 @@ Examples:
   1. Use the `adda` command to mark everyone as present.
   2. Find the indexes of students who are absent and those who have valid reasons.
   3. Use the `edita` command to mark them as absent/having a valid reason at one shot.
-- Moreover, to facilitate easier reading of a student's attendance records, we have an attendance percentage bar (see highlights below) that displays the overall score of a student's attendance that you can view at a quick glance. The percentage is calculated by this formula $`(# of present + # of valid) / # of attendance records`$
+- Moreover, to facilitate easier reading of a student's attendance records, we have an attendance percentage bar (see highlights below) that displays the overall score of a student's attendance that you can view at a quick glance. The attendance percentage is calculated by this formula `(# of present + # of valid) / # of attendance records`
 
 ![AttendancePercentage](images/AttendancePercentage.png)
 

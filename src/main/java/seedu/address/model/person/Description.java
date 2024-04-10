@@ -9,12 +9,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Description {
     public static final String MESSAGE_CONSTRAINTS =
-            "Description can include only alphanumeric characters; Can be left empty also";
+            "Description can include alphanumeric and special characters; Can be left empty also";
 
     /*
      * The first character of the address can be whitespace also.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = ".*";
 
     public final String value;
 

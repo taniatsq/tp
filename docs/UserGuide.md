@@ -46,15 +46,21 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `MustVas.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-1/tp/releases).
+2. Download the latest `MustVas.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-1/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your MustVas.
+3. Copy the MustVas.jar file into a new folder, MyMustVas and save it under your Documents.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar MustVas.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. <br>
+4. Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there. <br>
+_See our Terminal guide below._ <br>
+![TerminalInstructions](images/TerminalInstructions.png)
+   
+6. Copy and paste this command `java -jar MustVas.jar` into your terminal.
+![TerminalInstructions](images/TerminalInstructions_jar.png)
+
+8. An interface similar to the below should appear in a few seconds. <br>
    ![Ui](images/UI_initial.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+9. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `view` : Lists all classes to select from.
@@ -77,7 +83,7 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 
    * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+10. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -191,7 +197,7 @@ Examples:
 
 Edits an existing student in the StudentBook.
 
-Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID] [desc/DESCRIPTION]`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -200,7 +206,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com`: Edits the phone number and email studentId of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower ar/`: Edits the name of the 2nd person to be `Betsy Crower` and clears all existing attendances.
+*  `edit 2 n/Betsy Crower`: Edits the name of the 2nd person to be `Betsy Crower`.
 
 ### Adding an attendance record : `adda`
 
@@ -213,9 +219,13 @@ Format: `adda ar/DATE`
 * The format for `DATE` is `dd-MM-yyyy`.
 * The entered date, `DATE`, must not exist in any of the student's existing list of attendance dates.
 * The newly added attendance record will be automatically sorted based on the date.
-* The default value for status is '1' for 'Present', represented by a green tick.
-* If a new student has been added and there are existing attendance record, using the `adda` command will produce a default status value of '2' for 'Valid Reason', represented by a blue dot.
-* To edit the status value as well as more information on valid status inputs that we carry, do refer to the [`edita`](#editing-an-attendance-for-any-number-of-students--edita) command below for more information.
+* The default value for status is '1' for 'Present'.
+* If a new student has been added and there are existing attendance record, using the `adda` command will produce a default status value of '2' for 'Valid Reason'.
+* Note the representation for `STATUS`:
+    - 0 for 'Absent', represented by a red cross ❌ 
+    - 1 for 'Present', represented by a green tick ✅ 
+    - 2 for 'Valid Reason', represented by a blue dot 🔵 
+* To edit the status value, do refer to the [edita](#editing-an-attendance-for-any-number-of-students--edita) command below.
   
 Examples:
 *  `adda ar/01-01-2024`: All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
@@ -233,7 +243,7 @@ Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 * The command requires at least one index to be present at a time, though **multiple indexes** is also allowed, the latter of which needs to be separated by commas.
 * All the selected student will have their status of the selected attendance date, `DATE`, to be reflected to `STATUS`
   * The entered date, `DATE`, must exist in the student's existing list of attendance dates.
-  * `STATUS`
+  * Recall the representation and valid inputs for `STATUS`:
     - 0 for 'Absent', represented by a red cross ❌ 
     - 1 for 'Present', represented by a green tick ✅ 
     - 2 for 'Valid Reason', represented by a blue dot 🔵 
@@ -257,23 +267,14 @@ Format: `dela ar/DATE`
 Examples:
 * `dela ar/02-02-2024`: Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
 
-### Editing an attendance for any number of students : `edita`
+**Additional tips for Attendance taking** <br>
+- For quick attendance taking, here are the 3-4 steps that you can take:
+  1. Use the `adda` command to mark everyone as present.
+  2. Find the indexes of students who are absent and those who have valid reasons.
+  3. Use the `edita` command to mark them as absent/having a valid reason at one shot.
+- Moreover, to facilitate easier reading of a student's attendance records, we have an attendance percentage bar (see highlights below) that displays the overall score of a student's attendance that you can view at a quick glance. The attendance percentage is calculated by this formula `(# of present + # of valid) / # of attendance records`
 
-Edits the existing attendance record in the student's list of attendance in the studentId book. **Any number of students** can be edited in one go.
-
-![edit_attendance_command_mulitple](images/edit_attendance_command_mulitple.PNG)
-
-Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
-
-* The format for `DATE` is `dd-MM-yyyy`.
-* Edits the student at the specified `INDEX(S)`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​, up to the size of the class.
-* At least one index is provided. **Multiple number of index** is allowed at a time, separated by commas.
-* All the selected student will have their status of the selected attendance date, `DATE`, to be reflected to `STATUS`
-* The entered date, `DATE`, must exist in the student's existing list of attendance dates.
-
-Examples:
-*  `edita 1 ar/01-01-2024 st/2`: Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
-*  `edita 2, 3 ar/01-01-2024 st/0`: Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
+![AttendancePercentage](images/AttendancePercentage.png)
 
 ### Adding\Editing a description : `description`
 
@@ -340,9 +341,10 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 
 <box type="warning" seamless>
 
-**Caution:**
-If your changes to the data file makes its format invalid, StudentBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the StudentBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+**Caution:** 
+- If your changes to the classbook.json data file makes its format invalid (e.g. `"courseCode" : "class_1"` where `class_1` contains non-alphanumeric characters), ClassBook will discard its classes in the classlist and start with an empty data file at the next run. Fortunately, in this case, your StudentBook data (e.g. `class1.json`) will not be lost. It can be recovered by simply recreating the class of that same name in the application (e.g. using the `create` command to `create c/class1`). 
+- Furthermore, certain edits to the individual JSON files can cause the application to behave in unexpected ways (e.g. if a value entered is outside the acceptable range, if field names such as `courseCode` are modified, etc.). In the worst case, an invalid modification to the data will cause the program to crash. In this scenario, you are advised to manually delete the modified files before running the program again. 
+- As such, do refrain from editing  manually in the JSON file. Edit the data file only if you are confident that you can update it correctly.
 </box>
 
 ### Coming Soon...
@@ -360,7 +362,7 @@ Furthermore, certain edits can cause the StudentBook to behave in unexpected way
 ![selected_class_showing](images/SelectedClassFAQ.png)
 
 **Q**: How can I manually delete students/classes? <br>
-**A**: Find your data folder in your home directory where MustVas is stored. In this folder, you will see the `classbook.json` file that contains, as well as another classbook folder that contains the individual `.json` files of the StudentBook, named after its class name. 
+**A**: Find your data folder in your home directory where MustVas is stored. In this folder, you will see the `classbook.json` file that contains the list of _courseCode_s, as well as another classbook folder that contains the individual `.json` files of the StudentBook, named after its class name. 
 ![manually delete class](images/ManuallyDeleteFiles.png)
 - You may delete the individual StudentBook by deleting its individual .json file under the classbook folder. Do note that doing so will be akin to using the `clear` command on that class, effectively setting an empty StudentBook to be used.
 - However, if you do intend to manually delete an entire class, do remember to delete both its _courseCode_ field in `classbook.json` and its respective `.json` file in the classbook folder. Otherwise, deleting just the _courseCode_ field in the `classbook.json` file would cause the same StudentBook to be used if a class of the same _courseCode_ is created again (i.e. `create c/class5` would reuse its old StudentBook with its old student contacts and not create a new empty StudentBook).
@@ -374,7 +376,7 @@ Furthermore, certain edits can cause the StudentBook to behave in unexpected way
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **When using view after selecting a class**, if you try to view classes after having selected a class, the StudentBook of the previously selected class will still be on display, until you select another class.
+2. **When using view after selecting a class**, if you try to view classes after having selected a class, the StudentBook of the previously selected class is still considered your selected class, until you select another class to manage.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -385,7 +387,7 @@ Action     | Format, Examples
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com s/A1111111D desc/Loves coding `
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID] [desc/DESCRIPTION]​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`

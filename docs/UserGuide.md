@@ -52,7 +52,7 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 
 4. Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there. <br>
 _See our Terminal guide below._ <br>
-![TerminalInstructions](images/QuickStartTerminal.png)
+![TerminalInstructions](images/TerminalInstructions.png)
    
 6. Use the `java -jar MustVas.jar` command to run the application.<br>
 7. A GUI similar to the below should appear in a few seconds. <br>

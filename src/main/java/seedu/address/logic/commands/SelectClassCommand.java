@@ -5,6 +5,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -50,5 +51,24 @@ public class SelectClassCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS + selectedClass.getCourseCode()
         + "\n" + ADD_INSTRUCTION);
     }
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        // instanceof handles nulls
+        if (!(other instanceof SelectClassCommand)) {
+            return false;
+        }
 
+        SelectClassCommand otherCommand = (SelectClassCommand) other;
+        return targetIndex.equals(otherCommand.targetIndex);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("targetIndex", targetIndex)
+                .toString();
+    }
 }

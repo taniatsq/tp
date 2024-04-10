@@ -16,13 +16,14 @@ public class SelectClassCommandParser implements Parser<SelectClassCommand> {
      * and returns a FindCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
+    @Override
     public SelectClassCommand parse(String userInput) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(userInput);
             return new SelectClassCommand(index);
-        } catch (NumberFormatException e) {
+        } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    SelectClassCommand.MESSAGE_USAGE));
+                    SelectClassCommand.MESSAGE_USAGE), pe);
         }
     }
 }

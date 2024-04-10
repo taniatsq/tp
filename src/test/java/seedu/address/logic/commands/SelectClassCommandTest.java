@@ -1,13 +1,19 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getTypicalClassBook;
+
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
-
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -16,16 +22,11 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.Person;
-import seedu.address.testutil.ClassBuilder;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalPersons.getTypicalClassBook;
 
 public class SelectClassCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalClassBook());
@@ -37,20 +38,38 @@ public class SelectClassCommandTest {
     public void constructor_nullIndex_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new SelectClassCommand(null));
     }
-//    @Test
-//    public void execute_negativeIndex_throwsCommandException() throws DataLoadingException, IOException {
-//        Classes validClass = new ClassBuilder().build();
-//        CreateClassCommand createClassCommand = new CreateClassCommand(validClass);
-//        SelectClassCommandTest.ModelStub modelStub = new CreateClassCommandTest.ModelStubWithClass(validClass);
-//        assertThrows(CommandException.class, () -> new SelectClassCommand(-1));
-//    }
     @Test
     public void execute_invalidIndex_throwsCommandException() {
-        int outOfBoundIndex = model.getFilteredClassList().size() + 1;
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredClassList().size() + 1);
         SelectClassCommand selectClassCommand = new SelectClassCommand(outOfBoundIndex);
 
         assertCommandFailure(selectClassCommand, model, Messages.MESSAGE_INVALID_CLASS_DISPLAYED_INDEX);
     }
+    @Test
+    public void equals() {
+        SelectClassCommand selectCommand = new SelectClassCommand(INDEX_FIRST_PERSON);
+
+        assertTrue(selectCommand.equals(selectCommand));
+
+        // Check if copies with same value return true
+        SelectClassCommand selectCommandCopy = new SelectClassCommand(INDEX_FIRST_PERSON);
+        assertTrue(selectCommand.equals(selectCommandCopy));
+
+        assertFalse(selectCommand.equals(null));
+
+        assertFalse(selectCommand.equals("CS2103"));
+
+        SelectClassCommand selectCommandTwo = new SelectClassCommand(INDEX_SECOND_PERSON);
+        assertFalse(selectCommand.equals(selectCommandTwo));
+    }
+    @Test
+    public void toStringMethod() {
+        Index targetIndex = Index.fromOneBased(1);
+        SelectClassCommand selectCommand = new SelectClassCommand(targetIndex);
+        String expected = SelectClassCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
+        assertEquals(expected, selectCommand.toString());
+    }
+
 
     /**
      * A default model stub that have all of the methods failing.

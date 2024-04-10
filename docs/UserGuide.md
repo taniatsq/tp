@@ -219,9 +219,13 @@ Format: `adda ar/DATE`
 * The format for `DATE` is `dd-MM-yyyy`.
 * The entered date, `DATE`, must not exist in any of the student's existing list of attendance dates.
 * The newly added attendance record will be automatically sorted based on the date.
-* The default value for status is '1' for 'Present', represented by a green tick.
-* If a new student has been added and there are existing attendance record, using the `adda` command will produce a default status value of '2' for 'Valid Reason', represented by a blue dot.
-* To edit the status value as well as more information on valid status inputs that we carry, do refer to the [`edita`](#editing-an-attendance-for-any-number-of-students--edita) command below for more information.
+* The default value for status is '1' for 'Present'.
+* If a new student has been added and there are existing attendance record, using the `adda` command will produce a default status value of '2' for 'Valid Reason'.
+* Note the representation for `STATUS`:
+    - 0 for 'Absent', represented by a red cross ❌ 
+    - 1 for 'Present', represented by a green tick ✅ 
+    - 2 for 'Valid Reason', represented by a blue dot 🔵 
+* To edit the status value, do refer to the [`edita`](#editing-an-attendance-for-any-number-of-students--edita) command below.
   
 Examples:
 *  `adda ar/01-01-2024`: All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
@@ -239,7 +243,7 @@ Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 * The command requires at least one index to be present at a time, though **multiple indexes** is also allowed, the latter of which needs to be separated by commas.
 * All the selected student will have their status of the selected attendance date, `DATE`, to be reflected to `STATUS`
   * The entered date, `DATE`, must exist in the student's existing list of attendance dates.
-  * `STATUS`
+  * Recall the representation and valid inputs for `STATUS`:
     - 0 for 'Absent', represented by a red cross ❌ 
     - 1 for 'Present', represented by a green tick ✅ 
     - 2 for 'Valid Reason', represented by a blue dot 🔵 

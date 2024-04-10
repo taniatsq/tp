@@ -324,7 +324,7 @@ public class ModelManager implements Model {
      * Hides all currently viewed students.
      */
     public void viewClasses() {
-       hideStudentsUi();
+        hideStudentsUi();
     }
 
     /**

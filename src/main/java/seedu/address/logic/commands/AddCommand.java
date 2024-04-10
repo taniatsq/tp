@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_RECORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -78,9 +77,7 @@ public class AddCommand extends Command {
         if (model.getSelectedClassName() == "No class selected!") {
             return new CommandResult(MESSAGE_FAILURE);
         }
-
         List<Person> lastShownList = model.getFilteredPersonList();
-
         for (Person p : lastShownList) {
             if (toAdd.getPhone().equals(p.getPhone())) {
                 throw new CommandException(MESSAGE_DUPLICATE_PHONE);

@@ -191,7 +191,7 @@ Examples:
 
 Edits an existing student in the StudentBook.
 
-Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID] [desc/DESCRIPTION]`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -200,7 +200,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]`
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com`: Edits the phone number and email studentId of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower ar/`: Edits the name of the 2nd person to be `Betsy Crower` and clears all existing attendances.
+*  `edit 2 n/Betsy Crower`: Edits the name of the 2nd person to be `Betsy Crower`.
 
 ### Adding an attendance record : `adda`
 
@@ -257,23 +257,14 @@ Format: `dela ar/DATE`
 Examples:
 * `dela ar/02-02-2024`: Deletes the attendance record, `02-02-2024`, from all students' existing list of attendance records.
 
-### Editing an attendance for any number of students : `edita`
+**Additional tips for Attendance taking** <br>
+- For quick attendance taking, here are the 3-4 steps that you can take:
+  1. Use the `adda` command to mark everyone as present.
+  2. Find the indexes of students who are absent and those who have valid reasons.
+  3. Use the `edita` command to mark them as absent/having a valid reason at one shot.
+- Moreover, to facilitate easier reading of a student's attendance records, we have an attendance percentage bar (see highlights below) that displays the overall score of a student's attendance that you can view at a quick glance.
 
-Edits the existing attendance record in the student's list of attendance in the studentId book. **Any number of students** can be edited in one go.
-
-![edit_attendance_command_mulitple](images/edit_attendance_command_mulitple.PNG)
-
-Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
-
-* The format for `DATE` is `dd-MM-yyyy`.
-* Edits the student at the specified `INDEX(S)`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​, up to the size of the class.
-* At least one index is provided. **Multiple number of index** is allowed at a time, separated by commas.
-* All the selected student will have their status of the selected attendance date, `DATE`, to be reflected to `STATUS`
-* The entered date, `DATE`, must exist in the student's existing list of attendance dates.
-
-Examples:
-*  `edita 1 ar/01-01-2024 st/2`: Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
-*  `edita 2, 3 ar/01-01-2024 st/0`: Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
+![AttendancePercentage](images/AttendancePercentage.png)
 
 ### Adding\Editing a description : `description`
 
@@ -386,7 +377,7 @@ Action     | Format, Examples
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com s/A1111111D desc/Loves coding `
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID]​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [s/STUDENT_ID] [desc/DESCRIPTION]​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`

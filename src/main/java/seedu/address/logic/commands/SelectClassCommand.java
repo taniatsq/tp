@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -26,10 +27,11 @@ public class SelectClassCommand extends Command {
             + "Parameters: view [index of class]...\n"
             + "Example: " + COMMAND_WORD + " 2";
 
-    private final Integer index;
+    private final Index targetIndex;
 
-    public SelectClassCommand(Integer index) {
-        this.index = index;
+    public SelectClassCommand(Index index) {
+        requireNonNull(index);
+        this.targetIndex = index;
     }
 
     @Override
@@ -37,10 +39,10 @@ public class SelectClassCommand extends Command {
         requireNonNull(model);
         ObservableList<Classes> lastShownList = model.getFilteredClassList();
 
-        if (index < 1 || index > model.getFilteredClassList().size()) {
+        if (targetIndex.getOneBased() < 1 || targetIndex.getOneBased() > model.getFilteredClassList().size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_CLASS_DISPLAYED_INDEX);
         }
-        Classes selectedClass = lastShownList.get(index - 1);
+        Classes selectedClass = lastShownList.get(targetIndex.getZeroBased());
         model.selectClass(selectedClass);
 
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

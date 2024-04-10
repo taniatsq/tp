@@ -225,6 +225,8 @@ public class AddAttendanceRecordCommandTest {
         public void viewClasses() {
 
         }
+        @Override
+        public void hideStudentsUi(){}
     }
 
 

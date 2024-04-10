@@ -338,8 +338,8 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 <box type="warning" seamless>
 
 **Caution:** 
-- If your changes to the classbook.json data file makes its format invalid, ClassBook will discard its classes in the classlist and start with an empty data file at the next run. Fortunately, in this case, your StudentBook data (e.g. `class1.json`) will not be lost. It can be recovered by simply recreating the class of that same name in the application (e.g. using the `create` command to `create c/class1`). 
-- Furthermore, certain edits to the individual `[class].json` file (i.e. the StudentBook) can cause the application to behave in unexpected ways (e.g. , if a value entered is outside the acceptable range). In the worst case, an invalid modification to the data will cause the program to crash. In this scenario, you are advised to manually delete the modified `[class].json` file before running the program again. 
+- If your changes to the classbook.json data file makes its format invalid (e.g. `"courseCode" : "class_1"` where `class_1` contains non-alphanumeric characters), ClassBook will discard its classes in the classlist and start with an empty data file at the next run. Fortunately, in this case, your StudentBook data (e.g. `class1.json`) will not be lost. It can be recovered by simply recreating the class of that same name in the application (e.g. using the `create` command to `create c/class1`). 
+- Furthermore, certain edits to the individual JSON files can cause the application to behave in unexpected ways (e.g. if a value entered is outside the acceptable range). In the worst case, an invalid modification to the data will cause the program to crash. In this scenario, you are advised to manually delete the modified files before running the program again. 
 - As such, do refrain from editing  manually in the JSON file. Edit the data file only if you are confident that you can update it correctly.
 </box>
 
@@ -358,7 +358,7 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 ![selected_class_showing](images/SelectedClassFAQ.png)
 
 **Q**: How can I manually delete students/classes? <br>
-**A**: Find your data folder in your home directory where MustVas is stored. In this folder, you will see the `classbook.json` file that contains, as well as another classbook folder that contains the individual `.json` files of the StudentBook, named after its class name. 
+**A**: Find your data folder in your home directory where MustVas is stored. In this folder, you will see the `classbook.json` file that contains the list of _courseCode_s, as well as another classbook folder that contains the individual `.json` files of the StudentBook, named after its class name. 
 ![manually delete class](images/ManuallyDeleteFiles.png)
 - You may delete the individual StudentBook by deleting its individual .json file under the classbook folder. Do note that doing so will be akin to using the `clear` command on that class, effectively setting an empty StudentBook to be used.
 - However, if you do intend to manually delete an entire class, do remember to delete both its _courseCode_ field in `classbook.json` and its respective `.json` file in the classbook folder. Otherwise, deleting just the _courseCode_ field in the `classbook.json` file would cause the same StudentBook to be used if a class of the same _courseCode_ is created again (i.e. `create c/class5` would reuse its old StudentBook with its old student contacts and not create a new empty StudentBook).

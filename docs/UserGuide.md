@@ -55,7 +55,7 @@ _See our Terminal guide below._ <br>
 ![TerminalInstructions](images/TerminalInstructions.png)
    
 6. Copy and paste this command `java -jar MustVas.jar` into your terminal.
-![TerminalInstructions](images/TerminalInstructions_2.png)
+![TerminalInstructions](images/TerminalInstructions_jar.png)
 
 8. An interface similar to the below should appear in a few seconds. <br>
    ![Ui](images/UI_initial.png)

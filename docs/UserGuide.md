@@ -225,7 +225,7 @@ Format: `adda ar/DATE`
     - 0 for 'Absent', represented by a red cross ❌ 
     - 1 for 'Present', represented by a green tick ✅ 
     - 2 for 'Valid Reason', represented by a blue dot 🔵 
-* To edit the status value, do refer to the [`edita`](#editing-an-attendance-for-any-number-of-students--edita) command below.
+* To edit the status value, do refer to the [edita](#editing-an-attendance-for-any-number-of-students--edita) command below.
   
 Examples:
 *  `adda ar/01-01-2024`: All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.

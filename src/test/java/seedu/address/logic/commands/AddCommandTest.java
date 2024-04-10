@@ -223,8 +223,10 @@ public class AddCommandTest {
 
         @Override
         public void viewClasses() {
-
         }
+
+        @Override
+        public void hideStudentsUi(){}
     }
 
     /**

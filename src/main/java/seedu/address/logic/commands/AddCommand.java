@@ -270,6 +270,7 @@ public class AddCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("studentid", studentId)
+                    .add("description", description)
                     .toString();
         }
     }

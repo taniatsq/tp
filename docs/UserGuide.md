@@ -48,10 +48,10 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 
 2. Download the latest `MustVas.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-1/tp/releases).
 
-3. Copy the file into a new folder you want to use as the _home folder_ for your MustVas.jar.
+3. Copy the MustVas.jar file into a new folder, MyMustVas and save it under your Documents.
 
-4. Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. (You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there.) <br>
-For example, if you have moved MustVas.jar into a new folder, MyMustVas, under your Downloads, you may use `cd` and `ls` to check for it in this manner:
+4. Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there. <br>
+_See our Terminal guide below._ <br>
 ![TerminalInstructions](images/QuickStartTerminal.png)
    
 6. Use the `java -jar MustVas.jar` command to run the application.<br>

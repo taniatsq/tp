@@ -285,6 +285,7 @@ Add a description to the selected student or Edit a description of the selected 
 Format: `description INDEX desc/DESCRIPTION`
 
 * **Only one description is allowed**. The old description will be replaced with the new description.
+* **Can use special characters**. To accommodate for adding tele_handles, percentages/grades, dates etc.
 
 Examples:
 *  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student. 

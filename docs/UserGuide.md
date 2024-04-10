@@ -46,15 +46,19 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `MustVas.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-1/tp/releases).
+2. Download the latest `MustVas.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-1/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your MustVas.
+3. Copy the file into a new folder you want to use as the _home folder_ for your MustVas.jar.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar MustVas.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. <br>
+4. Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. (You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there.) <br>
+For example, if you have moved MustVas.jar into a new folder, MyMustVas, under your Downloads, you may use `cd` and `ls` to check for it in this manner:
+![TerminalInstructions](images/QuickStartTerminal.png)
+   
+6. Use the `java -jar MustVas.jar` command to run the application.<br>
+7. A GUI similar to the below should appear in a few seconds. <br>
    ![Ui](images/UI_initial.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+8. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `view` : Lists all classes to select from.
@@ -77,7 +81,7 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 
    * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+9. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 

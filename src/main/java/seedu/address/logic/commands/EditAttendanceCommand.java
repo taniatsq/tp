@@ -6,9 +6,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -74,11 +76,12 @@ public class EditAttendanceCommand extends Command {
             }
         }
 
-        //        if (index.getZeroBased() >= lastShownList.size()) {
-        //            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        //        }
+        ArrayList<Index> listOfExeceutedIndex = new ArrayList<>();
         StringBuilder names = new StringBuilder();
         for (Index i : indexs) {
+            if (listOfExeceutedIndex.contains(i)) {
+                continue;
+            }
             Person personToEdit = lastShownList.get(i.getZeroBased());
             Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
@@ -90,8 +93,8 @@ public class EditAttendanceCommand extends Command {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
             names.append(editedPerson.getName());
             names.append(", ");
+            listOfExeceutedIndex.add(i);
         }
-        //        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, names.substring(0, names.length() - 2)));
     }
 
@@ -121,29 +124,6 @@ public class EditAttendanceCommand extends Command {
 
     }
 
-    //    @Override
-    //    public boolean equals(Object other) {
-    //        if (other == this) {
-    //            return true;
-    //        }
-    //
-    //        // instanceof handles nulls
-    //        if (!(other instanceof EditCommand)) {
-    //            return false;
-    //        }
-    //
-    //        EditAttendanceCommand otherEditAttendanceCommand = (EditAttendanceCommand) other;
-    //        return index.equals(otherEditAttendanceCommand.index)
-    //                && editPersonDescriptor.equals(otherEditAttendanceCommand.editPersonDescriptor);
-    //    }
-
-    //    @Override
-    //    public String toString() {
-    //        return new ToStringBuilder(this)
-    //                .add("index", index)
-    //                .add("editPersonDescriptor", editPersonDescriptor)
-    //                .toString();
-    //    }
 
     /**
      * Stores the details to edit the person with. Each non-empty field value will replace the

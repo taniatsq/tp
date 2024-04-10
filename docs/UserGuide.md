@@ -168,9 +168,9 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * `PHONE_NUMBER` must range from `80000000` to `99999999`. 
 * There should not be any duplicate `PHONE_NUMBER`, `EMAIL` or `STUDENT_ID`.
-* `NAME` and `DESCRIPTION` only accepts alphanumerical characters and whitespace (i.e. non-alphanumeric characters such as '/', '-', '$' are not accepted)
+* `NAME` only accepts alphanumerical characters and whitespace (i.e. non-alphanumeric characters such as '/', '-', '$' are not accepted)
 * The newly added student will be automatically positioned alphabetically by name.
-* The description field is optional. You may write any description for the new student. However, **only one description is allowed**. The old description will be replaced with the new description.
+* The description field is optional. You may write any description for the new student. However, **only one description is allowed**. The old description will be replaced with the new description when editing or adding a new description when one already exists.
 * If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
 ![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
   - You may see our [attendance features](#adding-an-attendance-record--adda) below for more information.
@@ -284,8 +284,8 @@ Add a description to the selected student or Edit a description of the selected 
 
 Format: `description INDEX desc/DESCRIPTION`
 
-* **Only one description is allowed**. The old description will be replaced with the new description.
-* **Can use special characters**. To accommodate for adding tele_handles, percentages/grades, dates etc.
+* **Only one description is allowed**. The old description will be replaced with the new description (i.e., when we add/edit a description when one already exists.)
+* **Can use special characters**. To accommodate for adding tele handles, percentages/grades, dates etc.
 
 Examples:
 *  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student. 

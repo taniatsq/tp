@@ -197,7 +197,9 @@ public class ModelManager implements Model {
     public void removeClass(Classes classes) {
         hideStudentsUi();
         classBook.removeClass(classes);
-        userPrefs.setAddressBookFilePath(Paths.get(""));
+        userPrefs.setAddressBookFilePath(Paths.get("No class selected!"));
+        this.selectedClass = null;
+        this.selectedClassAddressBook = new AddressBook();
         notifyUiUpdateListeners();
     }
 
@@ -247,7 +249,6 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
         notifyUiUpdateListeners();
-
     }
 
     @Override
@@ -323,12 +324,13 @@ public class ModelManager implements Model {
      * Hides all currently viewed students.
      */
     public void viewClasses() {
-       hideStudentsUi();
+        hideStudentsUi();
     }
 
+    /**
+     * Hides all currently viewed students.
+     */
     public void hideStudentsUi() {
         updateFilteredPersonList(updatedPerson -> false);
     }
-
-
 }

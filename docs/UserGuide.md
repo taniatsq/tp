@@ -54,11 +54,13 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 _See our Terminal guide below._ <br>
 ![TerminalInstructions](images/TerminalInstructions.png)
    
-6. Use the `java -jar MustVas.jar` command to run the application.<br>
-7. A GUI similar to the below should appear in a few seconds. <br>
+6. Copy and paste this command `java -jar MustVas.jar` into your terminal.
+![TerminalInstructions](images/TerminalInstructions_2.png)
+
+8. An interface similar to the below should appear in a few seconds. <br>
    ![Ui](images/UI_initial.png)
 
-8. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+9. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `view` : Lists all classes to select from.
@@ -81,7 +83,7 @@ _See our Terminal guide below._ <br>
 
    * `exit` : Exits the app.
 
-9. Refer to the [Features](#features) below for details of each command.
+10. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 

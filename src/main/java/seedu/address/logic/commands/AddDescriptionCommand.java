@@ -25,8 +25,8 @@ public class AddDescriptionCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_DESCRIPTION + "DESCRIPTION";
 
-    public static final String MESSAGE_ADD_SUCCESS = "New description added to Person: %1$s";
-    public static final String MESSAGE_DELETE_SUCCESS = "Description removed from Person: %1$s";
+    public static final String MESSAGE_ADD_SUCCESS = "New description added to: %1$s";
+    public static final String MESSAGE_DELETE_SUCCESS = "Description removed from: %1$s";
 
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Description: %2$s";
     public static final String MESSAGE_FAILURE = "Create/Select a class before adding a description to students";
@@ -64,7 +64,7 @@ public class AddDescriptionCommand extends Command {
         return new CommandResult(String.format(!description.value.isEmpty()
                                                 ? MESSAGE_ADD_SUCCESS
                                                 : MESSAGE_DELETE_SUCCESS,
-                personToEdit));
+                Messages.format(editedPerson)));
     }
 
     @Override

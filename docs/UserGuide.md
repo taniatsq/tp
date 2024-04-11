@@ -291,7 +291,7 @@ Examples:
 
 ### Adding\Editing a description : `description`
 
-Add a description to the selected student or Edit a description of the selected student.
+Adds a description to the selected student or Updates an already existing description of the selected student.
 
 ![DescriptionCommand](images/DescriptionCommand.jpg)
 
@@ -301,7 +301,8 @@ Format: `description INDEX desc/DESCRIPTION`
 * **Can use special characters**. To accommodate for adding tele handles, percentages/grades, dates etc.
 
 Examples:
-*  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student. 
+*  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student.
+*  `description 2 desc/Absent on 29/04/2023 due to Case Competition`: Adds a description `Absent on 29/04/2023 due to Case Competition` to second student on the list.
 
 ### Listing a class to view : `list`
 
@@ -347,7 +348,7 @@ Format: `exit`
 
 ### Saving the data
 
-ClassBook and StudentBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+ClassBook and StudentBook data are saved automatically after any command that changes the data. There is no need to save manually. You can find the same in the data folder (which is going to be in the same directory as the application (i.e., .JAR file).
 
 ### Editing the data file
 

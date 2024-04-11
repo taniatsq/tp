@@ -51,7 +51,6 @@ public class AddAttendanceRecordCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-
         requireNonNull(model);
         if (model.getSelectedClassName() == "No class selected!") {
             return new CommandResult(MESSAGE_FAILURE);

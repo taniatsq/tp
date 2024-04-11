@@ -22,7 +22,6 @@ public class ListCommand extends Command {
             return new CommandResult(MESSAGE_FAILURE);
         }
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(MESSAGE_SUCCESS + model.getSelectedClassName() + "\nClass size: "
-                + model.getFilteredPersonList().size());
+        return new CommandResult(MESSAGE_SUCCESS + model.getSelectedClassName());
     }
 }

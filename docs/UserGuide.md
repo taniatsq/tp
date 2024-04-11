@@ -17,22 +17,32 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `MustVas.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your MustVas.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar MustVas.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. <br>
+   ![Ui](images/UI_initial.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `view` : Lists all classes to select from.
+  
+   * `create c/CS2101` : Creates a class with course code `CS2101` in the Class Book.
+  
+   * `select 1` : Selects the specified class of index 1 from the class list.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com s/A0251980B` : Adds a student named `John Doe` to the Student Book.
+  
+   * `adda ar/01-01-2024` : Adds an attendance record with the date `01-01-2024` and a default status `1` to all the existing students.
+  
+   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `2`.
+  
+   * `dela ar/01-01-2024` : Deletes all the attendance record with the date `01-01-2024` from all the students.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 1` : Deletes the 1st contact shown in the current list.
 
    * `clear` : Deletes all contacts.
 

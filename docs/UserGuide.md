@@ -117,9 +117,9 @@ Field     | Prefix (Flag)
 **Email** | `e/`
 **Student Id**   | `s/`
 **Phone**   | `p/`
-**Attendance Date**   | `ar`
-**Attendance Status**   | `st`
-**Description**   | `desc`
+**Attendance Date**   | `ar/`
+**Attendance Status**   | `st/`
+**Description**   | `desc/`
 
 ### Viewing help : `help`
 

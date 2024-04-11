@@ -291,7 +291,7 @@ Examples:
 
 ### Adding\Editing a description : `description`
 
-Adds a description to the selected student or Updates an already existing description of the selected student.
+Adds a description to the selected student or Updates an already existing description of the selected student with the given description.
 
 ![DescriptionCommand](images/DescriptionCommand.jpg)
 

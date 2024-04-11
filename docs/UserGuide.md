@@ -108,6 +108,19 @@ _See our Terminal guide below._ <br>
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
+## Prefixes: 
+
+Field     | Prefix (Flag)
+-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Class**    | `c/`
+**Name**  | `n/`
+**Email** | `e/`
+**Student Id**   | `s/`
+**Phone**   | `p/`
+**Attendance Date**   | `ar`
+**Attendance Status**   | `st`
+**Description**   | `desc`
+
 ### Viewing help : `help`
 
 Shows a message explaning how to access the help page.

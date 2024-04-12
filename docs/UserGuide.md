@@ -132,23 +132,31 @@ Examples:
 
 ### Removing a class : `rm`
 
-Removes the specified class from the ClassBook. Deletes all students in the class.
+Removes the specified class from the ClassBook, and deletes all students in the class.
 
 Format: `rm INDEX`
 
 * Deletes the class at the specified `INDEX`.
-* The index refers to the index number shown in the displayed class list.
-* The index **must be a positive integer** 1, 2, 3, …​
+<div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
 
-![Remove Class](RemoveClassResult)
-* Removes class from your ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
+### 💡 <span style="color: #5bc0de;">Index information</span>
+
+The index refers to the index number shown in the displayed class list. (e.g. CS2101 is index 1)
+* The index **must be a positive integer** (1, 2, 3, …​)
+
+</div>
+
+![RemoveClass](images/RemoveClassResult.png)
+* Removes the class from your ClassBook and entire StudentBook from that class as well, `[JAR file location]/data/classbook/[ClassName].json` will be simultaneously deleted.
+* `.\No class selected!` will be displayed on the bottom left
+
 
 ### Viewing the classes : `view`
 
 Shows list of classes in result display.
 
 ![ViewCommand](images/ViewCommand2.png)
-* The index number shown in the displayed class list is used for [Remove](#removing-a-class--rm) and [Select](#selecting-a-class-to-view--select) (e.g. CS2103 is index 1)
+* The index number shown in the displayed class list is used for [Remove](#removing-a-class--rm) and [Select](#selecting-a-class-to-view--select) (e.g. Use index 1 for CS2103)
 
 
 ### Selecting a class to view : `select`
@@ -156,16 +164,9 @@ Shows list of classes in result display.
 Shows the list of all students in the selected class.
 Allows you to modify and view the class.
 
-![img_1.png](SelectCommand)
+![img_1.png](images/SelectCommand.png)
 Format: `select INDEX`
-<div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
 
-### 💡 <span style="color: #5bc0de;">Index information</span>
-
-The index refers to the index number shown in the displayed class list. (e.g. CS2101 is index 1)
-* The index **must be a positive integer** 1, 2, 3, …​
-
-</div>
 
 * Selects the class at the specified `INDEX`. This will show you students in the class.
 * After selecting a class, you are now able to create, update, and access your students information!

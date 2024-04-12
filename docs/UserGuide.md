@@ -110,7 +110,7 @@ _See our Terminal guide below._ <br>
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message with a link to our help page.
 
 ![help message](images/HelpCommand.png)
 
@@ -118,11 +118,13 @@ Format: `help`
 
 ### Creating a class : `create`
 
-Simultaneously creates a class in the ClassBook and an empty StudentBook.
+Creates a new class.
 
 ![CreateClassCommand](images/CreateClassCommand.png)
 
 Format: `create c/CLASS_NAME`
+
+* This automatically selects the class you created, so you can modify the class immediately!
 
 Examples: 
 * `create c/CS2101`: Creates a class with course code 'CS2101'.
@@ -130,14 +132,16 @@ Examples:
 
 ### Removing a class : `rm`
 
-Removes the specified class from the ClassBook.
+Removes the specified class from the ClassBook. Deletes all students in the class.
 
 Format: `rm INDEX`
 
 * Deletes the class at the specified `INDEX`.
 * The index refers to the index number shown in the displayed class list.
 * The index **must be a positive integer** 1, 2, 3, …​
-* Removes class from ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
+
+![Remove Class](RemoveClassResult)
+* Removes class from your ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
 
 ### Viewing the classes : `view`
 

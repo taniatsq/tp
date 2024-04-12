@@ -201,7 +201,7 @@ Before using all functions below, make sure to **select a class** using the `sel
 
 This step ensures that you are able to modify the correct class!
 
-If you see something like this in the bottom left corner, you're good to go!
+If you see something like this (with the right class of course!) in the bottom left corner, you're good to go!
 ![img_1.png](img_1.png)
 </div>
 

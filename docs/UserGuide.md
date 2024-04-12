@@ -125,6 +125,7 @@ Creates a new class.
 Format: `create c/CLASS_NAME`
 
 * This automatically selects the class you created, so you can modify the class immediately!
+* `.\data\classbook\CS2101.json` in the bottom left corner indicates the current class file open in the app.
 
 Examples: 
 * `create c/CS2101`: Creates a class with course code 'CS2101'.
@@ -165,8 +166,8 @@ Shows the list of all students in the selected class.
 Allows you to modify and view the class.
 
 ![img_1.png](images/SelectCommand.png)
-Format: `select INDEX`
 
+Format: `select INDEX`
 
 * Selects the class at the specified `INDEX`. This will show you students in the class.
 * After selecting a class, you are now able to create, update, and access your students information!

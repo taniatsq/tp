@@ -157,16 +157,21 @@ Format: `rm INDEX`
 Shows list of classes in result display.
 
 ![ViewCommand](images/ViewCommand.png)
-
+* The index number shown in the displayed class list is used for "Select" and "Remove". (e.g. CS2101 is index 1)
 Format: `view`
 
 ### Selecting a class to view : `select`
 
 Shows a list of all students in the selected class.
 
-![SelectCommand](images/SelectCommand.png)
 
+![img_1.png](SelectCommand)
 Format: `select INDEX`
+
+* Selects the class at the specified `INDEX`.
+* The index refers to the index number shown in the displayed class list. (e.g. CS2101 is index 1)
+* The index **must be a positive integer** 1, 2, 3, …​
+* Removes class from ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
 
 * The subsequent features (i.e. `add`, `delete`, `edit`, `adda`, `dela`, `edita`, `description`, `list`, `find`, `clear`) are to be used after selecting a class.
 

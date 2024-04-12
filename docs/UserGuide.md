@@ -123,7 +123,7 @@ Field     | Prefix (Flag)
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message with a link to our help page.
 
 ![help message](images/HelpCommand.png)
 
@@ -131,11 +131,13 @@ Format: `help`
 
 ### Creating a class : `create`
 
-Simultaneously creates a class in the ClassBook and an empty StudentBook.
+Creates a new class.
 
 ![CreateClassCommand](images/CreateClassCommand.png)
 
 Format: `create c/CLASS_NAME`
+
+* This automatically selects the class you created, so you can modify the class immediately!
 
 Examples: 
 * `create c/CS2101`: Creates a class with course code 'CS2101'.
@@ -143,37 +145,62 @@ Examples:
 
 ### Removing a class : `rm`
 
-Removes the specified class from the ClassBook.
+Removes the specified class from the ClassBook. Deletes all students in the class.
 
 Format: `rm INDEX`
 
 * Deletes the class at the specified `INDEX`.
 * The index refers to the index number shown in the displayed class list.
 * The index **must be a positive integer** 1, 2, 3, …​
-* Removes class from ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
+
+![Remove Class](RemoveClassResult)
+* Removes class from your ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
 
 ### Viewing the classes : `view`
 
 Shows list of classes in result display.
 
-![ViewCommand](images/ViewCommand.png)
-* The index number shown in the displayed class list is used for "Select" and "Remove". (e.g. CS2101 is index 1)
-Format: `view`
+![ViewCommand](images/ViewCommand2.png)
+* The index number shown in the displayed class list is used for [Remove](#removing-a-class--rm) and [Select](#selecting-a-class-to-view--select) (e.g. CS2103 is index 1)
+
 
 ### Selecting a class to view : `select`
 
-Shows a list of all students in the selected class.
-
+Shows the list of all students in the selected class.
+Allows you to modify and view the class.
 
 ![img_1.png](SelectCommand)
 Format: `select INDEX`
+<div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
 
-* Selects the class at the specified `INDEX`.
-* The index refers to the index number shown in the displayed class list. (e.g. CS2101 is index 1)
+### 💡 <span style="color: #5bc0de;">Index information</span>
+
+The index refers to the index number shown in the displayed class list. (e.g. CS2101 is index 1)
 * The index **must be a positive integer** 1, 2, 3, …​
-* Removes class from ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
 
+</div>
+
+* Selects the class at the specified `INDEX`. This will show you students in the class.
+* After selecting a class, you are now able to create, update, and access your students information!
 * The subsequent features (i.e. `add`, `delete`, `edit`, `adda`, `dela`, `edita`, `description`, `list`, `find`, `clear`) are to be used after selecting a class.
+
+* In the bottom left corner, you will see the current class file open. In this case, it's `.\data\classbook\CS2103.json`
+![img_1.png](img_1.png)
+* The file will always named in the format `CLASS_NAME.json`
+
+
+# Working with your class
+<div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
+
+### 💡 <span style="color: #5bc0de;">Reminder</span>
+
+Before using all functions below, make sure to **select a class** using the `select` command.
+
+This step ensures that you are able to modify the correct class!
+
+</div>
+
+
 
 ### Adding a student : `add`
 

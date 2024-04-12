@@ -149,7 +149,8 @@ The index refers to the index number shown in the displayed class list. (e.g. CS
 
 ![RemoveClass](images/RemoveClassResult.png)
 * Removes the class from your ClassBook and entire StudentBook from that class as well, `[JAR file location]/data/classbook/[ClassName].json` will be simultaneously deleted.
-* `.\No class selected!` will be displayed on the bottom left
+* Any classes that are currently selected will be unselected, in order to prevent any accidental modification to your data.
+* `.\No class selected!` will be displayed on the bottom left.
 
 
 ### Viewing the classes : `view`
@@ -174,7 +175,7 @@ Format: `select INDEX`
 * The subsequent features (i.e. `add`, `delete`, `edit`, `adda`, `dela`, `edita`, `description`, `list`, `find`, `clear`) are to be used after selecting a class.
 
 * In the bottom left corner, you will see the current class file open. In this case, it's `.\data\classbook\CS2103.json`
-![img_1.png](img_1.png)
+
 * The file will always named in the format `CLASS_NAME.json`
 
 
@@ -187,8 +188,9 @@ Before using all functions below, make sure to **select a class** using the `sel
 
 This step ensures that you are able to modify the correct class!
 
+If you see something like this in the bottom left corner, you're good to go!
+![img_1.png](img_1.png)
 </div>
-
 
 
 ### Adding a student : `add`
@@ -351,6 +353,8 @@ Examples:
   ![result for 'find nic faaheem'](images/FindExample2.png)
 * `find John Doe` returns `John Doe`, `Johnathan Doe`, `Johnette Doe`<br>
     ![result for 'find nic faaheem'](images/FindExample3.png)
+
+
 **Warning**
 > If multiple search terms are used, all search terms will be matched with full words as well as incomplete words!
 
@@ -376,7 +380,7 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 
 <box type="warning" seamless>
 
-**Caution:** 
+⚠️ **Caution:** 
 - If your changes to the classbook.json data file makes its format invalid (e.g. `"courseCode" : "class_1"` where `class_1` contains non-alphanumeric characters), ClassBook will discard its classes in the classlist and start with an empty data file at the next run. Fortunately, in this case, your StudentBook data (e.g. `class1.json`) will not be lost. It can be recovered by simply recreating the class of that same name in the application (e.g. using the `create` command to `create c/class1`). 
 - Furthermore, certain edits to the individual JSON files can cause the application to behave in unexpected ways (e.g. if a value entered is outside the acceptable range, if field names such as `courseCode` are modified, etc.). In the worst case, an invalid modification to the data will cause the program to crash. In this scenario, you are advised to manually delete the modified files before running the program again. 
 - As such, do refrain from editing  manually in the JSON file. Edit the data file only if you are confident that you can update it correctly.

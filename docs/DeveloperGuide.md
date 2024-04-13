@@ -541,7 +541,7 @@ Use case ends.
     Use case ends.
 
   *4a. User inputs invalid class.
-    4a1. MustVas shows an error message.
+    * 4a1. MustVas shows an error message.
 
     Use case ends.
 

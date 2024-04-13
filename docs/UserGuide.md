@@ -73,7 +73,7 @@ _See our Terminal guide below._ <br>
   
    * `adda ar/01-01-2024` : Adds an attendance record with the date `01-01-2024` and a default status `1` to all the existing students.
   
-   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `2`.
+   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `0` (Absent).
   
    * `dela ar/01-01-2024` : Deletes all the attendance record with the date `01-01-2024` from all the students.
 

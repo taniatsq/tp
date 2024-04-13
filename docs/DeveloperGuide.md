@@ -308,13 +308,13 @@ and call `mainWindow.fillInnerParts()` to update the UI PersonListPanel.
 
 **Target user profile**:
 
-* NUS TAs who has to keep track of students' profile and attendance record during class
-* Has a need to manage a significant number of contacts, including potentially different classes
+* NUS Teaching Assistants (TAs) who has to keep track of students' profile and attendance record during class.
+* Has a need to manage a significant number of contacts, including potentially different classes.
 * Manages student's profile such as contact information, attendance, etc.
-* Prefer desktop apps over other types
-* Can type fast
-* Prefers typing to mouse interactions
-* Is reasonably comfortable using CLI apps
+* Prefer desktop apps over other types.
+* Able to type fast.
+* Prefers typing to mouse interactions.
+* Is reasonably comfortable using Command Line Interface (CLI) applications.
 
 **Value proposition**: Makes tutors life easier by increasing convenience of checking progress and compacting all the relevant information for easy access (Student contact information, attendance records, summary of attendance statuses, etc.)
 
@@ -331,20 +331,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user | add a new student to my class | keep track of my students' profiles |
 | `* * *`  | user | delete a student from the class | keep an updated record of students in the class |
 | `* *`    | user | write descriptions for each student | take note of certain students based on the description |
-| `* * *`  | user | create an attendance sheet for my students | record a student's attendance |
-| `* *`    | user | edit the attendance sheet of students | conveniently make changes to attendance when necessary |
-| `* * *`  | user | record attendance status for my students (PRESENT, ABSENT, VALID REASON) | acknowledge their attendance |
-| `* * *`  | user | delete an attendance sheet | remove any unnecessary attendance sheet |
+| `* * *`  | user | create an attendance record for my students (PRESENT, ABSENT, VALID REASON) | acknowledge a student's attendance |
+| `* *`    | user | edit the attendance record of students | conveniently make changes to attendance when necessary |
+| `* * *`  | user | delete an attendance record | remove any unnecessary attendance record |
 | `*`      | organised user | view the attendance rate of a student | easily have an idea of a specific student's overall attendance rate at one glance |
 | `*`      | organised user | browse my contacts in the default alphabetical setting | easily scroll to find a particular contact |
 | `* `    | forgetful user | schedule reminders for important events or follow-ups associated with a specific contact | don't miss important dates or tasks |
 
 
-### Use cases
+## Use cases
 
 (For all use cases below, the **System** is the `MustVas` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Select a class when the program is first opened (UC-01)**
+### Use case: Select a class when the program is first opened (UC-01)
 
 **MSS**
 
@@ -370,7 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 
-**Use case: Create new class (UC-02)**
+ ### Use case: Create new class (UC-02)
 
 **MSS**
 
@@ -383,11 +382,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. Enter an invalid command.
   * 1a1. MustVas shows an error message.
+* 1b. Enter a duplicate class.
+  * 1b1. MustVas shows an error message.
 
   Use case ends.
 
 
-**Use case: Select a student's profile (UC-03)**
+### Use case: Select a class of students to manage (UC-03)
 
 **MSS**
 
@@ -401,20 +402,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. Enter an invalid command.
   * 1a1. MustVas shows an error message.
 
-* 1b. Enter an invalid class
+* 1b. Enter an invalid class to select.
   * 1a1. MustVas shows an error message that stated class does not exist.
 
   Use case ends.
   
 
-**Use case: Add a student to a class (UC-04)**
+### Use case: Add a student to a class (UC-04)
 
 **MSS**
 
-1. User enters the program (MustVas)
-2. User requests to view classes (assuming they've been added) and proceeds to select one.
-3. User then inputs the command 'add' to check how to enter command
-4. User then inputs details for the command 'add'
+1. User enters the program (MustVas).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-03).
+3. User then inputs the command 'add' to check how to enter command.
+4. User then inputs details for the command 'add'.
 5. MustVas then adds the student to the selected class and displays all relevant details in the console.
 
 **Extensions**
@@ -423,11 +424,63 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 3a1. MustVas shows an error message.
 * 3b. Required fields are left empty.
   * 3b1. MustVas shows an error message.
+* 3c. User tries to add duplicate student.
+  * 3c1. MustVas shows an error message.
  
   Use case ends.   
 
+### Use case: Delete a student from a class (UC-05)
 
-*{More to be added}*
+**MSS**
+
+  1. User enters the program (MustVas).
+  2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-03).
+  3. User inputs the command to delete a student record from selected class.
+  4. MustVas confirms the deletion and removes the student from the selected class.
+
+**Extensions**
+
+  * 3a. User enters invalid command.
+    * 3a1. MustVas shows an error message.
+
+  Use case ends.
+
+### Use case: Add attendance record for a class of students (UC-06)
+
+**MSS**
+
+  1. User enters the program (MustVas).
+  2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-03).
+  3. User inputs the command to add an attendance record for all students.
+  4. MustVas confirms the added attendance and stores the attendance record for the selected students in the class.
+
+**Extensions**
+
+  * 2a. User enters invalid command.
+    * 2a1. MustVas shows an error message.
+  * 3a. User inputs an invalid command.
+    * 3a1. MustVas shows an error message.
+  
+  Use case ends.
+
+### Use case: Add description about a student (UC-07)
+
+**MSS**
+
+  1. User enters the program (MustVas).
+  2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-03).
+  3. User inputs the command to add description to a student.
+  4. User inputs the description details.
+  5. MustVas saves the description for the selected student.
+
+**Extensions**
+
+  * 2a. User enters invalid command.
+    * 2a1. MustVas shows an error message.
+  * 3a. User inputs an invalid command.
+    * 3a1. MustVas shows an error message.
+  
+  Use case ends.
 
 ### Non-Functional Requirements
 

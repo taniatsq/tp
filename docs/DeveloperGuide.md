@@ -323,9 +323,10 @@ and call `mainWindow.fillInnerParts()` to update the UI PersonListPanel.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user who enters the program for the first time | select the class that I want | view all the students in that selected class |
+| Priority | As a …​                                     | I want to …​                                        | So that I can…​                                                         |
+|----------|--------------------------------------------|----------------------------------------------------|------------------------------------------------------------------------|
+| `* *`    | New user exploring the app                 | Access the user guide easily via a help button     | Learn how to use the app   
+| `* * *`  | User who teaches multiple classes          | select the class that I want | easily manage |
 | `* * *`  | new user| create new class | separate students into their respective classes |
 | `* * *`  | user| delete class | remove classes that is not needed anymore |
 | `* * *`  | user | add a new student to my class | keep track of my students' profiles |

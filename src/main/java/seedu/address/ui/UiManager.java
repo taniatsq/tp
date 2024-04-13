@@ -15,7 +15,7 @@ import seedu.address.logic.Logic;
 /**
  * The manager of the UI component.
  */
-public class UiManager implements Ui {
+public class UiManager implements Ui, UiUpdateListener {
 
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
@@ -42,7 +42,8 @@ public class UiManager implements Ui {
         try {
             mainWindow = new MainWindow(primaryStage, logic);
             mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts();
+            //            mainWindow.fillInnerParts();
+            mainWindow.fillWithCommandBox();
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
@@ -85,4 +86,16 @@ public class UiManager implements Ui {
         System.exit(1);
     }
 
+    /**
+     * Updates the UI when a change is made
+     * This method fills the inner parts of the main window based on the selected class.
+     */
+    @Override
+    public void updateUi() {
+        try {
+            mainWindow.fillInnerParts(); // Fill the inner parts of the main window
+        } catch (Exception e) {
+            logger.severe("Error updating UI on class selection: " + e.getMessage());
+        }
+    }
 }

@@ -5,8 +5,8 @@
 ---
 
 # MustVas User Guide
-** Welcome to MustVas :+1:
-Welcome to MustVas's User Guide where you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as the relevant examples to get you started! Simply navigate to our [features section](#features) for a thorough read through, or click on a specific section to review in our [Table of Contents](#table-of-contents) for any queries you might have. Do keep a lookout for the [frequently asked questions](#faq) down below which may help you address some basic common questions! Lastly, our [command summary](#command-summary) will be useful as reference for the key command prompts to use in MustVas.
+## Welcome to MustVas ✋
+Hello, fellow TAs! You're about to embark on a journey that will revolutionise the way you manage your class. MustVas isn't just a tool; it's your new teaching partner designed to streamline your workflow so you can focus on what truly matters — educating and inspiring your students. In MustVas' User Guide, you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as the relevant examples to get you started! Simply navigate to our [features section](#features) for a thorough read through, or click on a specific section to review in our [Table of Contents](#table-of-contents) for any queries you might have. Do keep a lookout for the [frequently asked questions](#faq) down below which may help you address some basic common questions! Lastly, our [command summary](#command-summary) will be useful as reference for the key command prompts to use in MustVas.
 
 Having been built for TAs by TAs, MustVas is a desktop app designed to help fellow Teaching Assistants (TAs) manage tutorial contacts. Its key features include **creating and selecting classes, adding students' contacts and tracking their attendance**. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, MustVas can get your contact management tasks done faster than traditional GUI apps. We hope that MustVas will provide a new and better way for you to manage your students in the long run. Happy teaching!
 
@@ -119,6 +119,19 @@ Field     | Prefix (Flag) | Remarks
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+## Prefixes: 
+The meaning of each prefix is listed below:
+Field     | Prefix (Flag) | Remarks 
+-----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
+**Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. <br>No duplication is allowed. <br>Example: `c/cs2103`
+**Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]` and spaces <br>Example: `n/John Teo`
+**Student Email** | `e/` | 
+**Student Id**   | `s/` | Student Id must begin with A, followed by 7 digits, and end with a capital letter. <br>No duplication is allowed. <br>Example: `s/A1234567D`
+**Student Phone**   | `p/` | Phone must contain only 8 digits from `80000000` to `99999999`. <br>No duplication is allowed. <br>Example: `p/88889999`
+**Attendance Date**   | `ar/` | Date must be in the format of `dd-MM-yyyy`. <br>No duplication is allowed. <br>Example: `ar/01-01-2024`
+**Attendance Status**   | `st/` | The status must be either `0`, `1` or `2` <br>Example: `st/0`
+**Description**   | `desc/` | 
 </box>
 
 

@@ -333,6 +333,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | User who manages students                  | Add a new student to the class                     | Keep track of my students' profiles                                    |
 | `* * *`  | User who manages students                  | Delete a student from the class                    | Keep an updated record of students in the class                        |
 | `* *`    | User who manages students                  | Write descriptions for each student                | Take note of certain students based on the description                 |
+| `* *`    | User who manages students                  | Create assignments and grades for each student     | Track my student's grades                                              |
 | `* * *`  | User who manages student attendance        | Create an attendance record for my students        | Acknowledge a student's attendance (PRESENT, ABSENT, VALID REASON)     | 
 | `* *`    | User who manages student attendance        | Edit the attendance record of students             | Conveniently make changes to attendance when necessary                 |
 | `* * *`  | User who manages student attendance        | Delete an attendance record                        | Remove any unnecessary attendance records                              |

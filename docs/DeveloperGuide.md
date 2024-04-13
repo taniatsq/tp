@@ -516,6 +516,35 @@ Use case ends.
   
   Use case ends.
 
+### Use case: Remove a class (UC-08)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. User User request to [view the list of classes](#use-case-view-list-of-classes-uc-03).
+3. User inputs the command to remove a class.
+4. User selects the class to be removed from the list.
+5. MustVas removes the selected class and all associated data from the system.
+
+  Use case ends.
+
+**Extensions**
+
+  * 2a. User enters invalid command.   
+    * 2a1. MustVas shows an error message.
+   
+    Use case ends.
+    
+  * 3a. User inputs an invalid command.
+    * 3a1. MustVas shows an error message.
+
+    Use case ends.
+
+  *4a. User inputs invalid class.
+    4a1. MustVas shows an error message.
+
+    Use case ends.
+
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.

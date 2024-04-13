@@ -335,9 +335,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | Create an attendance record for my students        | Acknowledge a student's attendance (PRESENT, ABSENT, VALID REASON)     | 
 | `* *`    | user                                       | Edit the attendance record of students             | Conveniently make changes to attendance when necessary                 |
 | `* * *`  | user                                       | Delete an attendance record                        | Remove any unnecessary attendance records                              |
-| `*`      | organised user                             | view the attendance rate of a student              | Easily view the student's overall attendance rate at one glance        |
-| `**`     | organised user                             | browse students in the default alphabetical setting| easily scroll to find a particular contact |
-| `* `     | forgetful user | schedule reminders for important events or follow-ups associated with a specific contact | Don't miss important dates or tasks |
+| `* *`    | organised user                             | View the attendance rate of a student              | Easily view the student's overall attendance rate at one glance        |
+| `* *`    | organised user                             | browse students in the default alphabetical setting| easily scroll to find a particular contact                             |
+| `* `     | forgetful user                             | schedule reminders for specific contact            | Don't miss important dates or admin tasks                              |
 
 
 ## Use cases

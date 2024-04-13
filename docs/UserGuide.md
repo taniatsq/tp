@@ -86,6 +86,18 @@ _See our Terminal guide below._ <br>
 10. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+## Prefixes: 
+The meaning of each prefix is listed below:
+Field     | Prefix (Flag) | Remarks
+-----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
+**Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. No duplication is allowed.
+**Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`
+**Student Email** | `e/` | 
+**Student Id**   | `s/` | Student Id must begin with A, followed by 7 digits, and end with a capital letter. No duplication is allowed.
+**Student Phone**   | `p/` | Phone must contain only 8 digits from 80000000 to 99999999. No duplication is allowed.
+**Attendance Date**   | `ar/` | Date must be in the format of `dd-MM-yyyy`. No duplication is allowed.
+**Attendance Status**   | `st/` | The status must be either 0, 1 or 2
+**Description**   | `desc/` | 
 
 ## Features
 
@@ -108,18 +120,7 @@ _See our Terminal guide below._ <br>
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
-## Prefixes: 
-The meaning of each prefix is listed below:
-Field     | Prefix (Flag) | Remarks
------------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
-**Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. No duplication is allowed.
-**Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`
-**Student Email** | `e/` | 
-**Student Id**   | `s/` | Student Id must begin with A, followed by 7 digits, and end with a capital letter. No duplication is allowed.
-**Student Phone**   | `p/` | Phone must contain only 8 digits from 80000000 to 99999999. No duplication is allowed.
-**Attendance Date**   | `ar/` | Date must be in the format of `dd-MM-yyyy`. No duplication is allowed.
-**Attendance Status**   | `st/` | The status must be either 0, 1 or 2
-**Description**   | `desc/` | 
+
 
 ### Viewing help : `help`
 

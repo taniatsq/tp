@@ -74,9 +74,6 @@ public class EditAttendanceCommand extends Command {
             }
         }
 
-        //        if (index.getZeroBased() >= lastShownList.size()) {
-        //            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        //        }
         StringBuilder names = new StringBuilder();
         for (Index i : indexs) {
             Person personToEdit = lastShownList.get(i.getZeroBased());
@@ -120,30 +117,6 @@ public class EditAttendanceCommand extends Command {
                 updatedDescription);
 
     }
-
-    //    @Override
-    //    public boolean equals(Object other) {
-    //        if (other == this) {
-    //            return true;
-    //        }
-    //
-    //        // instanceof handles nulls
-    //        if (!(other instanceof EditCommand)) {
-    //            return false;
-    //        }
-    //
-    //        EditAttendanceCommand otherEditAttendanceCommand = (EditAttendanceCommand) other;
-    //        return index.equals(otherEditAttendanceCommand.index)
-    //                && editPersonDescriptor.equals(otherEditAttendanceCommand.editPersonDescriptor);
-    //    }
-
-    //    @Override
-    //    public String toString() {
-    //        return new ToStringBuilder(this)
-    //                .add("index", index)
-    //                .add("editPersonDescriptor", editPersonDescriptor)
-    //                .toString();
-    //    }
 
     /**
      * Stores the details to edit the person with. Each non-empty field value will replace the

@@ -28,9 +28,6 @@ public class SampleDataUtil {
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
-        //        for (Person samplePerson : getSamplePersons()) {
-        //            sampleAb.addPerson(samplePerson);
-        //        }
         return sampleAb;
     }
 
@@ -56,9 +53,6 @@ public class SampleDataUtil {
     }
     public static ReadOnlyClassBook getSampleClassBook() {
         ClassBook sampleCb = new ClassBook();
-        //        for (Classes sampleClasses : getSampleClasses()) {
-        //            sampleCb.createClass(sampleClasses);
-        //        }
         return sampleCb;
     }
 

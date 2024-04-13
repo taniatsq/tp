@@ -405,6 +405,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 1a1. MustVas shows an error message that stated class does not exist.
 
   Use case ends.
+  
+
+**Use case: Add a student to a class (UC-04)**
+
+**MSS**
+
+1. User enters the program (MustVas)
+2. User requests to view classes (assuming they've been added) and proceeds to select one.
+3. User then inputs the command 'add' to check how to enter command
+4. User then inputs details for the command 'add'
+5. MustVas then adds the student to the selected class and displays all relevant details in the console.
+
+**Extensions**
+
+* 3a. User enters invalid details.
+  * 3a1. MustVas shows an error message.
+* 3b. Required fields are left empty.
+  * 3b1. MustVas shows an error message.
+ 
+  Use case ends.   
 
 
 *{More to be added}*

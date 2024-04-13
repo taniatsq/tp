@@ -325,14 +325,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                     | I want to …​                                        | So that I can…​                                                         |
 |----------|--------------------------------------------|----------------------------------------------------|------------------------------------------------------------------------|
-| `* *`    | New user exploring the app                 | Access the user guide easily via a help button     | Learn how to use the app   
-| `* * *`  | User who teaches multiple classes          | select the class that I want | easily manage |
-| `* * *`  | new user| create new class | separate students into their respective classes |
-| `* * *`  | user| delete class | remove classes that is not needed anymore |
-| `* * *`  | user | add a new student to my class | keep track of my students' profiles |
-| `* * *`  | user | delete a student from the class | keep an updated record of students in the class |
-| `* *`    | user | write descriptions for each student | take note of certain students based on the description |
-| `* * *`  | user | create an attendance record for my students (PRESENT, ABSENT, VALID REASON) | acknowledge a student's attendance |
+| `* *`    | New user exploring the app                 | Access the user guide easily via a help button     | Learn how to use the app                                               |
+| `* * *`  | User who teaches multiple classes          | select the class that I want to manage             | easily manage multiple classes                                         |       
+| `* * *`  | User who teaches multiple classes          | Create new class                                   | separate students into their respective classes                        |
+| `* * *`  | user                                       | delete class                                       | remove classes that is not needed anymore                              |
+| `* * *`  | user                                       | add a new student to my class                      | keep track of my students' profiles                                    |
+| `* * *`  | user                                       | delete a student from the class                    | keep an updated record of students in the class                        |
+| `* *`    | user                                       | write descriptions for each student                | take note of certain students based on the description                 |
+| `* * *`  | user                                       | create an attendance record for my students        | acknowledge a student's attendance (PRESENT, ABSENT, VALID REASON)     | 
 | `* *`    | user | edit the attendance record of students | conveniently make changes to attendance when necessary |
 | `* * *`  | user | delete an attendance record | remove any unnecessary attendance record |
 | `*`      | organised user | view the attendance rate of a student | easily have an idea of a specific student's overall attendance rate at one glance |

@@ -468,6 +468,23 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Adding a description
+
+1. Adding a description while all persons are being shown
+
+   1. Prerequisites: List all persons using the `list` command. Before which, you have to `view` classes and then `select` based on the index.
+
+   1. Test case: `description 1 desc/Hello`<br>
+      Expected: First student/contact has a description added to them. Details of where the description has been added is shown.
+
+   1. Test case: `description 0 desc/Hello`<br>
+      Expectd: Error message thrown. No description is added to any contact.
+
+   1. Other incorrect description commands: `description 1 Hello`, `description`, `description desc/Hello`, `description x desc/Hello` (Where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+   1. Adding a description works in concurrence with add/edit commands as well. As long as their prerequisites are met, and description is following a prefix `desc/`, it should work effectively.
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files

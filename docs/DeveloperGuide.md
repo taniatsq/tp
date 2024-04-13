@@ -347,10 +347,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User enters the program
-2.  MustVas shows a list of classes
-3.  User selects a class
-4.  MustVas shows the list of students in the selected class
+1.  User enters the program.
+2.  MustVas shows a list of classes.
+3.  User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
 
     Use case ends.
 
@@ -362,10 +361,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 * 3a. The user enters an invalid class.
-
     * 3a1. MustVas shows an error message about selecting an invalid class.
 
-      Use case ends.
+  Use case ends.
 
 
 
@@ -373,8 +371,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to create new class with all the details
-2.  MustVas shows the created class
+1.  User requests to create new class with all the details.
+2.  MustVas shows the created class.
 
     Use case ends.
 
@@ -387,13 +385,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-
-### Use case: Select a class of students to manage (UC-03)
+### Use case: View list of classes (UC-03)
 
 **MSS**
 
-1.  User requests to select a class 
-2.  MustVas shows the details of the selected class
+1. User requests to view a list of classes.
+2. MustVas shows the list of stored classes.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Enter an invalid command.
+  * 1a1. MustVas shows an error message.
+
+  Use case ends.
+
+### Use case: Select a class of students to manage (UC-04)
+
+**MSS**
+
+1. User request to [view the list of classes](#use-case-view-list-of-classes-uc-03).
+2. User requests to select a class.
+3. MustVas shows the details of the selected class.
 
     Use case ends.
 
@@ -408,36 +422,46 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
   
 
-### Use case: Add a student to a class (UC-04)
+### Use case: Add a student to a class (UC-05)
 
 **MSS**
 
 1. User enters the program (MustVas).
-2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-03).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
 3. User then inputs the command 'add' to check how to enter command.
 4. User then inputs details for the command 'add'.
 5. MustVas then adds the student to the selected class and displays all relevant details in the console.
+
+  Use case ends.
 
 **Extensions**
 
 * 3a. User enters invalid details.
   * 3a1. MustVas shows an error message.
+
+Use case ends.
+
 * 3b. Required fields are left empty.
   * 3b1. MustVas shows an error message.
+ 
+Use case ends. 
+
 * 3c. User tries to add duplicate student.
   * 3c1. MustVas shows an error message.
  
-  Use case ends.   
+Use case ends.   
 
-### Use case: Delete a student from a class (UC-05)
+### Use case: Delete a student from a class (UC-06)
 
 **MSS**
 
-  1. User enters the program (MustVas).
-  2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-03).
-  3. User inputs the command to delete a student record from selected class.
-  4. MustVas confirms the deletion and removes the student from the selected class.
+1. User enters the program (MustVas).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+3. User inputs the command to delete a student record from selected class.
+4. MustVas confirms the deletion and removes the student from the selected class.
 
+Use case ends.
+  
 **Extensions**
 
   * 3a. User enters invalid command.
@@ -445,38 +469,48 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-### Use case: Add attendance record for a class of students (UC-06)
+### Use case: Add attendance record for a class of students (UC-07)
 
 **MSS**
 
-  1. User enters the program (MustVas).
-  2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-03).
-  3. User inputs the command to add an attendance record for all students.
-  4. MustVas confirms the added attendance and stores the attendance record for the selected students in the class.
+1. User enters the program (MustVas).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+3. User inputs the command to add an attendance record for all students.
+4. MustVas confirms the added attendance and stores the attendance record for the selected students in the class.
+
+  Use case ends.
 
 **Extensions**
 
   * 2a. User enters invalid command.
     * 2a1. MustVas shows an error message.
+
+    Use case ends.
+    
   * 3a. User inputs an invalid command.
     * 3a1. MustVas shows an error message.
   
   Use case ends.
 
-### Use case: Add description about a student (UC-07)
+### Use case: Add description about a student (UC-08)
 
 **MSS**
 
-  1. User enters the program (MustVas).
-  2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-03).
-  3. User inputs the command to add description to a student.
-  4. User inputs the description details.
-  5. MustVas saves the description for the selected student.
+1. User enters the program (MustVas).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+3. User inputs the command to add description to a student.
+4. User inputs the description details.
+5. MustVas saves the description for the selected student.
 
+  Use case ends.
+  
 **Extensions**
 
-  * 2a. User enters invalid command.
+  * 2a. User enters invalid command.   
     * 2a1. MustVas shows an error message.
+   
+    Use case ends.
+    
   * 3a. User inputs an invalid command.
     * 3a1. MustVas shows an error message.
   

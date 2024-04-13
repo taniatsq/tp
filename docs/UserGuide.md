@@ -109,7 +109,7 @@ _See our Terminal guide below._ <br>
 </box>
 
 ## Prefixes: 
-
+The meaning of each prefix is listed below:
 Field     | Prefix (Flag) | Remarks
 -----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
 **Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. No duplication is allowed.

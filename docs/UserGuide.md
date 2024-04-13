@@ -108,9 +108,9 @@ _See our Terminal guide below._ <br>
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
-## Prefixes: 
+## Attribute Summary (Prefixes): 
 The meaning of each prefix is listed below:
-Field     | Prefix (Flag) | Remarks 
+Attribute     | Prefix (Flag) | Remarks 
 -----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
 **Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. <br>No duplication is allowed. <br>Example: `c/cs2103`
 **Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]` and spaces <br>Example: `n/John Teo`

@@ -379,7 +379,7 @@ Examples:
 
 Clears all entries from the StudentBook in a selected class.
 <div markdown="block" class="alert alert-danger">
-⚠️ **Caution:** Upon initiating the command to clear all students from the StudentBook, no further prompts will follow.  This action is irreversible and once executed, the data cannot be retrieved.
+⚠️ Caution: Upon initiating the command to clear all students from the StudentBook, no further prompts will follow.  This action is irreversible and once executed, the data cannot be retrieved.
 </div>
 
 Format: `clear`

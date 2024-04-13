@@ -472,7 +472,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User enters the program (MustVas).
 2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
 3. User inputs the command to add an attendance record for all students.
-4. MustVas confirms the added attendance and stores the attendance record for the selected students in the class.
+4. MustVas confirms the added attendance, stores the attendance records for all students in the class, and show the updated attendance records.
 
  Use case ends.
 
@@ -488,7 +488,55 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
   Use case ends.
 
-### Use case: Add description about a student (UC-08)
+### Use case: Edit attendance record for some students (UC-08)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. MustVas shows the layout of the program.
+3. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+4. User inputs the command to edit an attendance record for some students.
+5. MustVas confirms the edited attendance records, stores the attendance records for the selected students in the class, and show the updated attendance records.
+
+Use case ends.
+
+**Extensions**
+
+* 3a. User enters invalid command.
+    * 3a1. MustVas shows an error message.
+
+  Use case ends.
+
+* 4a. User inputs an invalid command.
+    * 4a1. MustVas shows an error message.
+
+  Use case ends.
+
+### Use case: Add attendance record for a class of students (UC-09)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. MustVas shows the layout of the program.
+3. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+4. User inputs the command to delete an attendance record for all students.
+5. MustVas confirms the deleted attendance records, stores the existing attendance records for all students in the class, and show the updated attendance records.
+
+Use case ends.
+
+**Extensions**
+
+* 3a. User enters invalid command.
+    * 3a1. MustVas shows an error message.
+
+  Use case ends.
+
+* 4a. User inputs an invalid command.
+    * 4a1. MustVas shows an error message.
+
+  Use case ends.
+
+### Use case: Add description about a student (UC-10)
 
 **MSS**
 
@@ -512,7 +560,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
   Use case ends.
 
-### Use case: Remove a class (UC-08)
+### Use case: Remove a class (UC-11)
 
 **MSS**
 
@@ -547,11 +595,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Each class should accept up to 30 students without issue
+5.  There should not be any duplication of students in the same class. 
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Json File**: A file to store the data used in the program
 
 --------------------------------------------------------------------------------------------------------------------
 

@@ -123,8 +123,12 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         StudentId updatedStudentId = editPersonDescriptor.getStudentId().orElse(personToEdit.getStudentId());
         Set<Attendance> updatedAttendances = editPersonDescriptor.getTags().orElse(personToEdit.getAttendances());
-        Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
-
+        Description updatedDescription;
+        if (editPersonDescriptor.getDescription().get().value.equals("")) {
+            updatedDescription = personToEdit.getDescription();
+        } else {
+            updatedDescription = editPersonDescriptor.getDescription().get();
+        }
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, updatedAttendances,
                 updatedDescription);

@@ -122,8 +122,10 @@ How the parsing works:
 
 
 The `Model` component,
-
-* stores the studentId book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
+ 
+* stores the ClassBook data i.e., all `Classes` objects. (Each `Classes` object has its own AddressBook).
+* stores the currently selected `Classes` instance, and its corresponding `AddressBook`.
+* stores all `Person` objects in the `AddressBook` of the  currently selected `Classes` instance (which are contained in a `UniquePersonList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -144,8 +146,8 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both studentId book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save addressBook data, classBook data, and user preference data in JSON format, and read them back into corresponding objects.
+* inherits from `ClassBookStorage`, `AddressBookStorage` and `UserPrefStorage`, which means it can be treated one of the above. (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
@@ -308,13 +310,13 @@ and call `mainWindow.fillInnerParts()` to update the UI PersonListPanel.
 
 **Target user profile**:
 
-* NUS TAs who has to keep track of students' profile and attendance record during class
-* Has a need to manage a significant number of contacts, including potentially different classes
+* NUS Teaching Assistants (TAs) who has to keep track of students' profile and attendance record during class.
+* Has a need to manage a significant number of contacts, including potentially different classes.
 * Manages student's profile such as contact information, attendance, etc.
-* Prefer desktop apps over other types
-* Can type fast
-* Prefers typing to mouse interactions
-* Is reasonably comfortable using CLI apps
+* Prefer desktop apps over other types.
+* Able to type fast.
+* Prefers typing to mouse interactions.
+* Is reasonably comfortable using Command Line Interface (CLI) applications.
 
 **Value proposition**: Makes tutors life easier by increasing convenience of checking progress and compacting all the relevant information for easy access (Student contact information, attendance records, summary of attendance statuses, etc.)
 
@@ -323,37 +325,40 @@ and call `mainWindow.fillInnerParts()` to update the UI PersonListPanel.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user who enters the program for the first time | select the class that I want | view all the students in that selected class |
-| `* * *`  | new user| create new class | separate students into their respective classes |
-| `* * *`  | user| delete class | remove classes that is not needed anymore |
-| `* * *`  | user | add a new student to my class | keep track of my students' profiles |
-| `* * *`  | user | delete a student from the class | keep an updated record of students in the class |
-| `* *`    | user | write descriptions for each student | take note of certain students based on the description |
-| `* * *`  | user | create an attendance sheet for my students | record a student's attendance |
-| `* *`    | user | edit the attendance sheet of students | conveniently make changes to attendance when necessary |
-| `* * *`  | user | record attendance status for my students (PRESENT, ABSENT, VALID REASON) | acknowledge their attendance |
-| `* * *`  | user | delete an attendance sheet | remove any unnecessary attendance sheet |
-| `*`      | organised user | view the attendance rate of a student | easily have an idea of a specific student's overall attendance rate at one glance |
-| `*`      | organised user | browse my contacts in the default alphabetical setting | easily scroll to find a particular contact |
-| `* `    | forgetful user | schedule reminders for important events or follow-ups associated with a specific contact | don't miss important dates or tasks |
-
-
-### Use cases
+| Priority | As a …​                                     | I want to …​                                        | So that I can…​                                                         |
+|----------|--------------------------------------------|----------------------------------------------------|------------------------------------------------------------------------|
+| `* *`    | New user exploring the app                 | Access the user guide easily via a help button     | Learn how to use the app                                               |
+| `* * *`  | User who teaches multiple classes          | View my classes                                    | See all the classes I'm currently managing at a glance                 |
+| `* * *`  | User who teaches multiple classes          | Select the class that I want to manage             | Easily manage multiple classes                                         |       
+| `* * *`  | User who teaches multiple classes          | Create new class                                   | Separate students into their respective classes                        |
+| `* * *`  | User who teaches multiple classes          | Delete class                                       | Remove classes that is not needed anymore                              |
+| `* * *`  | User who manages students                  | Add a new student to the class                     | Keep track of my students' profiles                                    |
+| `* * *`  | User who manages students                  | Delete a student from the class                    | Keep an updated record of students in the class                        |
+| `* *`    | User who manages students                  | Write descriptions for each student                | Take note of certain students based on the description                 |
+| `* *`    | User who manages students                  | Create assignments and grades for each student     | Track my student's grades                                              |
+| `* * *`  | User who manages student attendance        | Create an attendance record for my students        | Acknowledge a student's attendance (PRESENT, ABSENT, VALID REASON)     | 
+| `* *`    | User who manages student attendance        | Edit the attendance record of students             | Conveniently make changes to attendance when necessary                 |
+| `* * *`  | User who manages student attendance        | Delete an attendance record                        | Remove any unnecessary attendance records                              |
+| `* *`    | User who manages student attendance        | View the attendance rate of a student              | Easily view the student's overall attendance rate at one glance        |
+| `* *`    | Organised user                             | Browse students in the default alphabetical setting| easily scroll to find a particular contact                             |
+| `* `     | Forgetful user                             | Schedule reminders for specific contact            | Don't miss important dates or admin tasks                              |
+| `* `     | User who uses Canvas LMS                   | Import the attendance data into Canvas             | Easily upload attendance statistics for the school admin               |
+| `* `     | User who looking to be more efficient      | Send emails/texts to an entire class               | Easily communicate information to the students                         |
+| `* `     | User who looking to be more efficient      | Generate attendance reports                        | Easily submit them to school admin                                     |
+| `* `     | User who looking to be more efficient      | Export Student date in multiple formats (etc. PDF) | Share the data with other tutors or professors easily                  |
+## Use cases
 
 (For all use cases below, the **System** is the `MustVas` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Select a class when the program is first opened (UC-01)**
+### Use case: Select a class when the program is first opened (UC-01)
 
 **MSS**
 
-1.  User enters the program
-2.  MustVas shows a list of classes
-3.  User selects a class
-4.  MustVas shows the list of students in the selected class
+1.  User enters the program.
+2.  MustVas shows a list of classes.
+3.  User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
 
-    Use case ends.
+ Use case ends.
 
 **Extensions**
 
@@ -363,21 +368,38 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 * 3a. The user enters an invalid class.
-
     * 3a1. MustVas shows an error message about selecting an invalid class.
 
-      Use case ends.
+  Use case ends.
 
 
 
-**Use case: Create new class (UC-02)**
+ ### Use case: Create new class (UC-02)
 
 **MSS**
 
-1.  User requests to create new class with all the details
-2.  MustVas shows the created class
+1.  User requests to create new class with all the details.
+2.  MustVas shows the created class.
 
-    Use case ends.
+ Use case ends.
+
+**Extensions**
+
+* 1a. Enter an invalid command.
+  * 1a1. MustVas shows an error message.
+* 1b. Enter a duplicate class.
+  * 1b1. MustVas shows an error message.
+
+  Use case ends.
+
+### Use case: View list of classes (UC-03)
+
+**MSS**
+
+1. User requests to view a list of classes.
+2. MustVas shows the list of stored classes.
+
+ Use case ends.
 
 **Extensions**
 
@@ -386,28 +408,193 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-
-**Use case: Select a student's profile (UC-03)**
+### Use case: Select a class of students to manage (UC-04)
 
 **MSS**
 
-1.  User requests to select a class 
-2.  MustVas shows the details of the selected class
+1. User request to [view the list of classes](#use-case-view-list-of-classes-uc-03).
+2. User requests to select a class.
+3. MustVas shows the details of the selected class.
 
-    Use case ends.
+ Use case ends.
 
 **Extensions**
 
 * 1a. Enter an invalid command.
   * 1a1. MustVas shows an error message.
 
-* 1b. Enter an invalid class
+* 1b. Enter an invalid class to select.
   * 1a1. MustVas shows an error message that stated class does not exist.
 
   Use case ends.
+  
 
+### Use case: Add a student to a class (UC-05)
 
-*{More to be added}*
+**MSS**
+
+1. User enters the program (MustVas).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+3. User then inputs the command 'add' to check how to enter command.
+4. User then inputs details for the command 'add'.
+5. MustVas then adds the student to the selected class and displays all relevant details in the console.
+
+ Use case ends.
+
+**Extensions**
+
+* 3a. User enters invalid details.
+  * 3a1. MustVas shows an error message.
+
+* 3b. Required fields are left empty.
+  * 3b1. MustVas shows an error message.
+ 
+* 3c. User tries to add duplicate student.
+  * 3c1. MustVas shows an error message.
+ 
+  Use case ends.   
+
+### Use case: Delete a student from a class (UC-06)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+3. User inputs the command to delete a student record from selected class.
+4. MustVas confirms the deletion and removes the student from the selected class.
+
+ Use case ends.
+  
+**Extensions**
+
+* 3a. User enters invalid command.
+  * 3a1. MustVas shows an error message.
+
+  Use case ends.
+
+### Use case: Add attendance record for a class of students (UC-07)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+3. User inputs the command to add an attendance record for all students.
+4. MustVas confirms the added attendance, stores the attendance records for all students in the class, and show the updated attendance records.
+
+ Use case ends.
+
+**Extensions**
+
+* 2a. User enters invalid command.
+  * 2a1. MustVas shows an error message.
+
+  Use case ends.
+    
+* 3a. User inputs an invalid command.
+  * 3a1. MustVas shows an error message.
+  
+  Use case ends.
+
+### Use case: Edit attendance record for some students (UC-08)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. MustVas shows the layout of the program.
+3. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+4. User inputs the command to edit an attendance record for some students.
+5. MustVas confirms the edited attendance records, stores the attendance records for the selected students in the class, and show the updated attendance records.
+
+Use case ends.
+
+**Extensions**
+
+* 3a. User enters invalid command.
+    * 3a1. MustVas shows an error message.
+
+  Use case ends.
+
+* 4a. User inputs an invalid command.
+    * 4a1. MustVas shows an error message.
+
+  Use case ends.
+
+### Use case: Add attendance record for a class of students (UC-09)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. MustVas shows the layout of the program.
+3. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+4. User inputs the command to delete an attendance record for all students.
+5. MustVas confirms the deleted attendance records, stores the existing attendance records for all students in the class, and show the updated attendance records.
+
+Use case ends.
+
+**Extensions**
+
+* 3a. User enters invalid command.
+    * 3a1. MustVas shows an error message.
+
+  Use case ends.
+
+* 4a. User inputs an invalid command.
+    * 4a1. MustVas shows an error message.
+
+  Use case ends.
+
+### Use case: Add description about a student (UC-10)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
+3. User inputs the command to add description to a student.
+4. User inputs the description details.
+5. MustVas saves the description for the selected student.
+
+ Use case ends.
+  
+**Extensions**
+
+* 2a. User enters invalid command.   
+  * 2a1. MustVas shows an error message.
+   
+  Use case ends.
+    
+* 3a. User inputs an invalid command.
+  * 3a1. MustVas shows an error message.
+  
+  Use case ends.
+
+### Use case: Remove a class (UC-11)
+
+**MSS**
+
+1. User enters the program (MustVas).
+2. User User request to [view the list of classes](#use-case-view-list-of-classes-uc-03).
+3. User inputs the command to remove a class.
+4. User selects the class to be removed from the list.
+5. MustVas removes the selected class and all associated data from the system.
+
+ Use case ends.
+
+**Extensions**
+
+* 2a. User enters invalid command.   
+  * 2a1. MustVas shows an error message.
+   
+  Use case ends.
+    
+* 3a. User inputs an invalid command.
+  * 3a1. MustVas shows an error message.
+
+  Use case ends.
+
+* 4a. User inputs invalid class.
+  * 4a1. MustVas shows an error message.
+
+  Use case ends.
 
 ### Non-Functional Requirements
 
@@ -415,11 +602,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Each class should accept up to 30 students without issue
+5.  There should not be any duplication of students in the same class. 
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Json File**: A file to store the data used in the program
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -467,6 +656,23 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
+
+### Adding a description
+
+1. Adding a description while all persons are being shown
+
+   1. Prerequisites: List all persons using the `list` command. Before which, you have to `view` classes and then `select` based on the index.
+
+   1. Test case: `description 1 desc/Hello`<br>
+      Expected: First student/contact has a description added to them. Details of where the description has been added is shown.
+
+   1. Test case: `description 0 desc/Hello`<br>
+      Expected: Error message thrown. No description is added to any contact.
+
+   1. Other incorrect description commands: `description 1 Hello`, `description`, `description desc/Hello`, `description x desc/Hello` (Where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+   1. Adding a description works in concurrence with add/edit commands as well. As long as their prerequisites are met, and description is following a prefix `desc/`, it should work effectively.
 
 ### Saving data
 

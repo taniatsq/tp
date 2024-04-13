@@ -5,7 +5,8 @@
 ---
 
 # MustVas User Guide
-Welcome to MustVas's User Guide where you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as the relevant examples to get you started! Simply navigate to our [features section](#features) for a thorough read through, or click on a specific section to review in our [Table of Contents](#table-of-contents) for any queries you might have. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as reference for the key command prompts to use in MustVas.
+## Welcome to MustVas ✋
+Hello, fellow TAs! You're about to embark on a journey that will revolutionise the way you manage your class. MustVas isn't just a tool; it's your new teaching partner designed to streamline your workflow so you can focus on what truly matters — educating and inspiring your students. In MustVas' User Guide, you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as the relevant examples to get you started! Simply navigate to our [features section](#features) for a thorough read through, or click on a specific section to review in our [Table of Contents](#table-of-contents) for any queries you might have. Do keep a lookout for the [frequently asked questions](#faq) down below which may help you address some basic common questions! Lastly, our [command summary](#command-summary) will be useful as reference for the key command prompts to use in MustVas.
 
 Having been built for TAs by TAs, MustVas is a desktop app designed to help fellow Teaching Assistants (TAs) manage tutorial contacts. Its key features include **creating and selecting classes, adding students' contacts and tracking their attendance**. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, MustVas can get your contact management tasks done faster than traditional GUI apps. We hope that MustVas will provide a new and better way for you to manage your students in the long run. Happy teaching!
 
@@ -73,7 +74,7 @@ _See our Terminal guide below._ <br>
   
    * `adda ar/01-01-2024` : Adds an attendance record with the date `01-01-2024` and a default status `1` to all the existing students.
   
-   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `2`.
+   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `0` (Absent).
   
    * `dela ar/01-01-2024` : Deletes all the attendance record with the date `01-01-2024` from all the students.
 
@@ -106,7 +107,22 @@ _See our Terminal guide below._ <br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+## Attribute Summary (Prefixes): 
+The meaning of each prefix is listed below:
+Attribute     | Prefix (Flag) | Remarks 
+-----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
+**Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. <br>No duplication is allowed. <br>Example: `c/cs2103`
+**Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]` and spaces <br>Example: `n/John Teo`
+**Student Email** | `e/` | 
+**Student Id**   | `s/` | Student Id must begin with A, followed by 7 digits, and end with a capital letter. <br>No duplication is allowed. <br>Example: `s/A1234567D`
+**Student Phone**   | `p/` | Phone must contain only 8 digits from `80000000` to `99999999`. <br>No duplication is allowed. <br>Example: `p/88889999`
+**Attendance Date**   | `ar/` | Date must be in the format of `dd-MM-yyyy`. <br>No duplication is allowed. <br>Example: `ar/01-01-2024`
+**Attendance Status**   | `st/` | The status must be either `0`, `1` or `2` <br>Example: `st/0`
+**Description**   | `desc/` | 
 </box>
+
+
 
 ### Viewing help : `help`
 
@@ -188,7 +204,7 @@ Before using all functions below, make sure to **select a class** using the `sel
 
 This step ensures that you are able to modify the correct class!
 
-If you see something like this in the bottom left corner, you're good to go!
+If you see something like this (with the right class of course!) in the bottom left corner, you're good to go!
 ![img_1.png](img_1.png)
 </div>
 
@@ -204,9 +220,9 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * `PHONE_NUMBER` must range from `80000000` to `99999999`. 
 * There should not be any duplicate `PHONE_NUMBER`, `EMAIL` or `STUDENT_ID`.
-* `NAME` and `DESCRIPTION` only accepts alphanumerical characters and whitespace (i.e. non-alphanumeric characters such as '/', '-', '$' are not accepted)
+* `NAME` only accepts alphanumerical characters and whitespace (i.e. non-alphanumeric characters such as '/', '-', '$' are not accepted)
 * The newly added student will be automatically positioned alphabetically by name.
-* The description field is optional. You may write any description for the new student. However, **only one description is allowed**. The old description will be replaced with the new description.
+* The description field is optional. You may write any description for the new student. However, **only one description is allowed**. The old description will be replaced with the new description when editing or adding a new description when one already exists.
 * If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
 ![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
   - You may see our [attendance features](#adding-an-attendance-record--adda) below for more information.
@@ -314,17 +330,18 @@ Examples:
 
 ### Adding\Editing a description : `description`
 
-Add a description to the selected student or Edit a description of the selected student.
+Adds a description to the selected student or Updates an already existing description of the selected student with the given description.
 
 ![DescriptionCommand](images/DescriptionCommand.jpg)
 
 Format: `description INDEX desc/DESCRIPTION`
 
-* **Only one description is allowed**. The old description will be replaced with the new description.
-* **Can use special characters**. To accommodate for adding tele_handles, percentages/grades, dates etc.
+* **Only one description is allowed**. The old description will be replaced with the new description (i.e., when we add/edit a description when one already exists.)
+* **Can use special characters**. To accommodate for adding tele handles, percentages/grades, dates etc.
 
 Examples:
-*  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student. 
+*  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student.
+*  `description 2 desc/Absent on 29/04/2023 due to Case Competition`: Adds a description `Absent on 29/04/2023 due to Case Competition` to second student on the list.
 
 ### Listing a class to view : `list`
 
@@ -361,6 +378,9 @@ Examples:
 ### Clearing all entries : `clear`
 
 Clears all entries from the StudentBook in a selected class.
+<div markdown="block" class="alert alert-danger">
+⚠️ Caution: Upon initiating the command to clear all students from the StudentBook, no further prompts will follow.  This action is irreversible and once executed, the data cannot be retrieved.
+</div>
 
 Format: `clear`
 
@@ -372,7 +392,7 @@ Format: `exit`
 
 ### Saving the data
 
-ClassBook and StudentBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+ClassBook and StudentBook data are saved automatically after any command that changes the data. There is no need to save manually. You can find the same in the data folder (which is going to be in the same directory as the application (i.e., .JAR file).
 
 ### Editing the data file
 
@@ -392,6 +412,9 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
+
+**Q**: Unable to start the program?<br>
+**A**: Ensure that Java 11 or above is installed in your operating system. To check if you have Java 11 or above, open the Command Prompt and type in `java -version`. Once verified, navigate to the program's directory and type in `java -jar MustVas.jar` in the Command Prompt. 
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.

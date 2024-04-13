@@ -6,9 +6,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -16,6 +18,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.AttendanceStatus;
 import seedu.address.model.person.Description;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -74,10 +77,15 @@ public class EditAttendanceCommand extends Command {
             }
         }
 
+        ArrayList<Index> listOfExeceutedIndex = new ArrayList<>();
+
         StringBuilder names = new StringBuilder();
         for (Index i : indexs) {
+            if (listOfExeceutedIndex.contains(i)) {
+                continue;
+            }
             Person personToEdit = lastShownList.get(i.getZeroBased());
-            Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+            Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor, model);
 
             if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
                 throw new CommandException(MESSAGE_DUPLICATE_PERSON);
@@ -87,13 +95,13 @@ public class EditAttendanceCommand extends Command {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
             names.append(editedPerson.getName());
             names.append(", ");
+            listOfExeceutedIndex.add(i);
         }
-        //        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, names.substring(0, names.length() - 2)));
     }
 
     private static Person createEditedPerson(Person personToEdit,
-                                             EditPersonDescriptor editPersonDescriptor) throws CommandException {
+                                             EditPersonDescriptor editPersonDescriptor, Model model) throws CommandException {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
@@ -101,11 +109,13 @@ public class EditAttendanceCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         StudentId updatedStudentId = editPersonDescriptor.getAddress().orElse(personToEdit.getStudentId());
         boolean found = false;
+        Set<Attendance> newAttendances = new HashSet<>();
         for (Attendance a : personToEdit.getAttendances()) {
             if (a.attendanceName.getDate().equals(editPersonDescriptor.getAttendances().attendanceName.getDate())) {
-                a.attendanceName.setStatus(editPersonDescriptor.getAttendances().attendanceName.getStatus());
                 found = true;
-                break;
+                newAttendances.add(new Attendance(new AttendanceStatus(editPersonDescriptor.getAttendances().attendanceName.getDate(), editPersonDescriptor.getAttendances().attendanceName.getStatus())));
+            } else {
+                newAttendances.add(a);
             }
         }
         if (!found) {
@@ -113,7 +123,7 @@ public class EditAttendanceCommand extends Command {
         }
         Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, personToEdit.getAttendances(),
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedStudentId, newAttendances,
                 updatedDescription);
 
     }

@@ -351,7 +351,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  MustVas shows a list of classes.
 3.  User [selects a class (UC-03)](#use-case-select-a-class-of-students-to-manage-uc-04).
 
-    Use case ends.
+ Use case ends.
 
 **Extensions**
 
@@ -374,7 +374,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User requests to create new class with all the details.
 2.  MustVas shows the created class.
 
-    Use case ends.
+ Use case ends.
 
 **Extensions**
 
@@ -392,7 +392,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User requests to view a list of classes.
 2. MustVas shows the list of stored classes.
 
-   Use case ends.
+ Use case ends.
 
 **Extensions**
 
@@ -409,7 +409,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. User requests to select a class.
 3. MustVas shows the details of the selected class.
 
-    Use case ends.
+ Use case ends.
 
 **Extensions**
 
@@ -432,24 +432,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 4. User then inputs details for the command 'add'.
 5. MustVas then adds the student to the selected class and displays all relevant details in the console.
 
-  Use case ends.
+ Use case ends.
 
 **Extensions**
 
 * 3a. User enters invalid details.
   * 3a1. MustVas shows an error message.
 
-Use case ends.
-
 * 3b. Required fields are left empty.
   * 3b1. MustVas shows an error message.
  
-Use case ends. 
-
 * 3c. User tries to add duplicate student.
   * 3c1. MustVas shows an error message.
  
-Use case ends.   
+  Use case ends.   
 
 ### Use case: Delete a student from a class (UC-06)
 
@@ -460,12 +456,12 @@ Use case ends.
 3. User inputs the command to delete a student record from selected class.
 4. MustVas confirms the deletion and removes the student from the selected class.
 
-Use case ends.
+ Use case ends.
   
 **Extensions**
 
-  * 3a. User enters invalid command.
-    * 3a1. MustVas shows an error message.
+* 3a. User enters invalid command.
+  * 3a1. MustVas shows an error message.
 
   Use case ends.
 
@@ -478,17 +474,17 @@ Use case ends.
 3. User inputs the command to add an attendance record for all students.
 4. MustVas confirms the added attendance and stores the attendance record for the selected students in the class.
 
-  Use case ends.
+ Use case ends.
 
 **Extensions**
 
-  * 2a. User enters invalid command.
-    * 2a1. MustVas shows an error message.
+* 2a. User enters invalid command.
+  * 2a1. MustVas shows an error message.
 
-    Use case ends.
+  Use case ends.
     
-  * 3a. User inputs an invalid command.
-    * 3a1. MustVas shows an error message.
+* 3a. User inputs an invalid command.
+  * 3a1. MustVas shows an error message.
   
   Use case ends.
 
@@ -502,17 +498,17 @@ Use case ends.
 4. User inputs the description details.
 5. MustVas saves the description for the selected student.
 
-  Use case ends.
+ Use case ends.
   
 **Extensions**
 
-  * 2a. User enters invalid command.   
-    * 2a1. MustVas shows an error message.
+* 2a. User enters invalid command.   
+  * 2a1. MustVas shows an error message.
    
-    Use case ends.
+  Use case ends.
     
-  * 3a. User inputs an invalid command.
-    * 3a1. MustVas shows an error message.
+* 3a. User inputs an invalid command.
+  * 3a1. MustVas shows an error message.
   
   Use case ends.
 
@@ -526,24 +522,24 @@ Use case ends.
 4. User selects the class to be removed from the list.
 5. MustVas removes the selected class and all associated data from the system.
 
-  Use case ends.
+ Use case ends.
 
 **Extensions**
 
-  * 2a. User enters invalid command.   
-    * 2a1. MustVas shows an error message.
+* 2a. User enters invalid command.   
+  * 2a1. MustVas shows an error message.
    
-    Use case ends.
+  Use case ends.
     
-  * 3a. User inputs an invalid command.
-    * 3a1. MustVas shows an error message.
+* 3a. User inputs an invalid command.
+  * 3a1. MustVas shows an error message.
 
-    Use case ends.
+  Use case ends.
 
-  *4a. User inputs invalid class.
-    * 4a1. MustVas shows an error message.
+* 4a. User inputs invalid class.
+  * 4a1. MustVas shows an error message.
 
-    Use case ends.
+  Use case ends.
 
 ### Non-Functional Requirements
 

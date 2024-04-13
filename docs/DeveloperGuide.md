@@ -326,18 +326,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​                                     | I want to …​                                        | So that I can…​                                                         |
 |----------|--------------------------------------------|----------------------------------------------------|------------------------------------------------------------------------|
 | `* *`    | New user exploring the app                 | Access the user guide easily via a help button     | Learn how to use the app                                               |
-| `* * *`  | User who teaches multiple classes          | select the class that I want to manage             | easily manage multiple classes                                         |       
-| `* * *`  | User who teaches multiple classes          | Create new class                                   | separate students into their respective classes                        |
-| `* * *`  | user                                       | delete class                                       | remove classes that is not needed anymore                              |
-| `* * *`  | user                                       | add a new student to my class                      | keep track of my students' profiles                                    |
-| `* * *`  | user                                       | delete a student from the class                    | keep an updated record of students in the class                        |
-| `* *`    | user                                       | write descriptions for each student                | take note of certain students based on the description                 |
-| `* * *`  | user                                       | create an attendance record for my students        | acknowledge a student's attendance (PRESENT, ABSENT, VALID REASON)     | 
-| `* *`    | user | edit the attendance record of students | conveniently make changes to attendance when necessary |
-| `* * *`  | user | delete an attendance record | remove any unnecessary attendance record |
-| `*`      | organised user | view the attendance rate of a student | easily have an idea of a specific student's overall attendance rate at one glance |
-| `*`      | organised user | browse my contacts in the default alphabetical setting | easily scroll to find a particular contact |
-| `* `    | forgetful user | schedule reminders for important events or follow-ups associated with a specific contact | don't miss important dates or tasks |
+| `* * *`  | User who teaches multiple classes          | Select the class that I want to manage             | Easily manage multiple classes                                         |       
+| `* * *`  | User who teaches multiple classes          | Create new class                                   | Separate students into their respective classes                        |
+| `* * *`  | user                                       | Delete class                                       | Remove classes that is not needed anymore                              |
+| `* * *`  | user                                       | Add a new student to my class                      | Keep track of my students' profiles                                    |
+| `* * *`  | user                                       | Delete a student from the class                    | Keep an updated record of students in the class                        |
+| `* *`    | user                                       | Write descriptions for each student                | Take note of certain students based on the description                 |
+| `* * *`  | user                                       | Create an attendance record for my students        | Acknowledge a student's attendance (PRESENT, ABSENT, VALID REASON)     | 
+| `* *`    | user                                       | Edit the attendance record of students             | Conveniently make changes to attendance when necessary                 |
+| `* * *`  | user                                       | Delete an attendance record                        | Remove any unnecessary attendance records                              |
+| `*`      | organised user                             | view the attendance rate of a student              | Easily view the student's overall attendance rate at one glance        |
+| `**`     | organised user                             | browse students in the default alphabetical setting| easily scroll to find a particular contact |
+| `* `     | forgetful user | schedule reminders for important events or follow-ups associated with a specific contact | Don't miss important dates or tasks |
 
 
 ## Use cases

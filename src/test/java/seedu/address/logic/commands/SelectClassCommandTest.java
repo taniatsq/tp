@@ -206,10 +206,6 @@ public class SelectClassCommandTest {
         }
 
         @Override
-        public void viewClasses() {
-        }
-
-        @Override
         public void hideStudentsUi() {
         }
     }

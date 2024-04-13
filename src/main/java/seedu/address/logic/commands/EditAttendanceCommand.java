@@ -78,6 +78,7 @@ public class EditAttendanceCommand extends Command {
         }
 
         ArrayList<Index> listOfExeceutedIndex = new ArrayList<>();
+
         StringBuilder names = new StringBuilder();
         for (Index i : indexs) {
             if (listOfExeceutedIndex.contains(i)) {
@@ -126,7 +127,6 @@ public class EditAttendanceCommand extends Command {
                 updatedDescription);
 
     }
-
 
     /**
      * Stores the details to edit the person with. Each non-empty field value will replace the

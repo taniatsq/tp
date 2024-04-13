@@ -107,12 +107,15 @@ How the `Logic` component works:
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
+1. For commands that have no arguments, instead of creates a parser that matches the command (e.g., `ListCommandParser`), the `Command` object(e.g. ListCommand) is simply returned by the `AddressBookParser` .
+
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -363,11 +366,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. The list is empty.
-  * 2a1. MustVas shows a message that the list is empty.
+  * 2a1. MustVas shows a message that the list is empty. (Not implemented due to feature freeze)
 
   Use case ends.
 
-* 3a. The user enters an invalid class.
+* 3a. The user enters an invalid class index.
     * 3a1. MustVas shows an error message about selecting an invalid class.
 
   Use case ends.
@@ -385,10 +388,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Enter an invalid command.
-  * 1a1. MustVas shows an error message.
+* 1a. Enter an invalid class name (Contains non-alphanumeric characters, Contains spaces, or blank).
+  * 1a1. MustVas shows an error message stating the correct format
 * 1b. Enter a duplicate class.
-  * 1b1. MustVas shows an error message.
+  * 1b1. MustVas shows an error message stating the class alrea
 
   Use case ends.
 
@@ -403,8 +406,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Enter an invalid command.
-  * 1a1. MustVas shows an error message.
+* 1a. Enter an invalid command. 
+  * 1a1.MustVas shows the list of stored classes.
 
   Use case ends.
 
@@ -420,11 +423,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Enter an invalid command.
-  * 1a1. MustVas shows an error message.
-
-* 1b. Enter an invalid class to select.
-  * 1a1. MustVas shows an error message that stated class does not exist.
+* 1a. Enter an invalid class index.
+  * 1a1. MustVas shows an error message stating the provided class index is invalid
 
   Use case ends.
   

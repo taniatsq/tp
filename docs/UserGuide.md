@@ -130,7 +130,7 @@ Attribute     | Prefix (Flag) | Remarks
 **Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. <br>No duplication is allowed. <br>Example: `c/cs2103`
 **Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]` and spaces. <br>Example: `n/John Teo`
 **Student Email** | `e/` | No duplication is allowed. <br> Example: `e/jane@gmail.com`
-**Student Id**   | `s/` | Student Id must begin with A, followed by 7 digits, and end with a capital letter. <br>No duplication is allowed. <br>Example: `s/A1234567D`
+**Student Id**   | `s/` | Student Id must begin with A, followed by 7 digits, and end with a letter. The last letter will automatically become capitalised <br>No duplication is allowed. <br>Example: `s/A1234567D`
 **Student Phone**   | `p/` | Phone must contain only 8 digits from `80000000` to `99999999`. <br>No duplication is allowed. <br>Example: `p/88889999`
 **Attendance Date**   | `ar/` | Date must be in the format of `dd-MM-yyyy`. <br>No duplication is allowed. <br>Example: `ar/01-01-2024`
 **Attendance Status**   | `st/` | The status must be either `0`, `1` or `2`. <br>Example: `st/0`

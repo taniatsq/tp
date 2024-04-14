@@ -225,6 +225,7 @@ public class ModelManager implements Model {
         try {
             return this.selectedClass.getCourseCode().toString();
         } catch (NullPointerException e) {
+            logger.warning("No class currently selected!");
             return "No class selected!";
         }
     }
@@ -309,7 +310,7 @@ public class ModelManager implements Model {
         notifyUiUpdateListeners();
     }
 
-
+    //=============================== Observer functions ==================================================================
     public void addUiUpdateListener(UiUpdateListener listener) {
         uiUpdateListeners.add(listener);
     }
@@ -320,12 +321,6 @@ public class ModelManager implements Model {
         }
     }
 
-    /**
-     * Hides all currently viewed students.
-     */
-    public void viewClasses() {
-        hideStudentsUi();
-    }
 
     /**
      * Hides all currently viewed students.

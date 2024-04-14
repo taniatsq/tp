@@ -217,9 +217,6 @@ public class CreateClassCommandTest {
         }
 
         @Override
-        public void viewClasses() {
-        }
-        @Override
         public void hideStudentsUi() {
         }
     }

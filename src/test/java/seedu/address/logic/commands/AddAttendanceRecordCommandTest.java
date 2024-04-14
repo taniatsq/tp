@@ -35,24 +35,6 @@ public class AddAttendanceRecordCommandTest {
         assertThrows(NullPointerException.class, () -> new AddAttendanceRecordCommand((null)));
     }
 
-    //    @Test
-    //    public void execute_addAttendance_success() throws Exception {
-    //        // Setup your model with a few persons
-    //        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalClassBook());
-    //        model.selectClass(new Classes(new CourseCode("class1")));
-    //        Random random = new Random();
-    //        String date = String.format("%02d-%02d-202%d",
-    //                random.nextInt(27) + 1, random.nextInt(11) + 1, random.nextInt(9));
-    //
-    //        Attendance validAttendance = new Attendance(new AttendanceStatus(date, "1"));
-    //
-    //        CommandResult commandResult = new AddAttendanceRecordCommand(validAttendance).execute(model);
-    //
-    //        assertEquals(String.format(AddAttendanceRecordCommand.MESSAGE_SUCCESS, validAttendance),
-    //                commandResult.getFeedbackToUser());
-    //        // Further assertions to check if the attendance was correctly added to all persons
-    //    }
-
     @Test
     public void execute_emptyPersonList_throwsCommandException() {
         Model model = new ModelManager(); // No persons in the model
@@ -221,10 +203,6 @@ public class AddAttendanceRecordCommandTest {
             return null;
         }
 
-        @Override
-        public void viewClasses() {
-
-        }
         @Override
         public void hideStudentsUi(){}
     }

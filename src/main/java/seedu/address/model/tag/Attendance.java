@@ -40,7 +40,6 @@ public class Attendance {
      * Returns true if a given string is a valid tag name.
      */
     public static boolean isValidDate(String test) {
-//        return test.matches(VALIDATION_REGEX);
         if (test.trim().equals("")) {
             return false;
         }

@@ -14,7 +14,6 @@ public class ClearCommand extends Command {
     public static final String MESSAGE_FAILURE = "Create/Select a class first before attempting to clear!";
 
 
-
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

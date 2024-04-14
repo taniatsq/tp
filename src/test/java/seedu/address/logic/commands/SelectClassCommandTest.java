@@ -1,84 +1,75 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.TYPICAL_CLASS_1;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getTypicalClassBook;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.DataLoadingException;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ClassBook;
+import seedu.address.logic.Messages;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyClassBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Classes;
 import seedu.address.model.person.Person;
-import seedu.address.testutil.ClassBuilder;
-public class CreateClassCommandTest {
 
-    @Test
-    public void constructor_nullClass_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new CreateClassCommand(null));
-    }
+public class SelectClassCommandTest {
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalClassBook());
 
-    //    @Test
-    //    public void execute_classAcceptedByModel_createSuccessful() throws Exception {
-    //        ModelStubAcceptingClassCreated modelStub = new ModelStubAcceptingClassCreated();
-    //        Classes validClass = new ClassBuilder().build();
-    //
-    //        CommandResult commandResult = new CreateClassCommand(validClass).execute(modelStub);
-    //
-    //        assertEquals(String.format(CreateClassCommand.MESSAGE_SUCCESS, Messages.classFormat(validClass)),
-    //                commandResult.getFeedbackToUser());
-    //        assertEquals(Arrays.asList(validClass), modelStub.classesCreated);
-    //    }
-
-    @Test
-    public void execute_duplicateClass_throwsCommandException() throws DataLoadingException, IOException {
-        Classes validClass = new ClassBuilder().build();
-        CreateClassCommand createClassCommand = new CreateClassCommand(validClass);
-        ModelStub modelStub = new ModelStubWithClass(validClass);
-
-        assertThrows(CommandException.class, CreateClassCommand.MESSAGE_DUPLICATE_CLASS, () ->
-                createClassCommand.execute(modelStub));
+    public SelectClassCommandTest() throws DataLoadingException, IOException {
     }
 
     @Test
-    public void equals() throws DataLoadingException, IOException {
-        Classes cs1 = new ClassBuilder().withCC("cc123").build();
-        Classes cs2 = new ClassBuilder().withCC("cc789").build();
-        CreateClassCommand createCs1Command = new CreateClassCommand(cs1);
-        CreateClassCommand createCs2Command = new CreateClassCommand(cs2);
-
-        assertTrue(createCs1Command.equals(createCs1Command));
-
-        CreateClassCommand cs1Copy = new CreateClassCommand(cs1);
-        assertTrue(createCs1Command.equals(cs1Copy));
-
-        assertFalse(createCs1Command.equals(1));
-
-        assertFalse(createCs1Command.equals(null));
-
-        assertFalse(createCs1Command.equals(createCs2Command));
+    public void constructor_nullIndex_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new SelectClassCommand(null));
     }
+    @Test
+    public void execute_invalidIndex_throwsCommandException() {
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredClassList().size() + 1);
+        SelectClassCommand selectClassCommand = new SelectClassCommand(outOfBoundIndex);
 
+        assertCommandFailure(selectClassCommand, model, Messages.MESSAGE_INVALID_CLASS_DISPLAYED_INDEX);
+    }
+    @Test
+    public void equals() {
+        SelectClassCommand selectCommand = new SelectClassCommand(INDEX_FIRST_PERSON);
+
+        assertTrue(selectCommand.equals(selectCommand));
+
+        // Check if copies with same value return true
+        SelectClassCommand selectCommandCopy = new SelectClassCommand(INDEX_FIRST_PERSON);
+        assertTrue(selectCommand.equals(selectCommandCopy));
+
+        assertFalse(selectCommand.equals(null));
+
+        assertFalse(selectCommand.equals("CS2103"));
+
+        SelectClassCommand selectCommandTwo = new SelectClassCommand(INDEX_SECOND_PERSON);
+        assertFalse(selectCommand.equals(selectCommandTwo));
+    }
     @Test
     public void toStringMethod() {
-        CreateClassCommand createClassCommand = new CreateClassCommand(TYPICAL_CLASS_1);
-        String expected = CreateClassCommand.class.getCanonicalName() + "{toCreate=" + TYPICAL_CLASS_1 + "}";
-        assertEquals(expected, createClassCommand.toString());
+        Index targetIndex = Index.fromOneBased(1);
+        SelectClassCommand selectCommand = new SelectClassCommand(targetIndex);
+        String expected = SelectClassCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
+        assertEquals(expected, selectCommand.toString());
     }
 
 
@@ -218,48 +209,6 @@ public class CreateClassCommandTest {
 
         @Override
         public void hideStudentsUi() {
-        }
-    }
-
-    /**
-     * A Model stub that contains a single person.
-     */
-    private class ModelStubWithClass extends CreateClassCommandTest.ModelStub {
-        private final Classes classes;
-
-        ModelStubWithClass(Classes classes) {
-            requireNonNull(classes);
-            this.classes = classes;
-        }
-
-        @Override
-        public boolean hasClass(Classes classes) {
-            requireNonNull(classes);
-            return this.classes.isSameClass(classes);
-        }
-    }
-
-    /**
-     * A Model stub that always accept the person being added.
-     */
-    private class ModelStubAcceptingClassCreated extends CreateClassCommandTest.ModelStub {
-        final ArrayList<Classes> classesCreated = new ArrayList<>();
-
-        @Override
-        public boolean hasClass(Classes classes) {
-            requireNonNull(classes);
-            return classesCreated.stream().anyMatch(classes::isSameClass);
-        }
-
-        @Override
-        public void createClass(Classes classes) {
-            requireNonNull(classes);
-            classesCreated.add(classes);
-        }
-
-        @Override
-        public ReadOnlyClassBook getClassBook() {
-            return new ClassBook();
         }
     }
 }

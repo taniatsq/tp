@@ -5,9 +5,24 @@
 ---
 
 # MustVas User Guide
-Welcome to MustVas's User Guide where you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as the relevant examples to get you started! Simply navigate to our [features section](#features) for a thorough read through, or click on a specific section to review in our [Table of Contents](#table-of-contents) for any queries you might have. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as reference for the key command prompts to use in MustVas.
+## Welcome to MustVas ✋
+Hello, fellow TAs! You're about to embark on a journey that will revolutionise the way you manage your class. MustVas isn't just a tool; it's your new teaching partner designed to streamline your workflow so you can focus on what truly matters — educating and inspiring your students.
 
-Having been built for TAs by TAs, MustVas is a desktop app designed to help fellow Teaching Assistants (TAs) manage tutorial contacts. Its key features include **creating and selecting classes, adding students' contacts and tracking their attendance**. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, MustVas can get your contact management tasks done faster than traditional GUI apps. We hope that MustVas will provide a new and better way for you to manage your students in the long run. Happy teaching!
+## What is MustVas? 
+MustVas is a desktop app designed to help fellow Teaching Assistants (TAs) manage tutorial contacts. Its key features include **creating and selecting classes, adding students' contacts, and tracking their attendance**. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, MustVas can get your contact management tasks done faster than traditional GUI apps.
+
+## What can you do with MustVas?
+- **Class Management**: Organise and oversee your students across various classes.
+- **Attendance Management**: Efficiently maintain your students' attendance records with ease.  
+
+## Target Users
+Having been built for TAs by TAs, MustVas is specifically designed for Teaching Assistants (TAs) who are looking for an efficient way to manage their tutorial responsibilities and student interactions. 
+
+## Purpose of this User Guide
+In this User Guide, you will be learning key tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app and provide you with clear instructions on how to effectively utilize our product with relevant examples to get you started! By following these instructions, you can maximize your understanding and proficiency of using our product to its fullest potential. Whether you're a novice or an experienced user, this guide offers step-by-step instructions, clarifications, and best practices to enhance your overall experience. We hope that MustVas's user guide will provide a new and better way for you to manage your students in the long run.
+
+## How can you use this guide?
+Simply navigate to our features section for a thorough read through, or click on a specific section to review in our Table of Contents for any queries you might have. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as a reference for the key command prompts to use in MustVas. 
 
 NOTE: Users who are not familiar with using a CLI need not fret. Our commands have been specifically catered to a beginner's use - they are simple and easy to learn! Assistance is also provided automatically whenever there is an invalid command. 
 
@@ -50,13 +65,14 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 
 3. Copy the MustVas.jar file into a new folder, MyMustVas and save it under your Documents.
 
-4. Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there. <br>
+4. Run the program. 
+   * 4a. **[For Mac Users]** Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there. Copy and paste this command `java -jar MustVas.jar` into your terminal. <br>
 _See our Terminal guide below._ <br>
-![TerminalInstructions](images/TerminalInstructions.png)
-   
-6. Copy and paste this command `java -jar MustVas.jar` into your terminal.
 ![TerminalInstructions](images/TerminalInstructions_jar.png)
 
+   * 4b. **[For Windows Users]** Open a new command prompt and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `dir` command to check that your jar file is actually there. Copy and paste this command `java -jar MustVas.jar` into your command prompt. <br>
+_See our Command Prompt guide below._ <br>
+![CommandPromptInstructions](images/command_prompt.png)
 8. An interface similar to the below should appear in a few seconds. <br>
    ![Ui](images/UI_initial.png)
 
@@ -73,7 +89,7 @@ _See our Terminal guide below._ <br>
   
    * `adda ar/01-01-2024` : Adds an attendance record with the date `01-01-2024` and a default status `1` to all the existing students.
   
-   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `2`.
+   * `edita 1 ar/01-01-2024 st/0` : Edits the status of the attendance record with the date `01-01-2024` of the first student to `0` (Absent).
   
    * `dela ar/01-01-2024` : Deletes all the attendance record with the date `01-01-2024` from all the students.
 
@@ -106,11 +122,25 @@ _See our Terminal guide below._ <br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+## Attribute Summary (Prefixes): 
+The meaning of each prefix is listed below:
+Attribute     | Prefix (Flag) | Remarks 
+-----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
+**Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. <br>No duplication is allowed. <br>Example: `c/cs2103`
+**Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]` and spaces. <br>Example: `n/John Teo`
+**Student Email** | `e/` | No duplication is allowed. <br> Example: `e/jane@gmail.com`
+**Student Id**   | `s/` | Student Id must begin with A, followed by 7 digits, and end with a capital letter. <br>No duplication is allowed. <br>Example: `s/A1234567D`
+**Student Phone**   | `p/` | Phone must contain only 8 digits from `80000000` to `99999999`. <br>No duplication is allowed. <br>Example: `p/88889999`
+**Attendance Date**   | `ar/` | Date must be in the format of `dd-MM-yyyy`. <br>No duplication is allowed. <br>Example: `ar/01-01-2024`
+**Attendance Status**   | `st/` | The status must be either `0`, `1` or `2`. <br>Example: `st/0`
+**Description**   | `desc/` | Description will only keep the latest description. <br> Example: `desc/This student loves coding.`
 </box>
+
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message with a link to our help page.
 
 ![help message](images/HelpCommand.png)
 
@@ -118,11 +148,14 @@ Format: `help`
 
 ### Creating a class : `create`
 
-Simultaneously creates a class in the ClassBook and an empty StudentBook.
+Creates a new class.
 
 ![CreateClassCommand](images/CreateClassCommand.png)
 
 Format: `create c/CLASS_NAME`
+
+* This automatically selects the class you created, so you can modify the class immediately!
+* `.\data\classbook\CS2101.json` in the bottom left corner indicates the current class file open in the app.
 
 Examples: 
 * `create c/CS2101`: Creates a class with course code 'CS2101'.
@@ -130,32 +163,65 @@ Examples:
 
 ### Removing a class : `rm`
 
-Removes the specified class from the ClassBook.
+Removes the specified class from the ClassBook, and deletes all students in the class.
 
 Format: `rm INDEX`
 
 * Deletes the class at the specified `INDEX`.
-* The index refers to the index number shown in the displayed class list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* Removes class from ClassBook and entire StudentBook from that class as well, i.e. [JAR file location]/data/classbook/[ClassName].json will be simultaneously deleted.
+<div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
+
+### 💡 <span style="color: #5bc0de;">Index information</span>
+
+The index refers to the index number shown in the displayed class list. (e.g. CS2101 is index 1)
+* The index **must be a positive integer** (1, 2, 3, …​)
+
+</div>
+
+![RemoveClass](images/RemoveClassResult.png)
+* Removes the class from your ClassBook and entire StudentBook from that class as well, `[JAR file location]/data/classbook/[ClassName].json` will be simultaneously deleted.
+* Any classes that are currently selected will be unselected, in order to prevent any accidental modification to your data.
+* `.\No class selected!` will be displayed on the bottom left.
+
 
 ### Viewing the classes : `view`
 
 Shows list of classes in result display.
 
-![ViewCommand](images/ViewCommand.png)
+![ViewCommand](images/ViewCommand2.png)
+* The index number shown in the displayed class list is used for [Remove](#removing-a-class--rm) and [Select](#selecting-a-class-to-view--select) (e.g. Use index 1 for CS2103)
 
-Format: `view`
 
 ### Selecting a class to view : `select`
 
-Shows a list of all students in the selected class.
+Shows the list of all students in the selected class.
+Allows you to modify and view the class.
 
-![SelectCommand](images/SelectCommand.png)
+![img_1.png](images/SelectCommand.png)
 
 Format: `select INDEX`
 
+* Selects the class at the specified `INDEX`. This will show you students in the class.
+* After selecting a class, you are now able to create, update, and access your students information!
 * The subsequent features (i.e. `add`, `delete`, `edit`, `adda`, `dela`, `edita`, `description`, `list`, `find`, `clear`) are to be used after selecting a class.
+
+* In the bottom left corner, you will see the current class file open. In this case, it's `.\data\classbook\CS2103.json`
+
+* The file will always named in the format `CLASS_NAME.json`
+
+
+# Working with your class
+<div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
+
+### 💡 <span style="color: #5bc0de;">Reminder</span>
+
+Before using all functions below, make sure to **select a class** using the `select` command.
+
+This step ensures that you are modifying the correct class!
+
+If you see something like this (with the right class of course!) in the bottom left corner of your MustVas, you're good to go!
+![img_1.png](img_1.png)
+</div>
+
 
 ### Adding a student : `add`
 
@@ -168,9 +234,9 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 * `STUDENT_ID` must begin with A, followed by 7 digits, and end with a capital letter. 
 * `PHONE_NUMBER` must range from `80000000` to `99999999`. 
 * There should not be any duplicate `PHONE_NUMBER`, `EMAIL` or `STUDENT_ID`.
-* `NAME` and `DESCRIPTION` only accepts alphanumerical characters and whitespace (i.e. non-alphanumeric characters such as '/', '-', '$' are not accepted)
+* `NAME` only accepts alphanumerical characters and whitespace (i.e. non-alphanumeric characters such as '/', '-', '$' are not accepted)
 * The newly added student will be automatically positioned alphabetically by name.
-* The description field is optional. You may write any description for the new student. However, **only one description is allowed**. The old description will be replaced with the new description.
+* The description field is optional. You may write any description for the new student. However, **only one description is allowed**. The old description will be replaced with the new description when editing or adding a new description when one already exists.
 * If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
 ![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
   - You may see our [attendance features](#adding-an-attendance-record--adda) below for more information.
@@ -221,14 +287,18 @@ Format: `adda ar/DATE`
 * The newly added attendance record will be automatically sorted based on the date.
 * The default value for status is '1' for 'Present'.
 * If a new student has been added and there are existing attendance record, using the `adda` command will produce a default status value of '2' for 'Valid Reason'.
+<div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
+  
+### 💡 <span style="color: #5bc0de;">Status information</span>
 * Note the representation for `STATUS`:
     - 0 for 'Absent', represented by a red cross ❌ 
     - 1 for 'Present', represented by a green tick ✅ 
     - 2 for 'Valid Reason', represented by a blue dot 🔵 
 * To edit the status value, do refer to the [edita](#editing-an-attendance-for-any-number-of-students--edita) command below.
-  
+  </div>
 Examples:
 *  `adda ar/01-01-2024`: All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
+
 
 ### Editing an attendance for any number of students : `edita`
 
@@ -243,10 +313,14 @@ Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
 * The command requires at least one index to be present at a time, though **multiple indexes** is also allowed, the latter of which needs to be separated by commas.
 * All the selected student will have their status of the selected attendance date, `DATE`, to be reflected to `STATUS`
   * The entered date, `DATE`, must exist in the student's existing list of attendance dates.
+<div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
+  
+### 💡 <span style="color: #5bc0de;">Reminder</span>
   * Recall the representation and valid inputs for `STATUS`:
     - 0 for 'Absent', represented by a red cross ❌ 
     - 1 for 'Present', represented by a green tick ✅ 
-    - 2 for 'Valid Reason', represented by a blue dot 🔵 
+    - 2 for 'Valid Reason', represented by a blue dot 🔵
+</div>
 
 Examples:
 *  `edita 1 ar/01-01-2024 st/2`: Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
@@ -278,16 +352,18 @@ Examples:
 
 ### Adding\Editing a description : `description`
 
-Add a description to the selected student or Edit a description of the selected student.
+Adds a description to the selected student or Updates an already existing description of the selected student with the given description.
 
 ![DescriptionCommand](images/DescriptionCommand.jpg)
 
 Format: `description INDEX desc/DESCRIPTION`
 
-* **Only one description is allowed**. The old description will be replaced with the new description.
+* **Only one description is allowed**. The old description will be replaced with the new description (i.e., when we add/edit a description when one already exists.)
+* **Can use special characters**. To accommodate for adding tele handles, percentages/grades, dates etc.
 
 Examples:
-*  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student. 
+*  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student.
+*  `description 2 desc/Absent on 29/04/2023 due to Case Competition`: Adds a description `Absent on 29/04/2023 due to Case Competition` to second student on the list.
 
 ### Listing a class to view : `list`
 
@@ -315,13 +391,18 @@ Examples:
 * `find nic faaheem` returns `nic`, `faaheem`<br>
   ![result for 'find nic faaheem'](images/FindExample2.png)
 * `find John Doe` returns `John Doe`, `Johnathan Doe`, `Johnette Doe`<br>
-    ![result for 'find nic faaheem'](images/FindExample3.png)
+    ![result for 'find john doe'](images/FindExample3.png)
+
+
 **Warning**
 > If multiple search terms are used, all search terms will be matched with full words as well as incomplete words!
 
 ### Clearing all entries : `clear`
 
 Clears all entries from the StudentBook in a selected class.
+<div markdown="block" class="alert alert-danger">
+⚠️ Caution: Upon initiating the command to clear all students from the StudentBook, no further prompts will follow.  This action is irreversible and once executed, the data cannot be retrieved.
+</div>
 
 Format: `clear`
 
@@ -333,7 +414,7 @@ Format: `exit`
 
 ### Saving the data
 
-ClassBook and StudentBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+ClassBook and StudentBook data are saved automatically after any command that changes the data. There is no need to save manually. You can find the same in the data folder (which is going to be in the same directory as the application (i.e., .JAR file).
 
 ### Editing the data file
 
@@ -341,7 +422,7 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 
 <box type="warning" seamless>
 
-**Caution:** 
+⚠️ **Caution:** 
 - If your changes to the classbook.json data file makes its format invalid (e.g. `"courseCode" : "class_1"` where `class_1` contains non-alphanumeric characters), ClassBook will discard its classes in the classlist and start with an empty data file at the next run. Fortunately, in this case, your StudentBook data (e.g. `class1.json`) will not be lost. It can be recovered by simply recreating the class of that same name in the application (e.g. using the `create` command to `create c/class1`). 
 - Furthermore, certain edits to the individual JSON files can cause the application to behave in unexpected ways (e.g. if a value entered is outside the acceptable range, if field names such as `courseCode` are modified, etc.). In the worst case, an invalid modification to the data will cause the program to crash. In this scenario, you are advised to manually delete the modified files before running the program again. 
 - As such, do refrain from editing  manually in the JSON file. Edit the data file only if you are confident that you can update it correctly.
@@ -353,6 +434,9 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
+
+**Q**: Unable to start the program?<br>
+**A**: Ensure that Java 11 or above is installed in your operating system. To check if you have Java 11 or above, open the Command Prompt and type in `java -version`. Once verified, navigate to the program's directory and type in `java -jar MustVas.jar` in the Command Prompt. 
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
@@ -376,7 +460,7 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **When using view after selecting a class**, if you try to view classes after having selected a class, the StudentBook of the previously selected class is still considered your selected class, until you select another class to manage.
+2. **When using view after selecting a class**, if you are viewing your list of classes after having selected a class, the StudentBook of the previously selected class is still considered selected (and will be displayed). Any commands entered to modify this class will take effect until another class is selected from the list of classes.
 
 --------------------------------------------------------------------------------------------------------------------
 

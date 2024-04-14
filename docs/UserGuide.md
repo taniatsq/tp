@@ -52,6 +52,7 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 6. [Frequently Asked Questions](#faq)
 7. [Known Issues](#known-issues)
 8. [Command Summary](#command-summary)
+9. [Glossary](#glossary)
 
 <page-nav-print />
 

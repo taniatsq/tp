@@ -45,7 +45,7 @@ public class Attendance {
             return false;
         }
 
-        if (! test.matches(VALIDATION_REGEX_DATE)) {
+        if (!test.matches(VALIDATION_REGEX_DATE)) {
             return false;
         }
 

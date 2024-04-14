@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# MustVas Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -107,12 +107,15 @@ How the `Logic` component works:
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
+1. For commands that have no arguments, instead of creates a parser that matches the command (e.g., `ListCommandParser`), the `Command` object(e.g. ListCommand) is simply returned by the `AddressBookParser` .
+
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -122,8 +125,10 @@ How the parsing works:
 
 
 The `Model` component,
-
-* stores the studentId book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
+ 
+* stores the ClassBook data i.e., all `Classes` objects. (Each `Classes` object has its own AddressBook).
+* stores the currently selected `Classes` instance, and its corresponding `AddressBook`.
+* stores all `Person` objects in the `AddressBook` of the  currently selected `Classes` instance (which are contained in a `UniquePersonList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -144,8 +149,8 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both studentId book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save addressBook data, classBook data, and user preference data in JSON format, and read them back into corresponding objects.
+* inherits from `ClassBookStorage`, `AddressBookStorage` and `UserPrefStorage`, which means it can be treated one of the above. (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
@@ -323,22 +328,27 @@ and call `mainWindow.fillInnerParts()` to update the UI PersonListPanel.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user who enters the program for the first time | select the class that I want | view all the students in that selected class |
-| `* * *`  | new user| create new class | separate students into their respective classes |
-| `* * *`  | user| delete class | remove classes that is not needed anymore |
-| `* * *`  | user | add a new student to my class | keep track of my students' profiles |
-| `* * *`  | user | delete a student from the class | keep an updated record of students in the class |
-| `* *`    | user | write descriptions for each student | take note of certain students based on the description |
-| `* * *`  | user | create an attendance record for my students (PRESENT, ABSENT, VALID REASON) | acknowledge a student's attendance |
-| `* *`    | user | edit the attendance record of students | conveniently make changes to attendance when necessary |
-| `* * *`  | user | delete an attendance record | remove any unnecessary attendance record |
-| `*`      | organised user | view the attendance rate of a student | easily have an idea of a specific student's overall attendance rate at one glance |
-| `*`      | organised user | browse my contacts in the default alphabetical setting | easily scroll to find a particular contact |
-| `* `    | forgetful user | schedule reminders for important events or follow-ups associated with a specific contact | don't miss important dates or tasks |
-
-
+| Priority | As a …​                                     | I want to …​                                        | So that I can…​                                                         |
+|----------|--------------------------------------------|----------------------------------------------------|------------------------------------------------------------------------|
+| `* *`    | New user exploring the app                 | Access the user guide easily via a help button     | Learn how to use the app                                               |
+| `* * *`  | User who teaches multiple classes          | View my classes                                    | See all the classes I'm currently managing at a glance                 |
+| `* * *`  | User who teaches multiple classes          | Select the class that I want to manage             | Easily manage multiple classes                                         |       
+| `* * *`  | User who teaches multiple classes          | Create new class                                   | Separate students into their respective classes                        |
+| `* * *`  | User who teaches multiple classes          | Delete class                                       | Remove classes that is not needed anymore                              |
+| `* * *`  | User who manages students                  | Add a new student to the class                     | Keep track of my students' profiles                                    |
+| `* * *`  | User who manages students                  | Delete a student from the class                    | Keep an updated record of students in the class                        |
+| `* *`    | User who manages students                  | Write descriptions for each student                | Take note of certain students based on the description                 |
+| `* *`    | User who manages students                  | Create assignments and grades for each student     | Track my student's grades                                              |
+| `* * *`  | User who manages student attendance        | Create an attendance record for my students        | Acknowledge a student's attendance (PRESENT, ABSENT, VALID REASON)     | 
+| `* *`    | User who manages student attendance        | Edit the attendance record of students             | Conveniently make changes to attendance when necessary                 |
+| `* * *`  | User who manages student attendance        | Delete an attendance record                        | Remove any unnecessary attendance records                              |
+| `* *`    | User who manages student attendance        | View the attendance rate of a student              | Easily view the student's overall attendance rate at one glance        |
+| `* *`    | Organised user                             | Browse students in the default alphabetical setting| easily scroll to find a particular contact                             |
+| `* `     | Forgetful user                             | Schedule reminders for specific contact            | Don't miss important dates or admin tasks                              |
+| `* `     | User who uses Canvas LMS                   | Import the attendance data into Canvas             | Easily upload attendance statistics for the school admin               |
+| `* `     | User who looking to be more efficient      | Send emails/texts to an entire class               | Easily communicate information to the students                         |
+| `* `     | User who looking to be more efficient      | Generate attendance reports                        | Easily submit them to school admin                                     |
+| `* `     | User who looking to be more efficient      | Export Student date in multiple formats (etc. PDF) | Share the data with other tutors or professors easily                  |
 ## Use cases
 
 (For all use cases below, the **System** is the `MustVas` and the **Actor** is the `user`, unless specified otherwise)
@@ -356,11 +366,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. The list is empty.
-  * 2a1. MustVas shows a message that the list is empty.
+  * 2a1. MustVas shows a message that the list is empty. (Not implemented due to feature freeze)
 
   Use case ends.
 
-* 3a. The user enters an invalid class.
+* 3a. The user enters an invalid class index.
     * 3a1. MustVas shows an error message about selecting an invalid class.
 
   Use case ends.
@@ -378,10 +388,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Enter an invalid command.
-  * 1a1. MustVas shows an error message.
+* 1a. Enter an invalid class name (Contains non-alphanumeric characters, Contains spaces, or blank).
+  * 1a1. MustVas shows an error message stating the correct format
 * 1b. Enter a duplicate class.
-  * 1b1. MustVas shows an error message.
+  * 1b1. MustVas shows an error message stating the class alrea
 
   Use case ends.
 
@@ -396,8 +406,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Enter an invalid command.
-  * 1a1. MustVas shows an error message.
+* 1a. Enter an invalid command. 
+  * 1a1.MustVas shows the list of stored classes.
 
   Use case ends.
 
@@ -413,11 +423,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Enter an invalid command.
-  * 1a1. MustVas shows an error message.
-
-* 1b. Enter an invalid class to select.
-  * 1a1. MustVas shows an error message that stated class does not exist.
+* 1a. Enter an invalid class index.
+  * 1a1. MustVas shows an error message stating the provided class index is invalid
 
   Use case ends.
   
@@ -660,7 +667,7 @@ testers are expected to do more *exploratory* testing.
       Expected: First student/contact has a description added to them. Details of where the description has been added is shown.
 
    1. Test case: `description 0 desc/Hello`<br>
-      Expectd: Error message thrown. No description is added to any contact.
+      Expected: Error message thrown. No description is added to any contact.
 
    1. Other incorrect description commands: `description 1 Hello`, `description`, `description desc/Hello`, `description x desc/Hello` (Where x is larger than the list size)<br>
       Expected: Similar to previous.

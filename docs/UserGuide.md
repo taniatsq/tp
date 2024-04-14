@@ -13,14 +13,16 @@ MustVas is a desktop app designed to help fellow Teaching Assistants (TAs) manag
 
 ## What can you do with MustVas?
 - **Class Management**: Organise and oversee your students across various classes.
-- **Attendance Management**: Efficiently maintain attendance records with ease.  
+- **Attendance Management**: Efficiently maintain your students' attendance records with ease.  
 
 ## Target Users
-Having been built for TAs by TAs, MustVas is specifically designed for Teaching Assistants (TAs) who are looking for an efficient way to manage their tutorial responsibilities and student interactions.
+Having been built for TAs by TAs, MustVas is specifically designed for Teaching Assistants (TAs) who are looking for an efficient way to manage their tutorial responsibilities and student interactions. 
 
 ## Purpose of this User Guide
-In MustVas' User Guide, you will be learning tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app, as well as relevant examples to get you started! Simply navigate to our features section for a thorough read through, or click on a specific section to review in our Table of Contents for any queries you might have. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as a reference for the key command prompts to use in MustVas. We hope that MustVas will provide a new and better way for you to manage your students in the long run.
+In this User Guide, you will be learning key tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app and provide you with clear instructions on how to effectively utilize our product with relevant examples to get you started! By following these instructions, you can maximize your understanding and proficiency of using our product to its fullest potential. Whether you're a novice or an experienced user, this guide offers step-by-step instructions, clarifications, and best practices to enhance your overall experience. We hope that MustVas's user guide will provide a new and better way for you to manage your students in the long run.
 
+## How can you use this guide?
+Simply navigate to our features section for a thorough read through, or click on a specific section to review in our Table of Contents for any queries you might have. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as a reference for the key command prompts to use in MustVas. 
 
 NOTE: Users who are not familiar with using a CLI need not fret. Our commands have been specifically catered to a beginner's use - they are simple and easy to learn! Assistance is also provided automatically whenever there is an invalid command. 
 
@@ -63,13 +65,14 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 
 3. Copy the MustVas.jar file into a new folder, MyMustVas and save it under your Documents.
 
-4. Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there. <br>
+4. Run the program. 
+   * 4a. **[For Mac Users]** Open a new command terminal and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `ls` command to check that your jar file is actually there. Copy and paste this command `java -jar MustVas.jar` into your terminal. <br>
 _See our Terminal guide below._ <br>
-![TerminalInstructions](images/TerminalInstructions.png)
-   
-6. Copy and paste this command `java -jar MustVas.jar` into your terminal.
 ![TerminalInstructions](images/TerminalInstructions_jar.png)
 
+   * 4b. **[For Windows Users]** Open a new command prompt and make sure that you are in the correct directory where MustVas.jar is in. You may use `cd` to navigate into the correct folder, and use the `dir` command to check that your jar file is actually there. Copy and paste this command `java -jar MustVas.jar` into your command prompt. <br>
+_See our Command Prompt guide below._ <br>
+![CommandPromptInstructions](images/command_prompt.png)
 8. An interface similar to the below should appear in a few seconds. <br>
    ![Ui](images/UI_initial.png)
 
@@ -125,15 +128,14 @@ The meaning of each prefix is listed below:
 Attribute     | Prefix (Flag) | Remarks 
 -----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
 **Class Name**    | `c/` | Class name should only contain alphanumeric characters `[a-z, A-Z, 0-9]`. <br>No duplication is allowed. <br>Example: `c/cs2103`
-**Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]` and spaces <br>Example: `n/John Teo`
-**Student Email** | `e/` | 
+**Student Name**  | `n/` | Student name should only contain alphanumeric characters `[a-z, A-Z, 0-9]` and spaces. <br>Example: `n/John Teo`
+**Student Email** | `e/` | No duplication is allowed. <br> Example: `e/jane@gmail.com`
 **Student Id**   | `s/` | Student Id must begin with A, followed by 7 digits, and end with a capital letter. <br>No duplication is allowed. <br>Example: `s/A1234567D`
 **Student Phone**   | `p/` | Phone must contain only 8 digits from `80000000` to `99999999`. <br>No duplication is allowed. <br>Example: `p/88889999`
 **Attendance Date**   | `ar/` | Date must be in the format of `dd-MM-yyyy`. <br>No duplication is allowed. <br>Example: `ar/01-01-2024`
-**Attendance Status**   | `st/` | The status must be either `0`, `1` or `2` <br>Example: `st/0`
-**Description**   | `desc/` | 
+**Attendance Status**   | `st/` | The status must be either `0`, `1` or `2`. <br>Example: `st/0`
+**Description**   | `desc/` | Description will only keep the latest description. <br> Example: `desc/This student loves coding.`
 </box>
-
 
 
 ### Viewing help : `help`
@@ -214,9 +216,9 @@ Format: `select INDEX`
 
 Before using all functions below, make sure to **select a class** using the `select` command.
 
-This step ensures that you are able to modify the correct class!
+This step ensures that you are modifying the correct class!
 
-If you see something like this (with the right class of course!) in the bottom left corner, you're good to go!
+If you see something like this (with the right class of course!) in the bottom left corner of your MustVas, you're good to go!
 ![img_1.png](img_1.png)
 </div>
 
@@ -450,7 +452,7 @@ ClassBook and StudentBook data are saved automatically as a JSON file `[JAR file
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **When using view after selecting a class**, if you try to view classes after having selected a class, the StudentBook of the previously selected class is still considered your selected class, until you select another class to manage.
+2. **When using view after selecting a class**, if you are viewing your list of classes after having selected a class, the StudentBook of the previously selected class is still considered selected (and will be displayed). Any commands entered to modify this class will take effect until another class is selected from the list of classes.
 
 --------------------------------------------------------------------------------------------------------------------
 

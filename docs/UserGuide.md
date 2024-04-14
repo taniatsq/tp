@@ -22,7 +22,7 @@ Having been built for TAs by TAs, MustVas is specifically designed for Teaching 
 In this User Guide, you will be learning key tips and tricks to make your experience with MustVas useful and handy. This User Guide will cover the main features of the app and provide you with clear instructions on how to effectively utilize our product with relevant examples to get you started! By following these instructions, you can maximize your understanding and proficiency of using our product to its fullest potential. Whether you're a novice or an experienced user, this guide offers step-by-step instructions, clarifications, and best practices to enhance your overall experience. We hope that MustVas's user guide will provide a new and better way for you to manage your students in the long run.
 
 ## How can you use this guide?
-Simply navigate to our features section for a thorough read through, or click on a specific section to review in our Table of Contents for any queries you might have. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as a reference for the key command prompts to use in MustVas. 
+You may first want to read through our [glossary](#glossary) to have a better understanding of terms that you might be unfamiliar with. For more information on MustVas' features, simply navigate to our features section for a thorough read through, or click on a specific section to review in our Table of Contents. Do keep a lookout for the frequently asked questions down below which may help you address some basic common questions! Lastly, our command summary will be useful as a reference for the key command prompts to use in MustVas. 
 
 NOTE: Users who are not familiar with using a CLI need not fret. Our commands have been specifically catered to a beginner's use - they are simple and easy to learn! Assistance is also provided automatically whenever there is an invalid command. 
 
@@ -188,7 +188,7 @@ The index refers to the index number shown in the displayed class list. (e.g. CS
 Shows list of classes in result display.
 
 ![ViewCommand](images/ViewCommand2.png)
-* The index number shown in the displayed class list is used for [Remove](#removing-a-class--rm) and [Select](#selecting-a-class-to-view--select) (e.g. Use index 1 for CS2103)
+* The index number shown in the displayed class list is used for [Remove](#removing-a-class-rm) and [Select](#selecting-a-class-to-view-select) (e.g. Use index 1 for CS2103)
 
 
 ### Selecting a class to view: `select`
@@ -239,7 +239,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/STUDENT_ID [desc/DESCRIPTION]`
 * The description field is optional. You may write any description for the new student. However, **only one description is allowed**. The old description will be replaced with the new description when editing or adding a new description when one already exists.
 * If there are existing attendance records allocated to the existing students, the newly added student will have a default status of '2' (meaning Valid Reason) for these existing attendance records. Please refer to the image below for illustration.
 ![add_new_student_with_attendance](images/add_new_student_with_attendance.PNG)
-  - You may see our [attendance features](#adding-an-attendance-record--adda) below for more information.
+  - You may see our [attendance features](#adding-an-attendance-record-adda) below for more information.
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`: Adds a new student.
@@ -294,7 +294,7 @@ Format: `adda ar/DATE`
     - 0 for 'Absent', represented by a red cross ❌ 
     - 1 for 'Present', represented by a green tick ✅ 
     - 2 for 'Valid Reason', represented by a blue dot 🔵 
-* To edit the status value, do refer to the [edita](#editing-an-attendance-for-any-number-of-students--edita) command below.
+* To edit the status value, do refer to the [edita](#editing-an-attendance-for-any-number-of-students-edita) command below.
   </div>
 Examples:
 *  `adda ar/01-01-2024`: All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
@@ -483,3 +483,17 @@ Action     | Format, Examples
 **Edit Attendance**  | `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS` <br> e.g., `edita 1 ar/01-01-2024 st/2`
 **Delete Attendance** | `dela ar/DATE` <br> e.g., `dela ar/02-02-2024`
 **Add\Edit Description** | `description INDEX desc/DESCRIPTION` <br> e.g., `description 1 desc/Loves coding`
+
+
+## Glossary
+Term     | Abbreviations | Definition 
+-----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
+**Command Line Interface**    | CLI | A text-based interface for interacting with a computer system or program by typing commands into a terminal or command prompt.
+**Graphical User Interface**  | GUI |  A visual interface that allows users to interact with a computer system or program through graphical elements such as windows, icons, buttons, and menus.
+**Command Prompt**   | - | A command line interpreter application available in most Windows operating systems that allows users to enter commands to perform tasks.
+**Terminal**   | - | A text-based interface for interacting with a computer system or program by typing commands, commonly found in Unix-like operating systems.
+**Change Directory** | `cd` | A command used in command line interfaces to change the current working directory to a specified location within the file system.
+**List**   | `ls` | A command used in command line interfaces to list the contents of a directory or folder.
+**Directory**   | `dir` | A command used in command line interfaces, particularly in Windows operating systems, to list the contents of a directory or folder.
+**Java ARchive**   | `jar` <br> `JAR` | A file format used to package Java class files, associated metadata, and resources into a single file for distribution or deployment.
+**JavaScript Object Notation** | `json` <br> `JSON` | A file format that is easy for humans to read and write, and easy for machines to parse and generate, commonly used for transmitting data between a server and a web application.

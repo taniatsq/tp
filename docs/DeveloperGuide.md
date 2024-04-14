@@ -191,7 +191,7 @@ The `edita` command is used to edit an attendance record of some students. Below
 
 The `dela` command is used to delete an attendance record of all students. Below is the sequence when the `dela` command is entered.
 
-<puml src="diagrams/DeleteAttendanceRecordSequenceDiagram.puml" width="600" />
+<puml src="diagrams/DeleteAttendanceRecordSequenceDiagram.puml" />
 
 
 ### \[Proposed\] Undo/redo feature

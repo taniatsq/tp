@@ -209,7 +209,7 @@ Format: `select INDEX`
 * The file will always named in the format `CLASS_NAME.json`
 
 
-# Working with your class
+## Working with your class
 <div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
 
 ### 💡 <span style="color: #5bc0de;">Reminder</span>

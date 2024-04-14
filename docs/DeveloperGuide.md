@@ -167,31 +167,31 @@ This section describes some noteworthy details on how certain features are imple
 
 The `create` command is used to create a class. Below is the sequence diagram when the `create` command is entered.
 
-<puml src="diagrams/CreateClassSequenceDiagram.puml" width="450" />
+<puml src="diagrams/CreateClassSequenceDiagram.puml" width="600" />
 
 ### Select Class feature
 
 The `select` command is used to select a class. Below is the sequence diagram when the `select` command is entered.
 
-<puml src="diagrams/SelectClassCommandSequenceDiagram.puml" width="450" />
+<puml src="diagrams/SelectClassCommandSequenceDiagram.puml" width="600" />
 
 ### Add attendance record feature 
 
 The `adda` command is used to add an attendance record to all students. Below is the sequence when the `adda` command is entered.
 
-<puml src="diagrams/AddAttendanceRecordSequenceDiagram.puml" width="450" />
+<puml src="diagrams/AddAttendanceRecordSequenceDiagram.puml" width="600" />
 
 ### Edit attendance record feature
 
 The `edita` command is used to edit an attendance record of some students. Below is the sequence when the `edita` command is entered.
 
-<puml src="diagrams/EditAttendanceCommandSequenceDiagram.puml" width="450" />
+<puml src="diagrams/EditAttendanceCommandSequenceDiagram.puml" width="600" />
 
 ### Delete attendance record feature 
 
 The `dela` command is used to delete an attendance record of all students. Below is the sequence when the `dela` command is entered.
 
-<puml src="diagrams/DeleteAttendanceRecordSequenceDiagram.puml" width="450" />
+<puml src="diagrams/DeleteAttendanceRecordSequenceDiagram.puml" width="600" />
 
 
 ### \[Proposed\] Undo/redo feature

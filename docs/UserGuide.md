@@ -30,22 +30,22 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 ## Table Of Contents
 1. [Quick Start](#quick-start)
 2. [Features](#features)
-    - [Help](#viewing-help--help)
-    - [Create class](#creating-a-class--create)
-    - [Remove class](#removing-a-class--rm)
-    - [View classes](#viewing-the-classes--view)
-    - [Select class](#selecting-a-class-to-view--select)
-      - [Add student](#adding-a-student--add)
-      - [Delete student](#deleting-a-student--delete)
-      - [Edit student](#editing-a-student--edit)
-      - [Add attendance](#adding-an-attendance-record--adda)
-      - [Delete attendance](#deleting-an-attendance-record--dela)
-      - [Edit attendance](#editing-an-attendance-for-any-number-of-students--edita)
-      - [Add/Edit description](#addingediting-a-description--description)
-      - [List](#listing-a-class-to-view--list)
-      - [Find](#locating-students-by-name--find)
-      - [Clear](#clearing-all-entries--clear)
-    - [Exit](#exiting-the-program--exit)
+    - [Help](#viewing-help-help)
+    - [Create class](#creating-a-class-create)
+    - [Remove class](#removing-a-class-rm)
+    - [View classes](#viewing-the-classes-view)
+    - [Select class](#selecting-a-class-to-view-select)
+      - [Add student](#adding-a-student-add)
+      - [Delete student](#deleting-a-student-delete)
+      - [Edit student](#editing-a-student-edit)
+      - [Add attendance](#adding-an-attendance-record-adda)
+      - [Delete attendance](#deleting-an-attendance-record-dela)
+      - [Edit attendance](#editing-an-attendance-for-any-number-of-students-edita)
+      - [Add/Edit description](#addingediting-a-description-description)
+      - [List](#listing-a-class-to-view-list)
+      - [Find](#locating-students-by-name-find)
+      - [Clear](#clearing-all-entries-clear)
+    - [Exit](#exiting-the-program-exit)
 3. [Saving the data](#saving-the-data)
 4. [Editing the data file](#editing-the-data-file)
 5. [Coming Soon...](#coming-soon)
@@ -138,7 +138,7 @@ Attribute     | Prefix (Flag) | Remarks
 </box>
 
 
-### Viewing help : `help`
+### Viewing help: `help`
 
 Shows a message with a link to our help page.
 
@@ -146,7 +146,7 @@ Shows a message with a link to our help page.
 
 Format: `help`
 
-### Creating a class : `create`
+### Creating a class: `create`
 
 Creates a new class.
 
@@ -161,7 +161,7 @@ Examples:
 * `create c/CS2101`: Creates a class with course code 'CS2101'.
 * `create c/CS2103T`: Creates a class with course code 'CS2103T'.
 
-### Removing a class : `rm`
+### Removing a class: `rm`
 
 Removes the specified class from the ClassBook, and deletes all students in the class.
 
@@ -183,7 +183,7 @@ The index refers to the index number shown in the displayed class list. (e.g. CS
 * `.\No class selected!` will be displayed on the bottom left.
 
 
-### Viewing the classes : `view`
+### Viewing the classes: `view`
 
 Shows list of classes in result display.
 
@@ -191,7 +191,7 @@ Shows list of classes in result display.
 * The index number shown in the displayed class list is used for [Remove](#removing-a-class--rm) and [Select](#selecting-a-class-to-view--select) (e.g. Use index 1 for CS2103)
 
 
-### Selecting a class to view : `select`
+### Selecting a class to view: `select`
 
 Shows the list of all students in the selected class.
 Allows you to modify and view the class.
@@ -223,7 +223,7 @@ If you see something like this (with the right class of course!) in the bottom l
 </div>
 
 
-### Adding a student : `add`
+### Adding a student: `add`
 
 Adds a student to the StudentBook.
 
@@ -245,7 +245,7 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B`: Adds a new student.
 * `add n/John Doe p/98765432 e/johnd@gmail.com s/A0251980B desc/Enjoy coding`: Adds a new student with a description.
 
-### Deleting a student : `delete`
+### Deleting a student: `delete`
 
 Deletes the specified student from the StudentBook.
 
@@ -259,7 +259,7 @@ Examples:
 * `list` followed by `delete 2`: Deletes the 2nd person in the StudentBook.
 * `find Betsy` followed by `delete 1`: Deletes the 1st student in the results of the `find` command.
 
-### Editing a student : `edit`
+### Editing a student: `edit`
 
 Edits an existing student in the StudentBook.
 
@@ -274,7 +274,7 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com`: Edits the phone number and email studentId of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower`: Edits the name of the 2nd person to be `Betsy Crower`.
 
-### Adding an attendance record : `adda`
+### Adding an attendance record: `adda`
 
 Add an attendance record to all existing students in the studentId book.
 
@@ -300,7 +300,7 @@ Examples:
 *  `adda ar/01-01-2024`: All the existing students will have a newly added attendance with date `01-01-2024` and a default status `1`.
 
 
-### Editing an attendance for any number of students : `edita`
+### Editing an attendance for any number of students: `edita`
 
 Edits the existing attendance record in the student's list of attendance in the studentId book. **Any number of students** can be edited in one go.
 
@@ -326,7 +326,7 @@ Examples:
 *  `edita 1 ar/01-01-2024 st/2`: Edits the attendance status of the 1st student for `01-01-2024` to `2`, indicating absence with a valid reason.
 *  `edita 2, 3 ar/01-01-2024 st/0`: Edits the attendance status of the 2nd and 3rd student for `01-01-2024` to `0`, indicating absence.
 
-### Deleting an attendance record : `dela`
+### Deleting an attendance record: `dela`
 
 Deletes the specified attendance date from all the student's list of attendance records in studentId book.
 
@@ -350,7 +350,7 @@ Examples:
 
 ![AttendancePercentage](images/AttendancePercentage.png)
 
-### Adding\Editing a description : `description`
+### Adding\Editing a description: `description`
 
 Adds a description to the selected student or Updates an already existing description of the selected student with the given description.
 
@@ -365,13 +365,13 @@ Examples:
 *  `description 1 desc/Loves coding`: Adds a description `Loves coding` to first student.
 *  `description 2 desc/Absent on 29/04/2023 due to Case Competition`: Adds a description `Absent on 29/04/2023 due to Case Competition` to second student on the list.
 
-### Listing a class to view : `list`
+### Listing a class to view: `list`
 
 Lists all students in the class.
 
 Format: `list`
 
-### Locating students by name : `find`
+### Locating students by name: `find`
 
 Finds students whose names contain any of the given keywords.
 
@@ -397,7 +397,7 @@ Examples:
 **Warning**
 > If multiple search terms are used, all search terms will be matched with full words as well as incomplete words!
 
-### Clearing all entries : `clear`
+### Clearing all entries: `clear`
 
 Clears all entries from the StudentBook in a selected class.
 <div markdown="block" class="alert alert-danger">
@@ -406,7 +406,7 @@ Clears all entries from the StudentBook in a selected class.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### Exiting the program: `exit`
 
 Exits the program.
 

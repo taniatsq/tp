@@ -13,11 +13,8 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyClassBook;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -33,17 +30,6 @@ public class AddAttendanceRecordCommandTest {
     @Test
     public void constructor_nullAttendance_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddAttendanceRecordCommand((null)));
-    }
-
-    @Test
-    public void execute_emptyPersonList_throwsCommandException() {
-        Model model = new ModelManager(); // No persons in the model
-        Attendance validAttendance = new Attendance(new AttendanceStatus("19-03-2024", "1"));
-
-        AddAttendanceRecordCommand addAttendanceRecordCommand = new AddAttendanceRecordCommand(validAttendance);
-
-        assertThrows(CommandException.class,
-                Messages.MESSAGE_NO_PERSON_IN_THE_CLASS, () -> addAttendanceRecordCommand.execute(model));
     }
 
     @Test

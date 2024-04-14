@@ -123,7 +123,7 @@ _See our Command Prompt guide below._ <br>
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
-## Attribute Summary (Prefixes): 
+### Attribute Summary (Prefixes): 
 The meaning of each prefix is listed below:
 Attribute     | Prefix (Flag) | Remarks 
 -----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -315,7 +315,7 @@ Format: `edita INDEX1, INDEX2, …​ ar/DATE st/STATUS`
   * The entered date, `DATE`, must exist in the student's existing list of attendance dates.
 <div class="reminder" markdown="1" style="background-color: #f7f7f7; border-left: 6px solid #5bc0de; padding: 10px; margin-bottom: 20px;">
   
-### 💡 <span style="color: #5bc0de;">Reminder</span>
+### 💡 <span style="color: #5bc0de;">Recall Status information </span>
   * Recall the representation and valid inputs for `STATUS`:
     - 0 for 'Absent', represented by a red cross ❌ 
     - 1 for 'Present', represented by a green tick ✅ 

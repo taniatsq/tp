@@ -54,8 +54,6 @@ NOTE: Users who are not familiar with using a CLI need not fret. Our commands ha
 8. [Command Summary](#command-summary)
 9. [Glossary](#glossary)
 
-<page-nav-print />
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
